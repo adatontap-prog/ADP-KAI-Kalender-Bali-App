@@ -1,4 +1,7 @@
-# ADP KAI Kalender Bali Digital — PWA v0.2 / Phase 1.2
+# ADP KAI Kalender Bali Digital — PWA v0.2.1 / Phase 1.2.1
+
+Patch: mobile layout tidak terpotong + input tanggal format dd/mm/yyyy.
+
 
 Status: Phase 1.2 data foundation + mockup web integration.
 
