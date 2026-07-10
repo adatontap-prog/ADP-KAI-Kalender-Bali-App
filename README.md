@@ -1,16 +1,30 @@
-# ADP KAI Kalender Bali Digital — PWA v0.4.1 / Phase 1.4.1
+# ADP KAI Kalender Bali Digital – PWA v0.4.2 / Phase 1.4.2
 
-Patch: auto set tanggal sesuai hari ini di device, format dd/mm/yyyy, dan icon app HP baru.
+Patch: mengganti logo/icon app ke desain final pilihan user: ornate celestial calendar mandala.
 
-## Perubahan
-- Default tanggal memakai tanggal lokal perangkat. Jika tahun berjalan 2026, kalender langsung membuka tanggal hari ini.
-- Query override tetap bisa: `?date=2026-07-11` atau `?d=11/07/2026`.
-- Icon app HP diperbarui: simbol kalender Bali `KB`, titik Purnama merah, Tilem hitam, Rerainan emas, Otonan hijau.
-- Manifest `start_url` dinaikkan ke `v=141`.
-- Cache service worker dinaikkan ke `v1-4-1`.
+## Isi perubahan
+- `assets/icon-192-v142.png`
+- `assets/icon-512-v142.png`
+- `assets/favicon-48-v142.png`
+- `assets/apple-touch-icon-v142.png`
+- `manifest.webmanifest` memakai icon v142
+- `service-worker.js` cache naik ke `adp-kai-kalender-bali-v1-4-2`
+- `index.html` link icon + manifest memakai versi terbaru
 
-## Deploy
-Upload semua isi folder ke repo aktif `adatontap-prog/ADP-KAI-Kalender-Bali-App`, commit, lalu push origin.
+## Cara pasang
+Upload/copy seluruh isi folder ini ke repo aktif:
+
+`adatontap-prog / ADP-KAI-Kalender-Bali-App`
 
 Commit:
-`ADP KAI Kalender Bali Digital phase 1.4.1 - Auto today and app icon refresh`
+
+`ADP KAI Kalender Bali Digital phase 1.4.2 - Final app icon mandala`
+
+Lalu push origin dan tunggu Vercel auto-deploy.
+
+## Setelah deploy
+Buka:
+
+`https://adp-kai-kalender-bali-uzlfcr2zm-adatontap-s-projects.vercel.app/?v=142`
+
+Untuk icon HP, hapus shortcut/app lama dari Home Screen, lalu install ulang dari Chrome agar icon baru terbaca.

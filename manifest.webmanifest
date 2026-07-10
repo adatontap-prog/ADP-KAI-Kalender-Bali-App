@@ -1,21 +1,21 @@
 {
   "name": "ADP KAI Kalender Bali Digital",
   "short_name": "Kalender Bali",
-  "description": "Kalender Bali Digital untuk keluarga Bali modern - Phase 1.4.1 auto hari ini, icon app baru, pusat reminder, dan input otonan lokal.",
-  "start_url": "./index.html?v=141",
+  "description": "Kalender Bali Digital untuk keluarga Bali modern - Phase 1.4.2 icon app final, auto hari ini, pusat reminder, dan input otonan lokal.",
+  "start_url": "./index.html?v=142",
   "display": "standalone",
   "background_color": "#f2efe7",
   "theme_color": "#111827",
   "orientation": "any",
   "icons": [
     {
-      "src": "./assets/icon-192.png",
+      "src": "./assets/icon-192-v142.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "./assets/icon-512.png",
+      "src": "./assets/icon-512-v142.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
