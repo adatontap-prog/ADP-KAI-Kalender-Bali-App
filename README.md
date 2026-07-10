@@ -1,31 +1,53 @@
-# ADP KAI Kalender Bali Digital — PWA v0.2.1 / Phase 1.2.1
+# ADP KAI Kalender Bali Digital — PWA v0.3 / Phase 1.3
 
-Patch: mobile layout tidak terpotong + input tanggal format dd/mm/yyyy.
+Status: Phase 1.3 input otonan keluarga + reminder list lokal.
 
+## Isi Phase 1.3
 
-Status: Phase 1.2 data foundation + mockup web integration.
-
-## Isi
-- `index.html` — mockup kalender meja/dinding, mode e-paper/tablet, installable PWA.
-- `data/events.2026.json` — dataset event/rerainan 2026.
-- `data/calendarDraft.2026.csv` — format impor/cek untuk tab Calendar Draft.
-- `data/rerainanSourceIntake.2026.csv` — format intake sumber digital.
-- `data/dataCoverage.2026.json` — ringkasan coverage per bulan.
-- `data/familyMembers.sample.json` — placeholder anonim: Anggota Keluarga 1, Anggota Keluarga 2, Anak 1, User 1.
-
-## Marker UI
+- Kalender Bali 2026 dari dataset digital source.
+- Format tanggal `dd/mm/yyyy`.
+- Layout mobile tidak terpotong.
 - Purnama: titik merah.
 - Tilem: titik hitam.
-- Rerainan/Hari Raya lain: titik emas.
+- Rerainan/Hari Raya: titik emas.
+- Otonan keluarga: titik hijau.
+- Form tambah/update otonan keluarga.
+- Data otonan tersimpan di `localStorage` browser HP.
+- Reminder terdekat menggabungkan event kalender dan otonan keluarga.
 
-## Validasi
-Data awal berstatus `digital_source_only`. Beberapa bulan yang gagal direct-fetch diberi status `needs_direct_source_recheck`. Untuk keputusan adat/upacara penting, tetap verifikasi dengan kalender Bali cetak/resmi, pemangku, atau sumber adat setempat.
+## Catatan validasi
+
+Data kalender awal berstatus `digital_source_only` dan perlu cross-check adat. Untuk keputusan adat/upacara penting, tetap verifikasi dengan kalender Bali cetak/resmi, sumber adat setempat, atau pemangku.
+
+## Privasi mockup publik
+
+Untuk demo publik, gunakan placeholder:
+
+- Anggota Keluarga 1
+- Anggota Keluarga 2
+- Anak 1
+- User 1
+
+Jangan tampilkan identitas keluarga asli pada mockup publik.
+
+## Cara deploy
+
+Upload seluruh isi folder ke repo GitHub aktif:
+
+`adatontap-prog / ADP-KAI-Kalender-Bali-App`
+
+Commit:
+
+`ADP KAI Kalender Bali Digital phase 1.3 - Otonan family input and reminder list`
+
+Setelah push ke GitHub, Vercel akan auto-deploy.
 
 ## Test lokal
+
 ```bash
 python -m http.server 5173
 ```
-Buka `http://localhost:5173`.
 
-## Deploy
-Upload isi folder ke GitHub/Vercel. Setelah HTTPS aktif, buka di Chrome Android lalu pilih Install/Add to Home Screen.
+Buka:
+
+`http://localhost:5173`
