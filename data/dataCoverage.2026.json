@@ -1,0 +1,98 @@
+[
+  {
+    "month": 1,
+    "monthNameId": "Januari",
+    "totalEvents": 11,
+    "directFetch": 11,
+    "purnamaTilemYearPageOnly": 0,
+    "needsRecheck": 0
+  },
+  {
+    "month": 2,
+    "monthNameId": "Pebruari",
+    "totalEvents": 7,
+    "directFetch": 7,
+    "purnamaTilemYearPageOnly": 0,
+    "needsRecheck": 0
+  },
+  {
+    "month": 3,
+    "monthNameId": "Maret",
+    "totalEvents": 13,
+    "directFetch": 13,
+    "purnamaTilemYearPageOnly": 0,
+    "needsRecheck": 0
+  },
+  {
+    "month": 4,
+    "monthNameId": "April",
+    "totalEvents": 13,
+    "directFetch": 0,
+    "purnamaTilemYearPageOnly": 2,
+    "needsRecheck": 11
+  },
+  {
+    "month": 5,
+    "monthNameId": "Mei",
+    "totalEvents": 10,
+    "directFetch": 0,
+    "purnamaTilemYearPageOnly": 3,
+    "needsRecheck": 7
+  },
+  {
+    "month": 6,
+    "monthNameId": "Juni",
+    "totalEvents": 18,
+    "directFetch": 18,
+    "purnamaTilemYearPageOnly": 0,
+    "needsRecheck": 0
+  },
+  {
+    "month": 7,
+    "monthNameId": "Juli",
+    "totalEvents": 8,
+    "directFetch": 8,
+    "purnamaTilemYearPageOnly": 0,
+    "needsRecheck": 0
+  },
+  {
+    "month": 8,
+    "monthNameId": "Agustus",
+    "totalEvents": 10,
+    "directFetch": 10,
+    "purnamaTilemYearPageOnly": 0,
+    "needsRecheck": 0
+  },
+  {
+    "month": 9,
+    "monthNameId": "September",
+    "totalEvents": 8,
+    "directFetch": 8,
+    "purnamaTilemYearPageOnly": 0,
+    "needsRecheck": 0
+  },
+  {
+    "month": 10,
+    "monthNameId": "Oktober",
+    "totalEvents": 10,
+    "directFetch": 0,
+    "purnamaTilemYearPageOnly": 2,
+    "needsRecheck": 8
+  },
+  {
+    "month": 11,
+    "monthNameId": "Nopember",
+    "totalEvents": 12,
+    "directFetch": 0,
+    "purnamaTilemYearPageOnly": 2,
+    "needsRecheck": 10
+  },
+  {
+    "month": 12,
+    "monthNameId": "Desember",
+    "totalEvents": 9,
+    "directFetch": 9,
+    "purnamaTilemYearPageOnly": 0,
+    "needsRecheck": 0
+  }
+]

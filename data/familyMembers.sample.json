@@ -1,0 +1,42 @@
+[
+  {
+    "id": "anggota_keluarga_1",
+    "name": "Anggota Keluarga 1",
+    "role": "family_member",
+    "otonan": {
+      "enabled": true,
+      "nextDate": null,
+      "status": "placeholder"
+    }
+  },
+  {
+    "id": "anggota_keluarga_2",
+    "name": "Anggota Keluarga 2",
+    "role": "family_member",
+    "otonan": {
+      "enabled": true,
+      "nextDate": null,
+      "status": "placeholder"
+    }
+  },
+  {
+    "id": "anak_1",
+    "name": "Anak 1",
+    "role": "child",
+    "otonan": {
+      "enabled": true,
+      "nextDate": null,
+      "status": "placeholder"
+    }
+  },
+  {
+    "id": "user_1",
+    "name": "User 1",
+    "role": "user",
+    "otonan": {
+      "enabled": false,
+      "nextDate": null,
+      "status": "placeholder"
+    }
+  }
+]

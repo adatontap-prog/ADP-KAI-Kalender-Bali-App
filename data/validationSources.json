@@ -1,0 +1,18 @@
+[
+  {
+    "sourceId": "SRC-001",
+    "sourceName": "Kalender Bali Digital - kalenderbali.org",
+    "url": "https://kalenderbali.org/",
+    "scope": "Tanggal harian, wuku, wewaran, daftar rerainan, hari penting, purnama-tilem",
+    "status": "primary_digital_reference",
+    "validationLevel": "digital_source_only"
+  },
+  {
+    "sourceId": "SRC-001-PT",
+    "sourceName": "Purnama-Tilem 2026 - kalenderbali.org",
+    "url": "https://kalenderbali.org/purnamatilem.php?tahun=2026",
+    "scope": "Purnama dan Tilem 2026",
+    "status": "primary_digital_reference",
+    "validationLevel": "digital_source_only"
+  }
+]
