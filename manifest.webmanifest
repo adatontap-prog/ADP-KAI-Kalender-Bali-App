@@ -1,8 +1,8 @@
 {
   "name": "ADP KAI Kalender Bali Digital",
   "short_name": "Kalender Bali",
-  "description": "Kalender Bali Digital untuk keluarga Bali modern - Phase 1.3 input otonan lokal dan reminder.",
-  "start_url": "./index.html?v=13",
+  "description": "Kalender Bali Digital untuk keluarga Bali modern - Phase 1.4 pusat reminder, mode display, dan input otonan lokal.",
+  "start_url": "./index.html?v=14",
   "display": "standalone",
   "background_color": "#f2efe7",
   "theme_color": "#111827",

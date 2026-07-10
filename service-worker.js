@@ -1,4 +1,4 @@
-const CACHE_NAME = 'adp-kai-kalender-bali-v1-3';
+const CACHE_NAME = 'adp-kai-kalender-bali-v1-4';
 const APP_SHELL = [
   './',
   './index.html',
