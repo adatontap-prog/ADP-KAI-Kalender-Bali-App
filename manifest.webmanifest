@@ -1,0 +1,22 @@
+{
+  "name": "ADP KAI Kalender Bali Digital",
+  "short_name": "Kalender Bali",
+  "description": "Kalender Bali Digital untuk keluarga Bali modern - mockup publik anonim.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f2efe7",
+  "theme_color": "#111827",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "./assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
