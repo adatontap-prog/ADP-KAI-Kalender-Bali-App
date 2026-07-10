@@ -4,8 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#111827" />
-  <title>ADP KAI Kalender Bali Digital — Phase 1.4</title>
+  <title>ADP KAI Kalender Bali Digital — Phase 1.4.1</title>
   <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192.png" />
+  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
   <style>
     :root{
       --paper:#f4efe4;--ink:#17202a;--muted:#6b7280;--line:#d7cdbc;--red:#dc2626;--black:#111827;--gold:#9a6b1d;--green:#15803d;--blue:#2563eb;--panel:#fffaf0;--tablet-bg:#08111f;--tablet-card:#111827;--tablet-text:#e5e7eb;--tablet-line:rgba(148,163,184,.25);
@@ -21,10 +23,10 @@
     <section class="topbar">
       <div class="brand">
         <h1>Kalender Bali Digital</h1>
-        <p>Phase 1.4 · pusat reminder · display mode · PWA HP/meja</p>
+        <p>Phase 1.4.1 · auto hari ini · icon app baru · PWA HP/meja</p>
       </div>
       <div class="controls">
-        <input id="datePicker" type="text" inputmode="numeric" maxlength="10" placeholder="dd/mm/yyyy" value="10/07/2026" aria-label="Tanggal format dd/mm/yyyy">
+        <input id="datePicker" type="text" inputmode="numeric" maxlength="10" placeholder="dd/mm/yyyy" aria-label="Tanggal format dd/mm/yyyy">
         <select id="monthSelect" aria-label="Pilih bulan"></select>
         <button id="modeBtn">Mode Tablet</button>
         <button id="notifyBtn">Tes Notifikasi</button>
@@ -92,7 +94,9 @@
     const STORAGE_KEY='adp-kai-kalender-bali-family-v1-4';
     const LEGACY_STORAGE_KEY='adp-kai-kalender-bali-family-v1-3';
     const NOTIFY_PREF_KEY='adp-kai-kalender-bali-notify-v1-4';
-    const state={events:[],family:[],sampleFamily:[],coverage:[],deferredPrompt:null,selectedDate:'2026-07-10',displayMode:false,notifyPref:{enabled:false,lastTestAt:null}};
+    function localTodayIso(){const now=new Date();const y=now.getFullYear();const m=String(now.getMonth()+1).padStart(2,'0');const d=String(now.getDate()).padStart(2,'0');return `${y}-${m}-${d}`;}
+    function getInitialSelectedDate(){const params=new URLSearchParams(location.search);const qDate=params.get('date');const qD=params.get('d');if(qDate&&/^\d{4}-\d{2}-\d{2}$/.test(qDate))return qDate;if(qD){const parsed=parseDMY(qD);if(parsed)return parsed;}const today=localTodayIso();if(today.slice(0,4)==='2026')return today;return '2026-07-10';}
+    const state={events:[],family:[],sampleFamily:[],coverage:[],deferredPrompt:null,selectedDate:getInitialSelectedDate(),displayMode:false,notifyPref:{enabled:false,lastTestAt:null}};
     const monthNames=['Januari','Pebruari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','Nopember','Desember'];
     const dows=['Min','Sen','Sel','Rab','Kam','Jum','Sab'];
     const dayMs=86400000;
@@ -125,7 +129,7 @@
     function renderFamily(){const rows=state.family.map((m,i)=>{const next=m.otonan?.anchorDate?nextOtonanDate(m.otonan.anchorDate,state.selectedDate):null;return `<div class="row"><div><strong>${m.name}</strong><span class="small">${m.role} · ${m.otonan?.anchorDate?'acuan '+formatDMY(m.otonan.anchorDate):'otonan belum diatur'}${next?' · berikutnya '+formatDMY(next):''}</span></div><div><span class="pill ${next?'green':'gold'}">${next?('H-'+diff(state.selectedDate,next)):'sample'}</span><br><button class="delete-btn" data-id="${m.id}" title="Hapus">hapus</button></div></div>`;}).join('');document.getElementById('familyList').innerHTML=rows||'<div class="row"><div><strong>Belum ada data keluarga</strong><span class="small">Tambahkan placeholder di form.</span></div></div>';document.querySelectorAll('.delete-btn').forEach(btn=>btn.addEventListener('click',()=>{state.family=state.family.filter(m=>m.id!==btn.dataset.id);saveFamily();rerender();}));}
     function rerender(){renderFamily();renderMonth(+state.selectedDate.slice(5,7));}
     function setupFamilyForm(){document.getElementById('familyForm').addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('memberName').value.trim();const role=document.getElementById('memberRole').value;const anchor=parseDMY(document.getElementById('otonanAnchor').value);if(!name)return alert('Nama tampilan wajib diisi. Gunakan placeholder untuk mockup publik.');if(!anchor)return alert('Tanggal otonan acuan harus format dd/mm/yyyy. Contoh: 14/07/2026');const id=name.toLowerCase().replace(/[^a-z0-9]+/gi,'_')+'_'+Date.now();state.family.push({id,name,role,otonan:{enabled:true,anchorDate:anchor,status:'local_input'}});saveFamily();e.target.reset();rerender();});document.getElementById('loadSampleBtn').addEventListener('click',()=>{state.family=state.sampleFamily.map(normalizeMember);saveFamily();rerender();});document.getElementById('clearFamilyBtn').addEventListener('click',()=>{if(confirm('Hapus data otonan lokal di browser ini?')){state.family=[];saveFamily();rerender();}});}
-    async function init(){document.getElementById('dowGrid').innerHTML=dows.map(d=>`<div class="dow">${d}</div>`).join('');setupMonthSelect();setupFamilyForm();const [events,family,coverage]=await Promise.all([getJson(DATA.events),getJson(DATA.family),getJson(DATA.coverage)]);state.events=events;state.sampleFamily=family;state.family=loadFamilyFromStorage(family);state.coverage=coverage;state.notifyPref=loadNotifyPref();if(new URLSearchParams(location.search).get('display')==='1'){state.displayMode=true;document.body.classList.add('display-mode');}const picker=document.getElementById('datePicker');setDateField(state.selectedDate);picker.addEventListener('change',()=>{const parsed=parseDMY(picker.value);if(!parsed||parsed.slice(0,4)!=='2026'){alert('Tanggal tampilan kalender harus format dd/mm/yyyy dan tahun 2026. Contoh: 10/07/2026');setDateField(state.selectedDate);return;}state.selectedDate=parsed;renderMonth(+state.selectedDate.slice(5,7));renderFamily();});renderFamily();renderMonth(+state.selectedDate.slice(5,7));if('serviceWorker' in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.warn);}
+    async function init(){document.getElementById('dowGrid').innerHTML=dows.map(d=>`<div class="dow">${d}</div>`).join('');setupMonthSelect();setupFamilyForm();const [events,family,coverage]=await Promise.all([getJson(DATA.events),getJson(DATA.family),getJson(DATA.coverage)]);state.events=events;state.sampleFamily=family;state.family=loadFamilyFromStorage(family);state.coverage=coverage;state.notifyPref=loadNotifyPref();if(new URLSearchParams(location.search).get('display')==='1'){state.displayMode=true;document.body.classList.add('display-mode');}const picker=document.getElementById('datePicker');setDateField(state.selectedDate);picker.addEventListener('change',()=>{const parsed=parseDMY(picker.value);if(!parsed||parsed.slice(0,4)!=='2026'){alert('Tanggal tampilan kalender harus format dd/mm/yyyy dan tahun 2026. Contoh: 11/07/2026');setDateField(state.selectedDate);return;}state.selectedDate=parsed;renderMonth(+state.selectedDate.slice(5,7));renderFamily();});renderFamily();renderMonth(+state.selectedDate.slice(5,7));if('serviceWorker' in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.warn);}
     window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();state.deferredPrompt=e;document.getElementById('installBtn').hidden=false;});
     document.getElementById('installBtn').addEventListener('click',async()=>{if(!state.deferredPrompt)return;state.deferredPrompt.prompt();await state.deferredPrompt.userChoice;state.deferredPrompt=null;document.getElementById('installBtn').hidden=true;});
     document.getElementById('modeBtn').addEventListener('click',()=>{document.body.classList.toggle('tablet-mode');document.getElementById('modeBtn').textContent=document.body.classList.contains('tablet-mode')?'Mode E-paper':'Mode Tablet';});
