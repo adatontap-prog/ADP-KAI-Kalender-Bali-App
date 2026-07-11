@@ -1,40 +1,27 @@
-# ADP KAI Kalender Bali Digital — Phase 1.8
+# ADP KAI Kalender Bali Digital — Phase 1.9
 
-Phase 1.8 menambahkan **Export Kalender ICS + Display Feed JSON** di atas backup lokal dan Otonan Engine v2.
+Phase 1.9 menambahkan jalur awal untuk tablet display, ESP32, dan e-paper.
 
 ## Fitur baru
 
-- Export kalender 2026 ke file `.ics`.
-- File `.ics` bisa diimpor manual ke Google Calendar / Apple Calendar / Outlook.
-- Export Display JSON untuk tanggal yang sedang dipilih.
-- Display JSON menjadi jembatan awal untuk tablet dashboard, ESP32, dan e-paper.
-- Export backup JSON dan jadwal otonan CSV tetap tersedia.
-- Otonan tetap tampil sebagai titik hijau di kalender.
-- Purnama titik merah, Tilem titik hitam dengan highlight kontras, rerainan titik emas.
-- Short name tetap `KD-Bali`.
-- Icon mandala tetap digunakan.
-- Service worker cache: v1.8.
+- Live Display Feed URL: `?feed=display&d=dd/mm/yyyy`
+- Copy Display Link untuk mode tablet/display
+- Copy Live Feed Link untuk uji awal hardware display
+- Mode display otomatis masuk tablet-mode dan auto refresh tiap 15 menit
+- Export Display JSON tetap tersedia sebagai file download
+- Icon mandala dan short name `KD-Bali` tetap dipakai
 
-## Catatan penting
+## Link setelah deploy
 
-Data kalender awal masih `digital_source_only`. Untuk keputusan adat/upacara penting, tetap verifikasi dengan kalender Bali cetak/resmi, sumber adat setempat, atau pemangku.
+App:
+`https://adp-kai-kalender-bali-app.vercel.app/?v=190&app=kd-bali-v190`
 
-## Deploy
+Display mode:
+`https://adp-kai-kalender-bali-app.vercel.app/?v=190&app=kd-bali-v190&display=1`
 
-Upload seluruh isi folder ini ke repo aktif:
+Live feed sample:
+`https://adp-kai-kalender-bali-app.vercel.app/?v=190&app=kd-bali-v190&feed=display&d=10/07/2026`
 
-```txt
-ADP-KAI-Kalender-Bali-App
-```
+## Catatan validasi
 
-Commit:
-
-```txt
-ADP KAI Kalender Bali Digital phase 1.8 - ICS export and display feed
-```
-
-Setelah Vercel `Ready`, buka:
-
-```txt
-https://adp-kai-kalender-bali-app.vercel.app/?v=180&app=kd-bali-v180
-```
+Data awal tetap `digital_source_only`. Untuk keputusan adat/upacara penting, tetap verifikasi dengan kalender Bali cetak/resmi, sumber adat setempat, atau pemangku.

@@ -1,0 +1,14 @@
+{
+  "app": "KD-Bali",
+  "phase": "1.9",
+  "feedType": "sample_display_feed",
+  "selectedDate": "2026-07-10",
+  "displayDate": "10/07/2026",
+  "markers": {
+    "purnama": "red_dot",
+    "tilem": "black_dot_highlighted",
+    "rerainan": "gold_dot",
+    "otonan": "green_dot"
+  },
+  "validationNote": "digital_source_only; verify for adat decisions"
+}
