@@ -1,20 +1,22 @@
-# ADP KAI Kalender Bali Digital — PWA v0.4.4 / Phase 1.4.4
+# ADP KAI Kalender Bali Digital — PWA v0.5 / Phase 1.5
 
-Patch: install helper + Tilem contrast + KD-Bali short name + forced manifest/icon refresh.
+Status: Phase 1.5 home hari ini + reminder UX polish.
 
-## Perubahan
-- Tombol `Install App` selalu terlihat. Jika browser tidak memunculkan prompt otomatis, tombol akan memberi panduan install manual.
-- Simbol Tilem/titik hitam diberi border/glow agar lebih kontras di Mode Tablet.
-- `short_name` PWA diganti menjadi `KD-Bali`.
-- Manifest baru: `manifest-v144.webmanifest`.
-- Icon versi baru: `icon-192-v144.png`, `icon-512-v144.png`, `favicon-48-v144.png`, `apple-touch-icon-v144.png`.
-- Service worker cache: `v1-4-4`.
+## Isi update
+- Home Hari Ini di atas kalender bulanan.
+- Ringkasan agenda hari ini.
+- Reminder terdekat langsung terlihat.
+- Pusat Reminder dipisah antara rahinan/hari raya dan otonan keluarga.
+- Tombol Hari Ini untuk kembali ke tanggal device.
+- Short name tetap `KD-Bali`.
+- Icon mandala tetap dipakai dari patch v1.4.4.
+- Service worker cache naik ke v1.5.
+
+## Validasi
+Data awal tetap berstatus `digital_source_only`. Untuk keputusan adat/upacara penting, tetap verifikasi dengan kalender Bali cetak/resmi, sumber adat setempat, atau pemangku.
 
 ## Deploy
-Upload seluruh isi folder ini ke repo aktif `ADP-KAI-Kalender-Bali-App`, commit, push, lalu tunggu Vercel Ready.
+Upload isi folder ke repo `ADP-KAI-Kalender-Bali-App`, commit, push, lalu tunggu Vercel auto-deploy.
 
-## Test
-Buka:
-`/?v=144&app=kd-bali-v144`
-
-Jika icon home screen masih lama, uninstall app lama dari Android Settings → Apps, lalu install ulang dari Chrome.
+Commit:
+`ADP KAI Kalender Bali Digital phase 1.5 - Home today and reminder UX polish`

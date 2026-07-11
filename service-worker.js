@@ -1,8 +1,8 @@
-const CACHE_NAME = 'adp-kai-kalender-bali-v1-4-4';
+const CACHE_NAME = 'adp-kai-kalender-bali-v1-5-0';
 const APP_SHELL = [
   './',
-  './index.html?v=144&app=kd-bali-v144',
-  './manifest-v144.webmanifest?v=144',
+  './index.html?v=150&app=kd-bali-v150',
+  './manifest-v150.webmanifest?v=150',
   './data/events.2026.json',
   './data/familyMembers.sample.json',
   './data/dataCoverage.2026.json',
