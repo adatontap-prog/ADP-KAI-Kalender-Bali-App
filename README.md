@@ -1,4 +1,4 @@
-# ADP KAI Kalender Bali Digital — Phase 2.0
+# ADP KAI Kalender Bali Digital — Phase 2.2
 
 Phase 2.0 menambahkan Data Validation Console untuk audit kualitas data Kalender Bali 2026.
 
@@ -40,3 +40,20 @@ Update ini menambahkan fondasi local-first untuk mencatat adat keluarga:
 - Integrasi awal event piodalan merajan ke kalender 2026
 
 Catatan: data masih tersimpan lokal di browser/PWA dan siap dimigrasikan ke Cloud Sync setelah Firebase Authentication + Firestore disiapkan. KD-Bali tidak menjadi standar tunggal adat; app mencatat versi keluarga dan sumber validasi.
+
+
+## Phase 2.2 - Cloud Sync Foundation
+
+Update ini menambahkan fondasi sinkronisasi cloud tanpa mengaktifkan Firebase real terlebih dahulu:
+
+- Profil sync user/family berbasis email dan familyId
+- Export Cloud Seed JSON untuk migrasi manual / persiapan Firestore
+- Import Cloud Seed JSON agar data bisa dipindahkan ke perangkat lain sebelum login real aktif
+- Backup JSON sekarang mencakup otonan, Adat Memory, dan profil sync lokal
+- Schema path Firestore-ready: users/{uid}, families/{familyId}, members, adatPlaces, shrines, adatDecisions, bantenTemplates, eventInstances
+- File schema teknis: `data/firebaseSync.schema.json`
+
+Catatan: Phase 2.2 masih local-first. Login Google/email dan sinkron otomatis lintas perangkat akan membutuhkan Firebase project config, Firebase Auth, Firestore rules, dan migration flow pada phase berikutnya.
+
+Link setelah deploy:
+`https://adp-kai-kalender-bali-app.vercel.app/?v=220&app=kd-bali-v220`

@@ -1,0 +1,95 @@
+{
+  "app": "KD-Bali",
+  "phase": "2.2",
+  "purpose": "Firestore-ready schema for Firebase Auth + Cloud Sync",
+  "collections": [
+    {
+      "path": "users/{uid}",
+      "fields": [
+        "email",
+        "displayName",
+        "createdAt",
+        "lastLoginAt",
+        "activeFamilyId"
+      ]
+    },
+    {
+      "path": "families/{familyId}",
+      "fields": [
+        "familyId",
+        "familyName",
+        "ownerUid",
+        "timezone",
+        "privacyLevel",
+        "createdAt"
+      ]
+    },
+    {
+      "path": "families/{familyId}/members/{memberId}",
+      "fields": [
+        "name",
+        "role",
+        "otonan",
+        "createdByUid",
+        "visibility"
+      ]
+    },
+    {
+      "path": "families/{familyId}/adatPlaces/{placeId}",
+      "fields": [
+        "name",
+        "placeType",
+        "anchorDate",
+        "pattern",
+        "validationStatus",
+        "notes"
+      ]
+    },
+    {
+      "path": "families/{familyId}/shrines/{shrineId}",
+      "fields": [
+        "name",
+        "category",
+        "follows",
+        "notes",
+        "validationStatus"
+      ]
+    },
+    {
+      "path": "families/{familyId}/adatDecisions/{decisionId}",
+      "fields": [
+        "topic",
+        "question",
+        "sources",
+        "finalDecision",
+        "status",
+        "createdAt"
+      ]
+    },
+    {
+      "path": "families/{familyId}/bantenTemplates/{templateId}",
+      "fields": [
+        "name",
+        "level",
+        "validationStatus",
+        "items"
+      ]
+    },
+    {
+      "path": "families/{familyId}/eventInstances/{instanceId}",
+      "fields": [
+        "date",
+        "title",
+        "type",
+        "source",
+        "visibility",
+        "status"
+      ]
+    }
+  ],
+  "notes": [
+    "Phase 2.2 is local-first and exports Cloud Seed JSON.",
+    "Real Firebase Auth/Firestore requires Firebase project config in the next implementation phase.",
+    "KD-Bali records family adat decisions; it does not replace pemangku, desa adat, griya, or official printed calendar validation."
+  ]
+}
