@@ -26,3 +26,17 @@ Live feed sample:
 ## Catatan validasi
 
 Data awal tetap `digital_source_only`. Kolom `needsRecheck` menandai data yang harus diprioritaskan untuk cross-check dengan kalender Bali cetak/resmi, sumber adat setempat, atau pemangku sebelum dipakai untuk keputusan adat penting.
+
+
+## Phase 2.1 - Family Adat Memory System
+
+Update ini menambahkan fondasi local-first untuk mencatat adat keluarga:
+
+- Merajan / Sanggah Profile
+- Pelinggih Registry
+- Catatan Keputusan Adat
+- Banten & Sarana Template awal
+- Export Adat Memory JSON
+- Integrasi awal event piodalan merajan ke kalender 2026
+
+Catatan: data masih tersimpan lokal di browser/PWA dan siap dimigrasikan ke Cloud Sync setelah Firebase Authentication + Firestore disiapkan. KD-Bali tidak menjadi standar tunggal adat; app mencatat versi keluarga dan sumber validasi.
