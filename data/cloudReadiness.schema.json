@@ -1,0 +1,13 @@
+{
+  "version": "2.4.12",
+  "name": "cloudReadinessGate",
+  "purpose": "Decision gate before Firebase/Auth real sync",
+  "requiredSignals": [
+    "otonan",
+    "merajan_sanggah",
+    "pelinggih_registry",
+    "local_backup",
+    "sync_profile_email"
+  ],
+  "nextPhaseWhenReady": "Phase 2.5 - Firebase Auth + Firestore Sync Real"
+}
