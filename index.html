@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#111827" />
-  <title>ADP KAI Kalender Bali Digital — Phase 2.4.1</title>
-  <link rel="manifest" href="manifest-v241.webmanifest?v=241&app=kd-bali-v241" />
-  <link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48-v144.png?v=241" />
-  <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192-v144.png?v=241" />
-  <link rel="apple-touch-icon" href="./assets/apple-touch-icon-v144.png?v=241" />
+  <title>ADP KAI Kalender Bali Digital — Phase 2.4.2</title>
+  <link rel="manifest" href="manifest-v242.webmanifest?v=242&app=kd-bali-v242" />
+  <link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48-v144.png?v=242" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192-v144.png?v=242" />
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon-v144.png?v=242" />
   <style>
     :root{
       --paper:#f4efe4;--ink:#17202a;--muted:#6b7280;--line:#d7cdbc;--red:#dc2626;--black:#111827;--gold:#9a6b1d;--green:#15803d;--blue:#2563eb;--panel:#fffaf0;--tablet-bg:#08111f;--tablet-card:#111827;--tablet-text:#e5e7eb;--tablet-line:rgba(148,163,184,.25);
@@ -44,6 +44,11 @@
     /* Phase 2.4.1 UI Clean: hide advanced forms behind a compact hub */
     .module-hub{margin:14px 0;border:1px solid var(--line);background:linear-gradient(145deg,#fffaf0,#f7eedf);border-radius:24px;padding:14px;box-shadow:0 18px 50px rgba(44,31,14,.1)}
     .module-hub-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:12px}.module-hub-head h2{margin:0;font-size:1.05rem}.module-hub-head p{margin:4px 0 0;color:var(--muted);font-size:.86rem;line-height:1.4}.module-hub-status{font-size:.8rem;color:var(--muted);font-weight:800;text-align:right}.module-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.module-btn{border:1px solid rgba(215,205,188,.9);background:rgba(255,255,255,.56);border-radius:18px;padding:12px;text-align:left;cursor:pointer;color:var(--ink);min-width:0}.module-btn strong{display:block;font-size:.94rem}.module-btn span{display:block;margin-top:4px;color:var(--muted);font-size:.78rem;line-height:1.35}.module-btn.active{background:#171717;color:#fff;border-color:#171717}.module-btn.active span{color:#d1d5db}.module-close{border:1px solid var(--line);background:#fffaf0;border-radius:999px;padding:8px 12px;font-weight:900;cursor:pointer}.module-close[hidden]{display:none}.advanced-panel{scroll-margin-top:12px}.is-hidden{display:none!important}body.tablet-mode .module-hub,body.tablet-mode .module-btn,body.tablet-mode .module-close{background:rgba(15,23,42,.72);border-color:var(--tablet-line);color:var(--tablet-text)}body.tablet-mode .module-btn span,body.tablet-mode .module-hub-head p,body.tablet-mode .module-hub-status{color:#cbd5e1}body.tablet-mode .module-btn.active{background:#f8fafc;color:#0f172a}body.tablet-mode .module-btn.active span{color:#475569}@media(max-width:900px){.module-buttons{grid-template-columns:1fr}.module-hub-head{display:grid}.module-hub-status{text-align:left}}
+
+
+    /* Phase 2.4.2 Navigation Redesign: 4 clear main areas */
+    .main-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 14px;position:sticky;top:0;z-index:20;background:rgba(232,223,207,.88);backdrop-filter:blur(10px);padding:8px 0}.main-nav button{border:1px solid var(--line);background:rgba(255,250,240,.86);border-radius:18px;padding:12px;text-align:left;color:var(--ink);cursor:pointer;min-width:0}.main-nav button strong{display:block;font-size:.94rem}.main-nav button span{display:block;margin-top:4px;color:var(--muted);font-size:.76rem;line-height:1.3}.main-nav button.active{background:#171717;color:#fff;border-color:#171717;box-shadow:0 12px 30px rgba(17,17,17,.16)}.main-nav button.active span{color:#d1d5db}.view-section{display:none!important}body[data-main-view="today"] .view-today,body[data-main-view="calendar"] .view-calendar,body[data-main-view="adat"] .view-adat,body[data-main-view="settings"] .view-settings{display:grid!important}body[data-main-view="settings"] .disclaimer.view-settings{display:block!important}.settings-hub{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}.settings-hub .card h2{margin-bottom:6px}.quick-action{border:1px solid #171717;background:#171717;color:#fff;border-radius:13px;padding:10px 12px;font-weight:900;cursor:pointer;margin-top:10px;width:100%}.quick-action.secondary{background:#fffaf0;color:var(--ink);border-color:var(--line)}.section-note{border:1px solid rgba(154,107,29,.35);background:rgba(154,107,29,.07);border-radius:18px;padding:12px;margin:0 0 14px;color:var(--muted);font-size:.86rem;line-height:1.45}body.tablet-mode .main-nav{background:rgba(8,17,31,.82)}body.tablet-mode .main-nav button,body.tablet-mode .quick-action.secondary{background:rgba(15,23,42,.72);border-color:var(--tablet-line);color:var(--tablet-text)}body.tablet-mode .main-nav button span{color:#cbd5e1}body.tablet-mode .main-nav button.active{background:#f8fafc;color:#0f172a}body.tablet-mode .main-nav button.active span{color:#475569}body.tablet-mode .section-note{background:rgba(15,23,42,.72);border-color:var(--tablet-line);color:#cbd5e1}@media(max-width:900px){.main-nav{grid-template-columns:1fr 1fr}.settings-hub{grid-template-columns:1fr}}@media(max-width:560px){.main-nav{gap:7px;padding:7px 0}.main-nav button{border-radius:14px;padding:10px}.main-nav button strong{font-size:.86rem}.main-nav button span{display:none}}
+
   </style>
 </head>
 <body>
@@ -51,7 +56,7 @@
     <section class="topbar">
       <div class="brand">
         <h1>Kalender Bali Digital</h1>
-        <p>Phase 2.4.1 · UI Clean · fitur lanjutan dilipat</p>
+        <p>Phase 2.4.2 · Navigasi sederhana · 4 menu utama</p>
       </div>
       <div class="controls">
         <input id="datePicker" type="text" inputmode="numeric" maxlength="10" placeholder="dd/mm/yyyy" aria-label="Tanggal format dd/mm/yyyy">
@@ -64,7 +69,14 @@
       </div>
     </section>
 
-    <section class="home-panel" aria-label="Ringkasan hari ini">
+    <nav class="main-nav" aria-label="Navigasi utama KD-Bali">
+      <button type="button" class="active" data-main-nav="today"><strong>Hari Ini</strong><span>Agenda, reminder, dan ringkasan utama.</span></button>
+      <button type="button" data-main-nav="calendar"><strong>Kalender</strong><span>Kalender bulanan dan detail tanggal.</span></button>
+      <button type="button" data-main-nav="adat"><strong>Adat Keluarga</strong><span>Otonan, merajan, pelinggih, banten, arsip.</span></button>
+      <button type="button" data-main-nav="settings"><strong>Pengaturan</strong><span>Validasi data, backup, display, cloud-ready.</span></button>
+    </nav>
+
+    <section class="home-panel view-section view-today" aria-label="Ringkasan hari ini">
       <article class="home-main">
         <span class="eyebrow">Hari Ini / Tanggal Dipilih</span>
         <h2 id="homeDateTitle">Memuat</h2>
@@ -82,10 +94,10 @@
       </div>
     </section>
 
-    <section class="calendar-shell">
+    <section class="calendar-shell view-section view-calendar">
       <div class="calendar-head">
         <div>
-          <span class="phase-badge">digital_source_only · Adat Memory · Cloud-ready</span>
+          <span class="phase-badge">digital_source_only · Simple Mode · Adat Memory</span>
           <div id="monthTitle" class="month-title">Memuat</div>
         </div>
         <div class="legend">
@@ -101,35 +113,21 @@
       <div class="grid" id="calendarGrid"></div>
     </section>
 
-    <section class="status-strip" aria-label="Ringkasan reminder">
+    <section class="status-strip view-section view-today view-calendar" aria-label="Ringkasan reminder">
       <article class="status-card"><span>Hari ini</span><strong id="statusToday">-</strong><small id="statusTodayNote">Memuat</small></article>
       <article class="status-card"><span>Reminder terdekat</span><strong id="statusNext">-</strong><small id="statusNextNote">Memuat</small></article>
       <article class="status-card"><span>Notifikasi</span><strong id="statusNotify">Belum aktif</strong><small>Gunakan tombol tes untuk izin browser.</small></article>
       <article class="status-card"><span>Mode display</span><strong id="statusDisplay">HP</strong><small>Mode meja menyembunyikan input saat display.</small></article>
     </section>
 
-    <section class="below">
+    <section class="below view-section view-today view-calendar">
       <article class="card"><h2>Detail Hari Ini</h2><div id="todayInfo" class="list"></div></article>
       <article class="card"><h2>Reminder Prioritas</h2><div id="upcomingList" class="list"></div></article>
       <article class="card"><h2>Otonan Keluarga</h2><div id="familyList" class="list"></div></article>
     </section>
+    <section class="section-note view-section view-adat"><strong>Adat Keluarga.</strong> Isi bagian ini hanya saat menambah atau merapikan data keluarga: otonan, merajan/sanggah, pelinggih, banten/sarana, arsip upacara, dan keputusan adat. Kalender utama tetap bersih.</section>
 
-    <section class="module-hub" aria-label="Fitur lanjutan">
-      <div class="module-hub-head">
-        <div>
-          <h2>Fitur Lanjutan</h2>
-          <p>Panel detail sekarang dilipat agar kalender tetap bersih. Buka hanya modul yang sedang dipakai.</p>
-        </div>
-        <div class="module-hub-status"><span id="activePanelTitle">Pilih fitur lanjutan yang ingin dibuka.</span><br><button id="closePanelBtn" class="module-close" type="button" hidden>Tutup Panel</button></div>
-      </div>
-      <div class="module-buttons">
-        <button class="module-btn" type="button" data-open-panel="family"><strong>Otonan & Backup</strong><span>Tambah/update otonan, backup lokal, export ICS/CSV/JSON.</span></button>
-        <button class="module-btn" type="button" data-open-panel="adat"><strong>Adat Memory</strong><span>Merajan, pelinggih, banten checklist, keputusan adat, arsip upacara.</span></button>
-        <button class="module-btn" type="button" data-open-panel="validation"><strong>Validasi Data</strong><span>Coverage, quality score, dan antrean cross-check kalender.</span></button>
-      </div>
-    </section>
-
-    <section class="family-section advanced-panel is-hidden" data-panel="family">
+    <section class="family-section view-section view-adat" id="adatOtonanPanel">
       <article class="card">
         <h2>Tambah / Update Otonan</h2>
         <form id="familyForm" class="family-form otonan-v2">
@@ -180,14 +178,14 @@
     </section>
 
 
-    <section class="adat-memory-section advanced-panel is-hidden" data-panel="adat" aria-label="Family Adat Memory System">
+    <section class="adat-memory-section view-section view-adat" id="adatMemoryPanel" aria-label="Family Adat Memory System">
       <article class="adat-memory-console">
         <div class="adat-head">
           <div>
             <h2>Family Adat Memory System</h2>
             <p class="small">Catat merajan/sanggah, pelinggih, banten/sarana umum, dan keputusan adat keluarga. KD-Bali mencatat versi keluarga, bukan menjadi hakim adat tunggal.</p>
           </div>
-          <span class="phase-badge">Phase 2.4.1 · Adat Memory</span>
+          <span class="phase-badge">Phase 2.4.2 · Adat Keluarga</span>
         </div>
         <div class="source-note">
           Prinsip: catat sumber dan status validasi. Perbedaan tafsir boleh disimpan sebagai beberapa sumber, lalu keluarga memilih versi yang dipakai. Untuk keputusan penting tetap konfirmasi pemangku, tetua keluarga, desa adat, griya, atau kalender cetak/resmi.
@@ -305,14 +303,20 @@
       </article>
     </section>
 
-    <section class="validation-section advanced-panel is-hidden" data-panel="validation" aria-label="Konsol validasi data">
+    <section class="settings-hub view-section view-settings" aria-label="Pengaturan dan alat teknis">
+      <article class="card"><h2>Backup & Export</h2><p class="small">Backup/export tetap berada di modul Adat Keluarga karena datanya berasal dari otonan dan adat memory keluarga.</p><button class="quick-action" type="button" data-jump-view="adat" data-scroll-target="#adatOtonanPanel">Buka Backup & Export</button></article>
+      <article class="card"><h2>Cloud Sync Foundation</h2><p class="small">Profil email/familyId dan Cloud Seed masih local-first. Firebase login real dilakukan setelah UI stabil.</p><button class="quick-action secondary" type="button" data-jump-view="adat" data-scroll-target="#adatMemoryPanel">Buka Cloud Foundation</button></article>
+      <article class="card"><h2>Validasi Data</h2><p class="small">Gunakan konsol validasi untuk melihat coverage, quality score, dan antrean cross-check kalender.</p><button class="quick-action secondary" type="button" data-scroll-target="#validationPanel">Lihat Validasi</button></article>
+    </section>
+
+    <section class="validation-section view-section view-settings" id="validationPanel" aria-label="Konsol validasi data">
       <article class="validation-console">
         <div class="validation-head">
           <div>
             <h2>Data Validation Console</h2>
             <p class="small">Ringkasan kualitas data 2026. Ini membantu menentukan bulan mana yang harus cross-check dengan kalender cetak/sumber adat/pemangku sebelum dipakai untuk keputusan penting.</p>
           </div>
-          <span class="phase-badge">Phase 2.4.1 · Data Quality</span>
+          <span class="phase-badge">Phase 2.4.2 · Pengaturan</span>
         </div>
         <div class="validation-grid">
           <div class="validation-metric"><span>Total Event</span><strong id="valTotalEvents">-</strong><small class="small">Rerainan + Purnama/Tilem</small></div>
@@ -332,7 +336,7 @@
     </section>
 
 
-    <p class="disclaimer">Catatan validasi: data awal berstatus <strong>digital_source_only</strong>. Untuk keputusan adat/upacara penting, tetap verifikasi dengan kalender Bali cetak/resmi, sumber adat setempat, atau pemangku. Otonan mendukung input Gregorian/Hari Bali langsung, backup data lokal, export jadwal otonan 2026, export kalender ICS, display feed JSON, live feed URL, Data Validation Console, dan Family Adat Memory System untuk merajan/sanggah, pelinggih, banten/sarana, keputusan adat keluarga, dan Cloud Sync Foundation berbasis user/familyId, serta Banten & Sarana Checklist per event adat, serta Arsip Upacara untuk biaya/tugas/catatan pelaksanaan. Pergantian hari Bali memakai prinsip terbit matahari; gunakan verifikasi keluarga/adat untuk keputusan penting. Pusat reminder membantu persiapan H-30/H-7/H-3/H-1/Hari-H; backup/export membantu menjaga data lokal; ICS membantu sinkron ke kalender umum; display feed JSON menjadi jembatan awal ke tablet/ESP32/e-paper.</p>
+    <p class="disclaimer view-section view-settings">Catatan validasi: data awal berstatus <strong>digital_source_only</strong>. Untuk keputusan adat/upacara penting, tetap verifikasi dengan kalender Bali cetak/resmi, sumber adat setempat, atau pemangku. Otonan mendukung input Gregorian/Hari Bali langsung, backup data lokal, export jadwal otonan 2026, export kalender ICS, display feed JSON, live feed URL, Data Validation Console, dan Family Adat Memory System untuk merajan/sanggah, pelinggih, banten/sarana, keputusan adat keluarga, dan Cloud Sync Foundation berbasis user/familyId, serta Banten & Sarana Checklist per event adat, serta Arsip Upacara untuk biaya/tugas/catatan pelaksanaan. Pergantian hari Bali memakai prinsip terbit matahari; gunakan verifikasi keluarga/adat untuk keputusan penting. Pusat reminder membantu persiapan H-30/H-7/H-3/H-1/Hari-H; backup/export membantu menjaga data lokal; ICS membantu sinkron ke kalender umum; display feed JSON menjadi jembatan awal ke tablet/ESP32/e-paper.</p>
   </main>
 
   <script>
@@ -376,7 +380,7 @@
     function safeSlug(text){return String(text||'data').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,48)||'data';}
     function downloadText(filename,content,type='application/json'){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),800);}
     function updateBackupStatus(message){const el=document.getElementById('backupStatus');if(el)el.textContent=message;}
-    function buildBackupPayload(){return {app:'ADP KAI Kalender Bali Digital',shortName:'KD-Bali',phase:'2.4.1',backupVersion:3,exportedAt:new Date().toISOString(),timezone:'Asia/Makassar / device local',storageKey:STORAGE_KEY,adatMemoryKey:ADAT_MEMORY_KEY,cloudSyncKey:CLOUD_SYNC_KEY,bantenChecklistKey:BANTEN_CHECKLIST_KEY,ceremonyArchiveKey:CEREMONY_ARCHIVE_KEY,notes:'Backup mencakup otonan, Family Adat Memory, checklist banten/sarana, arsip upacara, dan profil sync lokal. Untuk keputusan adat penting tetap verifikasi dengan kalender resmi/sumber adat/pemangku.',syncProfile:state.syncProfile,family:state.family,adatMemory:state.adatMemory,eventChecklists:state.eventChecklists,ceremonyArchives:state.ceremonyArchives};}
+    function buildBackupPayload(){return {app:'ADP KAI Kalender Bali Digital',shortName:'KD-Bali',phase:'2.4.2',backupVersion:3,exportedAt:new Date().toISOString(),timezone:'Asia/Makassar / device local',storageKey:STORAGE_KEY,adatMemoryKey:ADAT_MEMORY_KEY,cloudSyncKey:CLOUD_SYNC_KEY,bantenChecklistKey:BANTEN_CHECKLIST_KEY,ceremonyArchiveKey:CEREMONY_ARCHIVE_KEY,notes:'Backup mencakup otonan, Family Adat Memory, checklist banten/sarana, arsip upacara, dan profil sync lokal. Untuk keputusan adat penting tetap verifikasi dengan kalender resmi/sumber adat/pemangku.',syncProfile:state.syncProfile,family:state.family,adatMemory:state.adatMemory,eventChecklists:state.eventChecklists,ceremonyArchives:state.ceremonyArchives};}
     function exportBackup(){const payload=buildBackupPayload();const stamp=new Date().toISOString().slice(0,10);downloadText(`kd-bali-otonan-backup-${stamp}.json`,JSON.stringify(payload,null,2),'application/json');updateBackupStatus(`Backup JSON dibuat: ${payload.family.length} anggota · ${formatDMY(localTodayIso())}`);}
     function csvEscape(v){const s=String(v??'');return /[",\n]/.test(s)?`"${s.replace(/"/g,'""')}"`:s;}
     function exportOtonanCsv(){const rows=[['date','display_date','member_name','role','event_title','source','saptawara','pancawara','wuku','validation_status','notes']];state.family.forEach(m=>{otonanDatesInYear(m).forEach(date=>{const o=m.otonan||{};rows.push([date,formatDMY(date),m.name,m.role,`Otonan ${m.name}`,o.source||'',o.saptawara||'',o.pancawara||'',o.wuku||'',o.validationStatus||'',otonanStatusLabel(m)]);});});const csv=rows.map(r=>r.map(csvEscape).join(',')).join('\n');downloadText(`kd-bali-jadwal-otonan-2026.csv`,csv,'text/csv;charset=utf-8');updateBackupStatus(`Export CSV dibuat: ${Math.max(rows.length-1,0)} tanggal otonan 2026.`);}
@@ -390,7 +394,7 @@
     function selectedDateParam(){return encodeURIComponent(formatDMY(state.selectedDate));}
     function displayUrl(){return `${appBaseUrl()}?v=241&app=kd-bali-v240&display=1&d=${selectedDateParam()}`;}
     function liveFeedUrl(){return `${appBaseUrl()}?v=241&app=kd-bali-v240&feed=display&d=${selectedDateParam()}`;}
-    function buildDisplayPayload(iso=state.selectedDate){const evs=eventsOn(iso);const ots=otonanOn(iso);const ads=adatOn(iso);const upcoming=buildUpcoming(iso).slice(0,12).map(e=>({date:e.displayDate,displayDate:formatDMY(e.displayDate),title:e.title,type:e.type||e.category,kind:e.kind,daysLeft:e.daysLeft,label:reminderLabel(e.daysLeft),marker:eventPillClass(e)}));return {app:'KD-Bali',phase:'2.4.1',feedType:'live_selected_day_display_feed',generatedAt:new Date().toISOString(),selectedDate:iso,displayDate:formatDMY(iso),timezone:'Asia/Makassar / device local',deviceUse:{tabletDisplayUrl:displayUrl(),liveFeedUrl:liveFeedUrl(),refreshSeconds:900},today:{label:idDate(iso),events:evs.map(e=>({title:e.title,type:e.type,category:e.category,marker:eventPillClass(e),isPurnama:!!e.isPurnama,isTilem:!!e.isTilem,verificationStatus:e.source?.verificationStatus||'digital_source_only',source:e.source?.sourceName||'SRC-001'})),otonan:ots.map(m=>({title:`Otonan ${m.name}`,memberName:m.name,source:m.otonan?.source,validationStatus:m.otonan?.validationStatus||'needs_bali_day_confirmation'})),adat:ads.map(e=>({title:e.title,category:e.category,level:e.level,validationStatus:e.validationStatus,checklist:checklistSummaryForInstance(e.id)}))},upcoming,markers:{purnama:'red_dot',tilem:'black_dot_highlighted',rerainan:'gold_dot',otonan:'green_dot',merajan:'purple_dot'},validationNote:'Data digital_source_only. Untuk keputusan adat penting tetap verifikasi dengan kalender cetak/resmi, sumber adat setempat, atau pemangku.'};}
+    function buildDisplayPayload(iso=state.selectedDate){const evs=eventsOn(iso);const ots=otonanOn(iso);const ads=adatOn(iso);const upcoming=buildUpcoming(iso).slice(0,12).map(e=>({date:e.displayDate,displayDate:formatDMY(e.displayDate),title:e.title,type:e.type||e.category,kind:e.kind,daysLeft:e.daysLeft,label:reminderLabel(e.daysLeft),marker:eventPillClass(e)}));return {app:'KD-Bali',phase:'2.4.2',feedType:'live_selected_day_display_feed',generatedAt:new Date().toISOString(),selectedDate:iso,displayDate:formatDMY(iso),timezone:'Asia/Makassar / device local',deviceUse:{tabletDisplayUrl:displayUrl(),liveFeedUrl:liveFeedUrl(),refreshSeconds:900},today:{label:idDate(iso),events:evs.map(e=>({title:e.title,type:e.type,category:e.category,marker:eventPillClass(e),isPurnama:!!e.isPurnama,isTilem:!!e.isTilem,verificationStatus:e.source?.verificationStatus||'digital_source_only',source:e.source?.sourceName||'SRC-001'})),otonan:ots.map(m=>({title:`Otonan ${m.name}`,memberName:m.name,source:m.otonan?.source,validationStatus:m.otonan?.validationStatus||'needs_bali_day_confirmation'})),adat:ads.map(e=>({title:e.title,category:e.category,level:e.level,validationStatus:e.validationStatus,checklist:checklistSummaryForInstance(e.id)}))},upcoming,markers:{purnama:'red_dot',tilem:'black_dot_highlighted',rerainan:'gold_dot',otonan:'green_dot',merajan:'purple_dot'},validationNote:'Data digital_source_only. Untuk keputusan adat penting tetap verifikasi dengan kalender cetak/resmi, sumber adat setempat, atau pemangku.'};}
     function updateDisplayFeedUrl(){const el=document.getElementById('displayFeedUrl');if(el)el.textContent=liveFeedUrl();}
     async function copyText(text,label){try{await navigator.clipboard.writeText(text);updateBackupStatus(`${label} disalin ke clipboard.`);}catch(e){prompt(`Copy ${label}:`,text);}}
     function renderFeedMode(iso=state.selectedDate){const payload=buildDisplayPayload(iso);document.body.className='feed-mode';document.body.innerHTML=`<pre>${JSON.stringify(payload,null,2).replace(/[<>&]/g,c=>({'<':'\\u003c','>':'\\u003e','&':'\\u0026'}[c]))}</pre>`;}
@@ -415,7 +419,7 @@
     function placeDatesInYear(place,year=2026){const anchor=place.anchorDate;if(!anchor)return[];const out=[];let cur=nextOtonanDate(anchor,`${year}-01-01`);let guard=0;while(cur&&cur.slice(0,4)<=String(year)&&guard<4){if(cur.slice(0,4)===String(year))out.push(cur);cur=addDays(cur,210);guard++;}return out;}
     function buildAdatInstancesInYear(year=2026){return state.adatMemory.places.flatMap(place=>placeDatesInYear(place,year).map(date=>({id:`${place.id}_${date}`,placeId:place.id,date,title:`Piodalan ${place.name}`,category:'merajan_sanggah',type:'adat',kind:'adat',isAdat:true,importance:adatLevelFor(place,date)==='ageng'?'high':'normal',level:adatLevelFor(place,date),validationStatus:place.validationStatus||'user_recorded',notes:place.notes||''})));}
     function adatOn(iso){return buildAdatInstancesInYear(+iso.slice(0,4)).filter(e=>e.date===iso);}
-    function exportAdatMemory(){const payload={app:'KD-Bali',phase:'2.4.1',exportType:'family_adat_memory',exportedAt:new Date().toISOString(),notes:'Adat Memory adalah catatan keluarga, bukan keputusan adat resmi. Tetap verifikasi dengan pemangku/tetua/desa/griya/sumber resmi.',adatMemory:state.adatMemory,eventChecklists:state.eventChecklists,ceremonyArchives:state.ceremonyArchives};downloadText(`kd-bali-adat-memory-${new Date().toLocaleDateString('sv-SE')}.json`,JSON.stringify(payload,null,2));updateAdatStatus('Export Adat Memory JSON dibuat. Simpan file ini sebagai backup sampai cloud sync aktif.');}
+    function exportAdatMemory(){const payload={app:'KD-Bali',phase:'2.4.2',exportType:'family_adat_memory',exportedAt:new Date().toISOString(),notes:'Adat Memory adalah catatan keluarga, bukan keputusan adat resmi. Tetap verifikasi dengan pemangku/tetua/desa/griya/sumber resmi.',adatMemory:state.adatMemory,eventChecklists:state.eventChecklists,ceremonyArchives:state.ceremonyArchives};downloadText(`kd-bali-adat-memory-${new Date().toLocaleDateString('sv-SE')}.json`,JSON.stringify(payload,null,2));updateAdatStatus('Export Adat Memory JSON dibuat. Simpan file ini sebagai backup sampai cloud sync aktif.');}
     function loadAdatSample(){state.adatMemory=normalizeAdatMemory({places:[{id:'merajan_sample',name:'Merajan / Sanggah Rumah',anchorDate:'2026-07-22',pattern:'pawukon_210_alit_ageng',validationStatus:'user_recorded',notes:'Contoh placeholder. Ganti sesuai catatan keluarga dan konfirmasi pemangku/tetua.'}],shrines:[{id:'pelinggih_kemulan_sample',name:'Pelinggih Kemulan',category:'utama',follows:'main_merajan',notes:'Contoh placeholder, ikuti struktur merajan keluarga.'},{id:'pelinggih_taksu_sample',name:'Pelinggih Taksu',category:'pendamping',follows:'main_merajan',notes:'Contoh placeholder.'}],decisions:[{id:'decision_sample',topic:'Contoh keputusan adat keluarga',question:'Ada perbedaan tafsir tentang sarana piodalan.',sources:'Tetua keluarga / pemangku / kalender cetak',finalDecision:'Mengikuti versi keluarga setelah konfirmasi pemangku.',status:'draft',createdAt:new Date().toISOString()}]});saveAdatMemory();rerender();updateAdatStatus('Contoh struktur adat dimuat. Jangan gunakan sebagai standar adat final.');}
     function renderAdatMemory(){
       const pList=document.getElementById('adatPlaceList');if(pList)pList.innerHTML=state.adatMemory.places.map(p=>{const dates=placeDatesInYear(p).map(d=>`${formatDMY(d)} (${adatLevelFor(p,d)||'rutin'})`).join(', ');return `<div class="row kind-adat"><div><strong>${p.name}</strong><span class="small">${p.pattern||'manual'} · ${p.validationStatus||'user_recorded'}${p.anchorDate?' · acuan '+formatDMY(p.anchorDate):''}</span><span class="small">Jatuh 2026: ${dates||'belum dihitung'}</span><span class="small">${p.notes||''}</span></div><span class="pill purple">merajan</span></div>`;}).join('')||'<div class="row"><div><strong>Belum ada merajan/sanggah</strong><span class="small">Tambahkan profil merajan keluarga.</span></div></div>';
@@ -502,7 +506,7 @@
     function loadCloudSyncProfile(){try{return normalizeSyncProfile(JSON.parse(localStorage.getItem(CLOUD_SYNC_KEY)||'{}'));}catch(e){return normalizeSyncProfile({});}}
     function saveCloudSyncProfile(){localStorage.setItem(CLOUD_SYNC_KEY,JSON.stringify(normalizeSyncProfile(state.syncProfile)));}
     function cloudCollectionPaths(){const familyId=state.syncProfile.familyId||'family_local';return [`users/{uid}`,`families/${familyId}`,`families/${familyId}/members`,`families/${familyId}/adatPlaces`,`families/${familyId}/shrines`,`families/${familyId}/adatDecisions`,`families/${familyId}/bantenTemplates`,`families/${familyId}/eventChecklists`,`families/${familyId}/ceremonyArchives`,`families/${familyId}/eventInstances`];}
-    function buildCloudSeedPayload(){const profile=normalizeSyncProfile(state.syncProfile);const year=2026;const adatInstances=buildAdatInstancesInYear(year);const otonanInstances=[];state.family.forEach(m=>otonanDatesInYear(m).forEach(date=>otonanInstances.push({id:`otonan_${uidSafe(m.id||m.name)}_${date}`,date,title:`Otonan ${m.name}`,type:'otonan',memberId:m.id,source:'family_private_event',visibility:'family_private'})));return {app:'KD-Bali',phase:'2.4.1',exportType:'cloud_seed_firestore_ready',exportedAt:new Date().toISOString(),profile,firestorePaths:cloudCollectionPaths(),users:{uid_placeholder:{email:profile.email,displayName:profile.email||'User 1',activeFamilyId:profile.familyId}},families:{[profile.familyId]:{familyId:profile.familyId,familyName:profile.familyName||'Keluarga User',ownerUid:'uid_placeholder',timezone:'Asia/Makassar',privacyLevel:'private'}},members:state.family,adatPlaces:state.adatMemory.places,shrines:state.adatMemory.shrines,adatDecisions:state.adatMemory.decisions,bantenTemplates:state.adatMemory.bantenTemplates,eventChecklists:Object.values(state.eventChecklists||{}),ceremonyArchives:state.ceremonyArchives,eventInstances:[...otonanInstances,...adatInstances],notes:'Cloud Seed ini adalah jembatan manual menuju Firebase Auth + Firestore. Saat Firebase real aktif, data ini dipakai sebagai struktur awal users/families/subcollections.'};}
+    function buildCloudSeedPayload(){const profile=normalizeSyncProfile(state.syncProfile);const year=2026;const adatInstances=buildAdatInstancesInYear(year);const otonanInstances=[];state.family.forEach(m=>otonanDatesInYear(m).forEach(date=>otonanInstances.push({id:`otonan_${uidSafe(m.id||m.name)}_${date}`,date,title:`Otonan ${m.name}`,type:'otonan',memberId:m.id,source:'family_private_event',visibility:'family_private'})));return {app:'KD-Bali',phase:'2.4.2',exportType:'cloud_seed_firestore_ready',exportedAt:new Date().toISOString(),profile,firestorePaths:cloudCollectionPaths(),users:{uid_placeholder:{email:profile.email,displayName:profile.email||'User 1',activeFamilyId:profile.familyId}},families:{[profile.familyId]:{familyId:profile.familyId,familyName:profile.familyName||'Keluarga User',ownerUid:'uid_placeholder',timezone:'Asia/Makassar',privacyLevel:'private'}},members:state.family,adatPlaces:state.adatMemory.places,shrines:state.adatMemory.shrines,adatDecisions:state.adatMemory.decisions,bantenTemplates:state.adatMemory.bantenTemplates,eventChecklists:Object.values(state.eventChecklists||{}),ceremonyArchives:state.ceremonyArchives,eventInstances:[...otonanInstances,...adatInstances],notes:'Cloud Seed ini adalah jembatan manual menuju Firebase Auth + Firestore. Saat Firebase real aktif, data ini dipakai sebagai struktur awal users/families/subcollections.'};}
     function exportCloudSeed(){const payload=buildCloudSeedPayload();state.syncProfile={...normalizeSyncProfile(state.syncProfile),lastCloudSeedAt:new Date().toISOString()};saveCloudSyncProfile();downloadText(`kd-bali-cloud-seed-${safeSlug(payload.profile.familyName||payload.profile.email||'family')}-${new Date().toLocaleDateString('sv-SE')}.json`,JSON.stringify(payload,null,2));renderCloudSyncStatus();updateBackupStatus('Cloud Seed JSON dibuat. Ini bisa dipakai untuk migrasi manual atau persiapan Firestore.');}
     function importCloudSeedFile(file){if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const payload=JSON.parse(reader.result);if(payload.profile){state.syncProfile=normalizeSyncProfile(payload.profile);saveCloudSyncProfile();}if(Array.isArray(payload.members)){state.family=payload.members.map(normalizeMember);saveFamily();}if(payload.adatMemory){state.adatMemory=normalizeAdatMemory(payload.adatMemory);}else{state.adatMemory=normalizeAdatMemory({places:payload.adatPlaces,shrines:payload.shrines,decisions:payload.adatDecisions,bantenTemplates:payload.bantenTemplates});}if(payload.eventChecklists){state.eventChecklists=normalizeEventChecklists(payload.eventChecklists);}if(payload.ceremonyArchives){state.ceremonyArchives=normalizeCeremonyArchives(payload.ceremonyArchives);}saveAdatMemory();saveEventChecklists();saveCeremonyArchives();rerender();renderCloudSyncStatus();updateBackupStatus('Cloud Seed berhasil di-import. Data family/adat memory dimuat di perangkat ini.');}catch(err){alert('File Cloud Seed tidak valid atau rusak.');}};reader.readAsText(file);}
     async function copyCloudSchema(){const text=cloudCollectionPaths().join('\n');try{await navigator.clipboard.writeText(text);updateBackupStatus('Schema path Cloud Sync disalin.');}catch(e){alert(text);}}
@@ -533,47 +537,34 @@
     function setupBackupControls(){document.getElementById('exportBackupBtn').addEventListener('click',exportBackup);document.getElementById('exportOtonanCsvBtn').addEventListener('click',exportOtonanCsv);document.getElementById('exportCalendarIcsBtn').addEventListener('click',exportCalendarIcs);document.getElementById('exportValidationReportBtn').addEventListener('click',exportValidationCsv);document.getElementById('exportDisplayFeedBtn').addEventListener('click',exportDisplayFeed);document.getElementById('copyDisplayLinkBtn').addEventListener('click',()=>copyText(displayUrl(),'Display link'));document.getElementById('copyFeedLinkBtn').addEventListener('click',()=>copyText(liveFeedUrl(),'Live feed link'));document.getElementById('importBackupInput').addEventListener('change',e=>{importBackupFile(e.target.files?.[0]);e.target.value='';});}
     function setupFamilyForm(){setupOtonanMode();document.getElementById('familyForm').addEventListener('submit',e=>{e.preventDefault();const member=buildMemberFromForm();if(!member)return;state.family.push(member);saveFamily();e.target.reset();document.getElementById('otonanInputMode').value='gregorian_birth';setupOtonanMode();rerender();updateBackupStatus('Data otonan tersimpan lokal. Disarankan export backup setelah menambah data penting.');});document.getElementById('loadSampleBtn').addEventListener('click',()=>{state.family=state.sampleFamily.map(normalizeMember);saveFamily();rerender();updateBackupStatus('Sample dimuat. Jangan pakai identitas asli untuk demo publik.');});document.getElementById('clearFamilyBtn').addEventListener('click',()=>{if(confirm('Hapus data otonan lokal di browser ini?')){state.family=[];saveFamily();rerender();updateBackupStatus('Data lokal dihapus dari browser ini.');}});setupBackupControls();}
 
-    function setupPanelHub(){
-      const buttons=[...document.querySelectorAll('[data-open-panel]')];
-      const panels={
-        family:document.querySelector('[data-panel="family"]'),
-        adat:document.querySelector('[data-panel="adat"]'),
-        validation:document.querySelector('[data-panel="validation"]')
-      };
-      const labels={family:'Panel aktif: Otonan & Backup',adat:'Panel aktif: Adat Memory',validation:'Panel aktif: Validasi Data'};
-      const title=document.getElementById('activePanelTitle');
-      const close=document.getElementById('closePanelBtn');
-      function closeAll(){
-        Object.values(panels).forEach(p=>p&&p.classList.add('is-hidden'));
-        buttons.forEach(b=>b.classList.remove('active'));
-        if(title)title.textContent='Pilih fitur lanjutan yang ingin dibuka.';
-        if(close)close.hidden=true;
-      }
-      buttons.forEach(btn=>btn.addEventListener('click',()=>{
-        const key=btn.dataset.openPanel;
-        const panel=panels[key];
-        if(!panel)return;
-        const wasOpen=!panel.classList.contains('is-hidden');
-        closeAll();
-        if(!wasOpen){
-          panel.classList.remove('is-hidden');
-          btn.classList.add('active');
-          if(title)title.textContent=labels[key]||'Panel aktif';
-          if(close)close.hidden=false;
-          setTimeout(()=>panel.scrollIntoView({behavior:'smooth',block:'start'}),60);
+    function setupMainNav(){
+      const buttons=[...document.querySelectorAll('[data-main-nav]')];
+      const valid=['today','calendar','adat','settings'];
+      function setView(view,opts={}){
+        if(!valid.includes(view))view='today';
+        document.body.dataset.mainView=view;
+        buttons.forEach(btn=>btn.classList.toggle('active',btn.dataset.mainNav===view));
+        if(opts.scrollTarget){
+          setTimeout(()=>document.querySelector(opts.scrollTarget)?.scrollIntoView({behavior:'smooth',block:'start'}),80);
+        }else if(opts.scroll!==false){
+          setTimeout(()=>document.querySelector('.main-nav')?.scrollIntoView({behavior:'smooth',block:'start'}),40);
         }
-      }));
-      if(close)close.addEventListener('click',closeAll);
-      closeAll();
+      }
+      buttons.forEach(btn=>btn.addEventListener('click',()=>setView(btn.dataset.mainNav)));
+      document.querySelectorAll('[data-jump-view]').forEach(btn=>btn.addEventListener('click',()=>setView(btn.dataset.jumpView,{scrollTarget:btn.dataset.scrollTarget||null})));
+      document.querySelectorAll('[data-scroll-target]:not([data-jump-view])').forEach(btn=>btn.addEventListener('click',()=>document.querySelector(btn.dataset.scrollTarget)?.scrollIntoView({behavior:'smooth',block:'start'})));
+      const params=new URLSearchParams(location.search);
+      const initial=params.get('view')||(params.get('display')?'calendar':'today');
+      setView(initial,{scroll:false});
     }
 
-    async function init(){document.getElementById('dowGrid').innerHTML=dows.map(d=>`<div class="dow">${d}</div>`).join('');setupMonthSelect();setupFamilyForm();setupAdatMemory();setupPanelHub();const [events,family,coverage]=await Promise.all([getJson(DATA.events),getJson(DATA.family),getJson(DATA.coverage)]);state.events=events;state.sampleFamily=family;state.family=loadFamilyFromStorage(family);state.adatMemory=loadAdatMemory();state.eventChecklists=loadEventChecklists();state.ceremonyArchives=loadCeremonyArchives();state.syncProfile=loadCloudSyncProfile();state.coverage=coverage;state.notifyPref=loadNotifyPref();const params=new URLSearchParams(location.search);if(params.get('feed')==='display'||params.get('feed')==='1'){renderFeedMode(state.selectedDate);return;}if(params.get('display')==='1'){state.displayMode=true;document.body.classList.add('display-mode');document.body.classList.add('tablet-mode');}const picker=document.getElementById('datePicker');setDateField(state.selectedDate);picker.addEventListener('change',()=>{const parsed=parseDMY(picker.value);if(!parsed||parsed.slice(0,4)!=='2026'){alert('Tanggal tampilan kalender harus format dd/mm/yyyy dan tahun 2026. Contoh: 11/07/2026');setDateField(state.selectedDate);return;}state.selectedDate=parsed;renderMonth(+state.selectedDate.slice(5,7));renderFamily();});renderFamily();renderAdatMemory();renderMonth(+state.selectedDate.slice(5,7));renderValidationConsole();updateDisplayFeedUrl();if(state.displayMode){setInterval(()=>{const t=localTodayIso();if(t.slice(0,4)==='2026'&&t!==state.selectedDate){state.selectedDate=t;setDateField(state.selectedDate);renderFamily();renderAdatMemory();renderMonth(+state.selectedDate.slice(5,7));}},900000);}if('serviceWorker' in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.warn);}
+    async function init(){document.getElementById('dowGrid').innerHTML=dows.map(d=>`<div class="dow">${d}</div>`).join('');setupMonthSelect();setupFamilyForm();setupAdatMemory();setupMainNav();const [events,family,coverage]=await Promise.all([getJson(DATA.events),getJson(DATA.family),getJson(DATA.coverage)]);state.events=events;state.sampleFamily=family;state.family=loadFamilyFromStorage(family);state.adatMemory=loadAdatMemory();state.eventChecklists=loadEventChecklists();state.ceremonyArchives=loadCeremonyArchives();state.syncProfile=loadCloudSyncProfile();state.coverage=coverage;state.notifyPref=loadNotifyPref();const params=new URLSearchParams(location.search);if(params.get('feed')==='display'||params.get('feed')==='1'){renderFeedMode(state.selectedDate);return;}if(params.get('display')==='1'){state.displayMode=true;document.body.classList.add('display-mode');document.body.classList.add('tablet-mode');}const picker=document.getElementById('datePicker');setDateField(state.selectedDate);picker.addEventListener('change',()=>{const parsed=parseDMY(picker.value);if(!parsed||parsed.slice(0,4)!=='2026'){alert('Tanggal tampilan kalender harus format dd/mm/yyyy dan tahun 2026. Contoh: 11/07/2026');setDateField(state.selectedDate);return;}state.selectedDate=parsed;renderMonth(+state.selectedDate.slice(5,7));renderFamily();});renderFamily();renderAdatMemory();renderMonth(+state.selectedDate.slice(5,7));renderValidationConsole();updateDisplayFeedUrl();if(state.displayMode){setInterval(()=>{const t=localTodayIso();if(t.slice(0,4)==='2026'&&t!==state.selectedDate){state.selectedDate=t;setDateField(state.selectedDate);renderFamily();renderAdatMemory();renderMonth(+state.selectedDate.slice(5,7));}},900000);}if('serviceWorker' in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.warn);}
     window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();state.deferredPrompt=e;const btn=document.getElementById('installBtn');btn.hidden=false;btn.textContent='Install App';});
-    document.getElementById('installBtn').addEventListener('click',async()=>{const btn=document.getElementById('installBtn');if(state.deferredPrompt){state.deferredPrompt.prompt();await state.deferredPrompt.userChoice;state.deferredPrompt=null;btn.textContent='Panduan Install';return;}alert('Jika tombol install sistem tidak muncul: buka Chrome menu titik tiga → Add to Home screen / Install app. Jika icon lama masih muncul, uninstall dulu app lama dari Settings Android → Apps, lalu install ulang dari link versi 2.4.');});
+    document.getElementById('installBtn').addEventListener('click',async()=>{const btn=document.getElementById('installBtn');if(state.deferredPrompt){state.deferredPrompt.prompt();await state.deferredPrompt.userChoice;state.deferredPrompt=null;btn.textContent='Panduan Install';return;}alert('Jika tombol install sistem tidak muncul: buka Chrome menu titik tiga → Add to Home screen / Install app. Jika icon lama masih muncul, uninstall dulu app lama dari Settings Android → Apps, lalu install ulang dari link versi 2.4.2.');});
     document.getElementById('todayBtn').addEventListener('click',()=>{const today=localTodayIso().slice(0,4)==='2026'?localTodayIso():'2026-07-10';state.selectedDate=today;setDateField(state.selectedDate);renderFamily();renderMonth(+state.selectedDate.slice(5,7));});
     document.getElementById('modeBtn').addEventListener('click',()=>{document.body.classList.toggle('tablet-mode');document.getElementById('modeBtn').textContent=document.body.classList.contains('tablet-mode')?'Mode E-paper':'Mode Tablet';});
     document.getElementById('displayBtn').addEventListener('click',()=>{state.displayMode=!state.displayMode;document.body.classList.toggle('display-mode',state.displayMode);renderInfo(state.selectedDate);});
-    document.getElementById('notifyBtn').addEventListener('click',async()=>{if(!('Notification'in window))return alert('Browser ini belum mendukung notifikasi.');const p=await Notification.requestPermission();if(p==='granted'){state.notifyPref={enabled:true,lastTestAt:new Date().toISOString()};saveNotifyPref();const next=buildUpcoming(state.selectedDate)[0];new Notification('Kalender Bali Digital',{body:next?`Reminder terdekat: ${next.title} · ${reminderLabel(next.daysLeft)}`:'Tes notifikasi berhasil. Pusat reminder aktif.',icon:'./assets/icon-192-v144.png?v=241'});renderInfo(state.selectedDate);}else{state.notifyPref.enabled=false;saveNotifyPref();renderInfo(state.selectedDate);}});
+    document.getElementById('notifyBtn').addEventListener('click',async()=>{if(!('Notification'in window))return alert('Browser ini belum mendukung notifikasi.');const p=await Notification.requestPermission();if(p==='granted'){state.notifyPref={enabled:true,lastTestAt:new Date().toISOString()};saveNotifyPref();const next=buildUpcoming(state.selectedDate)[0];new Notification('Kalender Bali Digital',{body:next?`Reminder terdekat: ${next.title} · ${reminderLabel(next.daysLeft)}`:'Tes notifikasi berhasil. Pusat reminder aktif.',icon:'./assets/icon-192-v144.png?v=242'});renderInfo(state.selectedDate);}else{state.notifyPref.enabled=false;saveNotifyPref();renderInfo(state.selectedDate);}});
     init().catch(err=>{console.error(err);alert('Data belum bisa dibaca. Jalankan via local server atau deploy ke Vercel.');});
   </script>
 </body>

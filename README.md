@@ -101,3 +101,18 @@ Link setelah deploy:
 ## Phase 2.4.1 - UI Clean
 
 Panel fitur lanjutan di bawah kalender dilipat ke dalam hub: Otonan & Backup, Adat Memory, dan Validasi Data. Tujuan: kalender utama lebih bersih, tidak ramai, dan user membuka modul hanya saat diperlukan.
+
+
+## Phase 2.4.2 - Navigation Redesign & Simple Mode
+
+Update ini merapikan pengalaman produk setelah fitur mulai terlalu banyak. App sekarang memakai 4 navigasi utama:
+
+- Hari Ini
+- Kalender
+- Adat Keluarga
+- Pengaturan
+
+Keputusan produk: KD-Bali default harus sederhana untuk keluarga. Modul detail adat tetap ada, tetapi dipisah ke Adat Keluarga dan Pengaturan agar kalender utama tidak terasa penuh.
+
+Link setelah deploy:
+`https://adp-kai-kalender-bali-app.vercel.app/?v=242&app=kd-bali-v242`
