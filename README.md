@@ -1,21 +1,20 @@
-# ADP KAI Kalender Bali Digital — Phase 2.4.6
+# ADP KAI Kalender Bali Digital — Phase 2.4.7
 
-Phase 2.4.6 menambahkan Setup Progress agar user tahu data inti apa yang sudah siap dan langkah berikutnya yang paling logis.
+Phase 2.4.7 membersihkan header dan memindahkan alat teknis ke Pengaturan.
 
 ## Fokus
 
-- Progress kesiapan data keluarga di menu Hari Ini.
-- Status Otonan, Merajan/Sanggah, Pelinggih, dan Backup.
-- Rekomendasi langkah berikutnya otomatis berdasarkan data lokal.
-- Tombol panduan sekarang membuka modul yang tepat, bukan hanya hub umum.
-- Tetap tidak menambah fitur besar; ini lanjutan simplifikasi dan decision flow.
+- Header/topbar hanya menampilkan kontrol utama: tanggal, bulan, Hari Ini, dan tombol Alat.
+- Mode Tablet, Tes Notifikasi, Mode Display, dan Install App dipindahkan ke Pengaturan.
+- Menu Hari Ini tetap menjadi default sederhana.
+- Tidak menambah fitur besar; ini lanjutan UI simplification sebelum cloud login real.
 
 ## Deploy
 
 Buka setelah Vercel Ready:
 
-https://adp-kai-kalender-bali-app.vercel.app/?v=246&app=kd-bali-v246
+https://adp-kai-kalender-bali-app.vercel.app/?v=247&app=kd-bali-v247
 
 ## Commit
 
-ADP KAI Kalender Bali Digital phase 2.4.6 - Setup Progress and Data Readiness
+ADP KAI Kalender Bali Digital phase 2.4.7 - Header Clean and Tools Settings
