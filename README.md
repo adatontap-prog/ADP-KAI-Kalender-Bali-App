@@ -1,20 +1,12 @@
-# ADP KAI Kalender Bali Digital — Phase 2.4.7
+# ADP KAI Kalender Bali Digital — Phase 2.4.8
 
-Phase 2.4.7 membersihkan header dan memindahkan alat teknis ke Pengaturan.
+Patch UI: Mobile Bottom Nav & App-like Navigation.
 
-## Fokus
+Perubahan utama:
+- Navigasi HP dipindahkan ke bawah layar seperti aplikasi.
+- Empat menu utama tetap: Hari Ini, Kalender, Adat Keluarga, Pengaturan.
+- Header tetap bersih; alat teknis tetap di Pengaturan.
+- Kalender, data adat keluarga, backup/export, display feed, checklist, arsip, dan schema lama tetap dipertahankan.
 
-- Header/topbar hanya menampilkan kontrol utama: tanggal, bulan, Hari Ini, dan tombol Alat.
-- Mode Tablet, Tes Notifikasi, Mode Display, dan Install App dipindahkan ke Pengaturan.
-- Menu Hari Ini tetap menjadi default sederhana.
-- Tidak menambah fitur besar; ini lanjutan UI simplification sebelum cloud login real.
-
-## Deploy
-
-Buka setelah Vercel Ready:
-
-https://adp-kai-kalender-bali-app.vercel.app/?v=247&app=kd-bali-v247
-
-## Commit
-
-ADP KAI Kalender Bali Digital phase 2.4.7 - Header Clean and Tools Settings
+Deploy cache-buster:
+https://adp-kai-kalender-bali-app.vercel.app/?v=248&app=kd-bali-v248
