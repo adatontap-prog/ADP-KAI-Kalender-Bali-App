@@ -1,4 +1,4 @@
-# ADP KAI Kalender Bali Digital — Phase 2.2
+# ADP KAI Kalender Bali Digital — Phase 2.3
 
 Phase 2.0 menambahkan Data Validation Console untuk audit kualitas data Kalender Bali 2026.
 
@@ -57,3 +57,22 @@ Catatan: Phase 2.2 masih local-first. Login Google/email dan sinkron otomatis li
 
 Link setelah deploy:
 `https://adp-kai-kalender-bali-app.vercel.app/?v=220&app=kd-bali-v220`
+
+
+## Phase 2.3 - Banten & Sarana Checklist Engine
+
+Update ini menambahkan checklist banten/sarana per event adat keluarga:
+
+- Pilih event piodalan merajan/sanggah 2026
+- Pilih template umum: Piodalan Merajan Alit atau Ageng
+- Generate checklist lokal per event
+- Centang item persiapan satu per satu
+- Tambah item khusus versi keluarga
+- Export Banten Checklist CSV
+- Backup JSON, Adat Memory export, dan Cloud Seed JSON sekarang menyertakan `eventChecklists`
+- Display feed menampilkan ringkasan checklist untuk event adat pada tanggal yang dipilih
+
+Catatan: template banten/sarana tetap bersifat contoh umum dan harus dikonfirmasi mengikuti tradisi keluarga, pemangku, tetua, desa adat, atau griya. KD-Bali mencatat versi keluarga, bukan menetapkan standar tunggal adat.
+
+Link setelah deploy:
+`https://adp-kai-kalender-bali-app.vercel.app/?v=230&app=kd-bali-v230`

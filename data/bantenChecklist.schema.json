@@ -1,0 +1,27 @@
+{
+  "name": "KD-Bali Banten Checklist Schema",
+  "phase": "2.3",
+  "purpose": "Local-first event checklist model for banten/sarana per adat event instance; Firestore-ready for future cloud sync.",
+  "localStorageKey": "adp-kai-kalender-bali-banten-checklists-v2-3",
+  "firestorePath": "families/{familyId}/eventChecklists/{instanceId}",
+  "fields": {
+    "instanceId": "string; event instance id such as place_123_2026-07-22",
+    "eventId": "string; parent adat place/event id",
+    "date": "YYYY-MM-DD",
+    "title": "string",
+    "level": "alit|ageng|rutin|custom",
+    "templateId": "string",
+    "templateName": "string",
+    "validationStatus": "family_custom_checklist|needs_local_confirmation|pemangku_confirmed",
+    "items": [
+      {
+        "id": "string",
+        "name": "string",
+        "checked": "boolean",
+        "notes": "string"
+      }
+    ],
+    "updatedAt": "ISO timestamp"
+  },
+  "validationNote": "Banten/sarana templates are general placeholders. User must confirm with family tradition, pemangku, tetua, desa adat, or griya for important ceremonies."
+}

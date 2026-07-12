@@ -1,6 +1,6 @@
 {
   "app": "KD-Bali",
-  "phase": "2.2",
+  "phase": "2.3",
   "purpose": "Firestore-ready schema for Firebase Auth + Cloud Sync",
   "collections": [
     {
@@ -76,6 +76,21 @@
       ]
     },
     {
+      "path": "families/{familyId}/eventChecklists/{instanceId}",
+      "fields": [
+        "instanceId",
+        "eventId",
+        "date",
+        "title",
+        "level",
+        "templateId",
+        "templateName",
+        "items",
+        "validationStatus",
+        "updatedAt"
+      ]
+    },
+    {
       "path": "families/{familyId}/eventInstances/{instanceId}",
       "fields": [
         "date",
@@ -88,8 +103,10 @@
     }
   ],
   "notes": [
-    "Phase 2.2 is local-first and exports Cloud Seed JSON.",
+    "Phase 2.3 is local-first and exports Cloud Seed JSON.",
     "Real Firebase Auth/Firestore requires Firebase project config in the next implementation phase.",
-    "KD-Bali records family adat decisions; it does not replace pemangku, desa adat, griya, or official printed calendar validation."
-  ]
+    "KD-Bali records family adat decisions; it does not replace pemangku, desa adat, griya, or official printed calendar validation.",
+    "Phase 2.3 adds eventChecklists for banten/sarana checklist per adat event instance."
+  ],
+  "newInPhase2_3": "eventChecklists subcollection for banten/sarana checklist per adat event instance"
 }
