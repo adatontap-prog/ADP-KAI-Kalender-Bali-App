@@ -1,20 +1,21 @@
-# ADP KAI Kalender Bali Digital — Phase 2.4.5
+# ADP KAI Kalender Bali Digital — Phase 2.4.6
 
-Phase 2.4.5 menambahkan Guided Setup supaya user tahu urutan kerja setelah UI disederhanakan.
+Phase 2.4.6 menambahkan Setup Progress agar user tahu data inti apa yang sudah siap dan langkah berikutnya yang paling logis.
 
 ## Fokus
 
-- Panduan langkah berikutnya di menu Hari Ini.
-- Urutan kerja: Otonan keluarga → Merajan/Sanggah → Pelinggih → Backup.
-- Keputusan produk ditampilkan: jangan lanjut desa adat, hardware, atau Firebase real sebelum data keluarga lokal rapi.
-- Semua fitur dan data dari phase sebelumnya tetap dipertahankan.
+- Progress kesiapan data keluarga di menu Hari Ini.
+- Status Otonan, Merajan/Sanggah, Pelinggih, dan Backup.
+- Rekomendasi langkah berikutnya otomatis berdasarkan data lokal.
+- Tombol panduan sekarang membuka modul yang tepat, bukan hanya hub umum.
+- Tetap tidak menambah fitur besar; ini lanjutan simplifikasi dan decision flow.
 
 ## Deploy
 
 Buka setelah Vercel Ready:
 
-https://adp-kai-kalender-bali-app.vercel.app/?v=245&app=kd-bali-v245
+https://adp-kai-kalender-bali-app.vercel.app/?v=246&app=kd-bali-v246
 
 ## Commit
 
-ADP KAI Kalender Bali Digital phase 2.4.5 - Guided Setup and Next Decision Flow
+ADP KAI Kalender Bali Digital phase 2.4.6 - Setup Progress and Data Readiness
