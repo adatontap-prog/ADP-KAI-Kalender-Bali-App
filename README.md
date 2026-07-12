@@ -132,3 +132,11 @@ Link setelah deploy:
 `https://adp-kai-kalender-bali-app.vercel.app/?v=243&app=kd-bali-v243`
 
 Catatan: phase ini masih fokus simplifikasi UI. Firebase login real ditunda sampai struktur menu stabil.
+
+
+## Phase 2.4.4 - UI Simple Mode Correction
+- Kalender view sekarang benar-benar bersih; panel detail tidak muncul di bawah kalender.
+- Hari Ini menjadi ringkasan keluarga.
+- Adat Keluarga menjadi hub detail adat.
+- Pengaturan untuk backup/export/validasi/display/cloud-ready.
+- Ada banner visible agar user bisa memastikan patch 2.4.4 sudah terpasang.

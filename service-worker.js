@@ -1,8 +1,8 @@
-const CACHE_NAME = 'adp-kai-kalender-bali-v2-4-3';
+const CACHE_NAME = 'adp-kai-kalender-bali-v2-4-4';
 const APP_SHELL = [
   './',
-  './index.html?v=243&app=kd-bali-v243',
-  './manifest-v243.webmanifest?v=243',
+  './index.html?v=244&app=kd-bali-v244',
+  './manifest-v244.webmanifest?v=244',
   './data/events.2026.json',
   './data/familyMembers.sample.json',
   './data/dataCoverage.2026.json',
@@ -10,10 +10,10 @@ const APP_SHELL = [
   './data/firebaseSync.schema.json',
   './data/bantenChecklist.schema.json',
   './data/ceremonyArchive.schema.json',
-  './assets/icon-192-v144.png?v=243',
-  './assets/icon-512-v144.png?v=243',
-  './assets/favicon-48-v144.png?v=243',
-  './assets/apple-touch-icon-v144.png?v=243'
+  './assets/icon-192-v144.png?v=244',
+  './assets/icon-512-v144.png?v=244',
+  './assets/favicon-48-v144.png?v=244',
+  './assets/apple-touch-icon-v144.png?v=244'
 ];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)));
@@ -24,11 +24,18 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    fetch(event.request).then(res => {
+  const url = new URL(event.request.url);
+  if (url.searchParams.get('v') === '244' || event.request.mode === 'navigate') {
+    event.respondWith(fetch(event.request).then(res => {
       const copy = res.clone();
       caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
       return res;
-    }).catch(() => caches.match(event.request))
-  );
+    }).catch(() => caches.match(event.request)));
+    return;
+  }
+  event.respondWith(fetch(event.request).then(res => {
+    const copy = res.clone();
+    caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+    return res;
+  }).catch(() => caches.match(event.request)));
 });
