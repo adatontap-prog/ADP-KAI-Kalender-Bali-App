@@ -1,0 +1,25 @@
+{
+  "schemaName": "firestoreRestoreReview.schema.json",
+  "phase": "2.5.3",
+  "purpose": "Define restore-review safety layer before overwriting local KD-Bali data from Firestore Cloud Seed.",
+  "checks": [
+    "localSnapshotCounts",
+    "cloudSeedSnapshotCounts",
+    "preRestoreBackup",
+    "restoreAcknowledgement",
+    "manualSeedRestore"
+  ],
+  "restorePolicy": {
+    "requiresFetchedSeed": true,
+    "requiresUserAcknowledgement": true,
+    "preRestoreBackup": "download JSON before overwrite",
+    "overwriteTargets": [
+      "family",
+      "adatMemory",
+      "eventChecklists",
+      "ceremonyArchives",
+      "syncProfile"
+    ]
+  },
+  "notes": "Pilot only. Real-time conflict resolution and normalized subcollections are planned after seed restore flow is trusted."
+}

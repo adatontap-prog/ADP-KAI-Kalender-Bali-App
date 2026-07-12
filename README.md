@@ -1,19 +1,9 @@
-# ADP KAI Kalender Bali Digital — Phase 2.5.2
+# ADP KAI Kalender Bali Digital — Phase 2.5.3
 
-## Firestore Seed Sync Pilot
+Phase 2.5.3 menambahkan Restore Review & Sync Safety:
+- review perbandingan data lokal vs Cloud Seed
+- checkbox konfirmasi sebelum restore
+- backup lokal otomatis/manual sebelum restore
+- perbaikan key status Firestore Seed pilot
 
-Update ini menambahkan pilot sync cloud paling aman:
-
-- Firebase Auth Pilot tetap ada.
-- Firestore Seed Sync Pilot ditambahkan di Pengaturan.
-- Data keluarga/adat bisa di-upload sebagai satu Cloud Seed.
-- Di HP baru: login Google, ambil seed, restore ke browser.
-- Belum real-time sync penuh dan belum struktur subcollection final.
-
-Cloud path pilot:
-
-`users/{uid}/families/{familyId}/cloudSeeds/latest`
-
-Commit:
-
-`ADP KAI Kalender Bali Digital phase 2.5.2 - Firestore Seed Sync Pilot`
+Catatan: ini masih pilot seed sync, belum real-time multi-device sync penuh.
