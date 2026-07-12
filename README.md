@@ -96,3 +96,8 @@ Catatan: Arsip Upacara adalah memori adat keluarga/private. KD-Bali tetap tidak 
 
 Link setelah deploy:
 `https://adp-kai-kalender-bali-app.vercel.app/?v=240&app=kd-bali-v240`
+
+
+## Phase 2.4.1 - UI Clean
+
+Panel fitur lanjutan di bawah kalender dilipat ke dalam hub: Otonan & Backup, Adat Memory, dan Validasi Data. Tujuan: kalender utama lebih bersih, tidak ramai, dan user membuka modul hanya saat diperlukan.

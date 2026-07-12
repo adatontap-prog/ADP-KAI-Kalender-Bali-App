@@ -1,8 +1,8 @@
-const CACHE_NAME = 'adp-kai-kalender-bali-v2-4-0';
+const CACHE_NAME = 'adp-kai-kalender-bali-v2-4-1';
 const APP_SHELL = [
   './',
-  './index.html?v=240&app=kd-bali-v240',
-  './manifest-v240.webmanifest?v=240',
+  './index.html?v=241&app=kd-bali-v241',
+  './manifest-v241.webmanifest?v=241',
   './data/events.2026.json',
   './data/familyMembers.sample.json',
   './data/dataCoverage.2026.json',
@@ -10,10 +10,10 @@ const APP_SHELL = [
   './data/firebaseSync.schema.json',
   './data/bantenChecklist.schema.json',
   './data/ceremonyArchive.schema.json',
-  './assets/icon-192-v144.png?v=240',
-  './assets/icon-512-v144.png?v=240',
-  './assets/favicon-48-v144.png?v=240',
-  './assets/apple-touch-icon-v144.png?v=240'
+  './assets/icon-192-v144.png?v=241',
+  './assets/icon-512-v144.png?v=241',
+  './assets/favicon-48-v144.png?v=241',
+  './assets/apple-touch-icon-v144.png?v=241'
 ];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)));
