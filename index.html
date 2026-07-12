@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#111827" />
-  <title>ADP KAI Kalender Bali Digital — Phase 2.4.9</title>
-  <link rel="manifest" href="manifest-v249.webmanifest?v=249&app=kd-bali-v249" />
-  <link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48-v144.png?v=249" />
-  <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192-v144.png?v=249" />
-  <link rel="apple-touch-icon" href="./assets/apple-touch-icon-v144.png?v=249" />
+  <title>ADP KAI Kalender Bali Digital — Phase 2.4.10</title>
+  <link rel="manifest" href="manifest-v250.webmanifest?v=250&app=kd-bali-v250" />
+  <link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48-v144.png?v=250" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192-v144.png?v=250" />
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon-v144.png?v=250" />
   <style>
     :root{
       --paper:#f4efe4;--ink:#17202a;--muted:#6b7280;--line:#d7cdbc;--red:#dc2626;--black:#111827;--gold:#9a6b1d;--green:#15803d;--blue:#2563eb;--panel:#fffaf0;--tablet-bg:#08111f;--tablet-card:#111827;--tablet-text:#e5e7eb;--tablet-line:rgba(148,163,184,.25);
@@ -93,12 +93,20 @@
     body.tablet-mode .mobile-nav-note{background:rgba(15,23,42,.72);border-color:var(--tablet-line);color:#cbd5e1}
     @media(max-width:560px){body.tablet-mode .main-nav{background:rgba(8,17,31,.96);border-color:var(--tablet-line)}}
 
-    /* Phase 2.4.9: Hari Ini Focus */
+    /* Phase 2.4.10: Hari Ini Focus + compact guidance */
     .focus-actions{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
     .guide-toggle{border:1px solid #171717;background:#171717;color:#fff;border-radius:15px;padding:11px 12px;font-weight:950;cursor:pointer;text-align:center;width:100%}
     .guide-toggle.secondary{background:#fffaf0;color:var(--ink);border-color:var(--line)}
     body[data-main-view="today"]:not(.show-setup-guide) .setup-guide.view-section{display:none!important}
     body[data-main-view="today"].show-setup-guide .setup-guide.view-section{display:block!important}
+
+    /* Phase 2.4.10: Adat Setup Wizard */
+    .adat-setup-wizard{border:1px solid rgba(79,70,229,.22);background:linear-gradient(135deg,rgba(238,242,255,.86),rgba(255,250,240,.92));border-radius:24px;padding:16px;margin:14px 0;box-shadow:0 16px 38px rgba(44,31,14,.08)}
+    .adat-setup-wizard h3{margin:4px 0 6px;font-size:1.05rem}.adat-setup-wizard p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.45}
+    .wizard-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}.wizard-step{border:1px solid rgba(79,70,229,.24);background:rgba(255,255,255,.76);border-radius:18px;padding:12px;text-align:left;cursor:pointer;color:var(--ink)}.wizard-step strong{display:block;font-size:.9rem}.wizard-step span{display:block;color:var(--muted);font-size:.76rem;line-height:1.35;margin-top:5px}.wizard-step:hover{border-color:#4f46e5;box-shadow:0 10px 24px rgba(79,70,229,.10)}
+    .decision-card{border:1px solid rgba(21,128,61,.24);background:rgba(240,253,244,.78);border-radius:20px;padding:14px;margin:0 0 14px}.decision-card strong{display:block;margin-bottom:4px}.decision-card span{display:block;color:var(--muted);font-size:.84rem;line-height:1.45}
+    body.tablet-mode .adat-setup-wizard,body.tablet-mode .decision-card{background:rgba(15,23,42,.72);border-color:var(--tablet-line)}body.tablet-mode .wizard-step{background:rgba(15,23,42,.72);border-color:var(--tablet-line);color:var(--tablet-text)}body.tablet-mode .wizard-step span,body.tablet-mode .adat-setup-wizard p,body.tablet-mode .decision-card span{color:#cbd5e1}
+    @media(max-width:900px){.wizard-steps{grid-template-columns:1fr 1fr}}@media(max-width:560px){.wizard-steps{grid-template-columns:1fr}.adat-setup-wizard{padding:14px;border-radius:20px}}
     .mobile-nav-note.view-section{display:none!important}
     @media(max-width:560px){.focus-actions{grid-template-columns:1fr}.mobile-nav-note.view-section{display:block!important}}
     body.tablet-mode .guide-toggle.secondary{background:rgba(15,23,42,.72);border-color:var(--tablet-line);color:var(--tablet-text)}
@@ -110,7 +118,7 @@
     <section class="topbar">
       <div class="brand">
         <h1>Kalender Bali Digital</h1>
-        <p>Phase 2.4.9 · Hari Ini Focus · compact guidance</p>
+        <p>Phase 2.4.10 · Adat Setup Wizard · simple flow</p>
       </div>
       <div class="controls primary-controls" aria-label="Kontrol utama kalender">
         <input id="datePicker" type="text" inputmode="numeric" maxlength="10" placeholder="dd/mm/yyyy" aria-label="Tanggal format dd/mm/yyyy">
@@ -131,7 +139,7 @@
 
     <section class="simple-mode-banner view-section view-today" aria-label="Mode sederhana KD-Bali">
       <div>
-        <span class="phase-badge">Phase 2.4.9 · Hari Ini Focus</span>
+        <span class="phase-badge">Phase 2.4.10 · Adat Setup Wizard</span>
         <h2>Fokus ke aksi berikutnya, bukan semua menu sekaligus</h2>
         <p>Tampilan Hari Ini dibuat lebih fokus: lihat agenda, cek progress data keluarga, lalu buka panduan lengkap hanya saat diperlukan.</p>
       </div>
@@ -178,6 +186,11 @@
         <div><strong id="setupNextActionTitle">Menentukan langkah berikutnya</strong><span id="setupNextActionText">Tunggu sampai data lokal selesai dibaca.</span></div>
         <button type="button" id="setupNextActionBtn" data-jump-view="adat" data-adat-jump="otonan" data-scroll-target="#adatDashboard">Buka Langkah</button>
       </div>
+    </section>
+
+    <section class="decision-card view-section view-today" aria-label="Keputusan lanjut KD-Bali">
+      <strong>Keputusan lanjut saat ini</strong>
+      <span>Jangan tambah fitur besar dulu. Urutan aman: isi data inti keluarga → backup → rapikan checklist banten/arsip → baru masuk cloud login real. Wizard Adat Keluarga membantu mengikuti urutan ini.</span>
     </section>
 
 
@@ -250,6 +263,20 @@
           <div class="adat-summary-card"><span>Checklist</span><strong id="adatSummaryChecklist">0</strong></div>
         </div>
       </article>
+      <article class="adat-setup-wizard" aria-label="Wizard Setup Adat Keluarga">
+        <div>
+          <span class="phase-badge">Phase 2.4.10 · Adat Setup Wizard</span>
+          <h3>Setup Adat Keluarga: isi data inti berurutan</h3>
+          <p>Gunakan 4 langkah ini. Tidak perlu mengisi semua detail sekaligus; cukup buat data keluarga terbaca dulu, lalu backup.</p>
+        </div>
+        <div class="wizard-steps">
+          <button class="wizard-step" type="button" data-adat-jump="otonan"><strong>1. Otonan</strong><span>Catat anggota keluarga dan otonan utama.</span></button>
+          <button class="wizard-step" type="button" data-adat-jump="merajan"><strong>2. Merajan</strong><span>Catat merajan/sanggah dan piodalan acuan.</span></button>
+          <button class="wizard-step" type="button" data-adat-jump="merajan"><strong>3. Pelinggih</strong><span>Tambah pelinggih sesuai versi keluarga.</span></button>
+          <button class="wizard-step" type="button" data-adat-jump="cloud"><strong>4. Backup</strong><span>Export backup sebelum lanjut detail banten/cloud.</span></button>
+        </div>
+      </article>
+
       <div class="adat-module-tabs" role="tablist" aria-label="Pilih modul adat keluarga">
         <button class="adat-tab active" type="button" data-adat-nav="overview"><strong>Ringkasan</strong><span>Arah kerja dan keputusan produk.</span></button>
         <button class="adat-tab" type="button" data-adat-nav="otonan"><strong>Otonan</strong><span>Input otonan dan backup lokal.</span></button>
@@ -450,7 +477,7 @@
       <article class="card"><h2>Cloud Sync Foundation</h2><p class="small">Profil email/familyId dan Cloud Seed masih local-first. Firebase login real dilakukan setelah UI stabil.</p><button class="quick-action secondary" type="button" data-jump-view="adat" data-scroll-target="#adatMemoryPanel">Buka Cloud Foundation</button></article>
       <article class="card"><h2>Validasi Data</h2><p class="small">Gunakan konsol validasi untuk melihat coverage, quality score, dan antrean cross-check kalender.</p><button class="quick-action secondary" type="button" data-scroll-target="#validationPanel">Lihat Validasi</button></article>
       <article class="card" id="displayToolsPanel"><h2>Alat Tampilan & Install</h2><p class="small">Kontrol teknis dipindahkan ke sini agar header app tetap bersih. Gunakan hanya saat perlu uji tampilan, notifikasi, display, atau install ulang.</p><div class="display-tools-grid"><button id="modeBtn" type="button">Mode Tablet</button><button id="notifyBtn" type="button" class="secondary">Tes Notifikasi</button><button id="displayBtn" type="button" class="secondary">Mode Display</button><button id="installBtn" type="button">Install App</button></div><div class="tools-note">Header sekarang hanya menyisakan tanggal, bulan, Hari Ini, dan tombol Alat.</div></article>
-      <article class="card"><h2>Status & Next Step</h2><p class="small">Phase 2.4.9 merapikan Hari Ini agar user fokus pada aksi berikutnya. Panduan lengkap dilipat dan bisa dibuka saat diperlukan.</p><button class="quick-action secondary" type="button" data-jump-view="today">Lihat Panduan</button></article>
+      <article class="card"><h2>Status & Next Step</h2><p class="small">Phase 2.4.10 menambahkan Adat Setup Wizard agar user mengisi data inti berurutan: otonan, merajan, pelinggih, lalu backup.</p><button class="quick-action secondary" type="button" data-jump-view="today">Lihat Panduan</button></article>
     </section>
 
     <section class="validation-section view-section view-settings" id="validationPanel" aria-label="Konsol validasi data">
@@ -460,7 +487,7 @@
             <h2>Data Validation Console</h2>
             <p class="small">Ringkasan kualitas data 2026. Ini membantu menentukan bulan mana yang harus cross-check dengan kalender cetak/sumber adat/pemangku sebelum dipakai untuk keputusan penting.</p>
           </div>
-          <span class="phase-badge">Phase 2.4.9 · Pengaturan</span>
+          <span class="phase-badge">Phase 2.4.10 · Pengaturan</span>
         </div>
         <div class="validation-grid">
           <div class="validation-metric"><span>Total Event</span><strong id="valTotalEvents">-</strong><small class="small">Rerainan + Purnama/Tilem</small></div>
@@ -537,8 +564,8 @@
     function exportCalendarIcs(){const calendarEvents=state.events.map(e=>({date:e.date,title:e.title,type:e.type||e.category||'rahinan',description:`Kalender Bali Digital · ${e.category||'event'} · status ${e.source?.verificationStatus||'digital_source_only'} · sumber ${e.source?.sourceName||'SRC-001'} · Untuk keputusan adat penting tetap verifikasi dengan kalender cetak/sumber adat/pemangku.`,uid:`${e.id||uidSafe(e.title)}-${e.date}`}));const otonanEvents=[];state.family.forEach(m=>{otonanDatesInYear(m).forEach(date=>{otonanEvents.push({date,title:`Otonan ${m.name}`,type:'otonan',description:`Otonan keluarga · ${otonanSourceLabel(m)} · ${otonanStatusLabel(m)} · data lokal KD-Bali. Verifikasi adat tetap diperlukan untuk keputusan penting.`,uid:`otonan-${uidSafe(m.id||m.name)}-${date}`});});});const adatEvents=buildAdatInstancesInYear(2026).map(e=>({date:e.date,title:e.title,type:'adat',description:`Adat keluarga KD-Bali · ${e.category} · ${e.level||'level belum diatur'} · ${e.validationStatus||'user_recorded'} · bukan keputusan adat resmi.`,uid:`adat-${uidSafe(e.id)}-${e.date}`}));const all=[...calendarEvents,...otonanEvents,...adatEvents].sort((a,b)=>a.date.localeCompare(b.date)||a.title.localeCompare(b.title));const body=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//ADP KAI//KD-Bali Calendar//ID','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:KD-Bali 2026','X-WR-TIMEZONE:Asia/Makassar',...all.map(buildIcsEvent),'END:VCALENDAR'].join('\r\n');downloadText('kd-bali-kalender-2026.ics',body,'text/calendar;charset=utf-8');updateBackupStatus(`Export ICS dibuat: ${all.length} event kalender + otonan + adat keluarga. Import file .ics ini ke Google Calendar/Apple Calendar jika dibutuhkan.`);}
     function appBaseUrl(){return location.origin+location.pathname.replace(/[^/]*$/,'');}
     function selectedDateParam(){return encodeURIComponent(formatDMY(state.selectedDate));}
-    function displayUrl(){return `${appBaseUrl()}?v=249&app=kd-bali-v249&display=1&d=${selectedDateParam()}`;}
-    function liveFeedUrl(){return `${appBaseUrl()}?v=249&app=kd-bali-v249&feed=display&d=${selectedDateParam()}`;}
+    function displayUrl(){return `${appBaseUrl()}?v=250&app=kd-bali-v250&display=1&d=${selectedDateParam()}`;}
+    function liveFeedUrl(){return `${appBaseUrl()}?v=250&app=kd-bali-v250&feed=display&d=${selectedDateParam()}`;}
     function buildDisplayPayload(iso=state.selectedDate){const evs=eventsOn(iso);const ots=otonanOn(iso);const ads=adatOn(iso);const upcoming=buildUpcoming(iso).slice(0,12).map(e=>({date:e.displayDate,displayDate:formatDMY(e.displayDate),title:e.title,type:e.type||e.category,kind:e.kind,daysLeft:e.daysLeft,label:reminderLabel(e.daysLeft),marker:eventPillClass(e)}));return {app:'KD-Bali',phase:'2.4.9',feedType:'live_selected_day_display_feed',generatedAt:new Date().toISOString(),selectedDate:iso,displayDate:formatDMY(iso),timezone:'Asia/Makassar / device local',deviceUse:{tabletDisplayUrl:displayUrl(),liveFeedUrl:liveFeedUrl(),refreshSeconds:900},today:{label:idDate(iso),events:evs.map(e=>({title:e.title,type:e.type,category:e.category,marker:eventPillClass(e),isPurnama:!!e.isPurnama,isTilem:!!e.isTilem,verificationStatus:e.source?.verificationStatus||'digital_source_only',source:e.source?.sourceName||'SRC-001'})),otonan:ots.map(m=>({title:`Otonan ${m.name}`,memberName:m.name,source:m.otonan?.source,validationStatus:m.otonan?.validationStatus||'needs_bali_day_confirmation'})),adat:ads.map(e=>({title:e.title,category:e.category,level:e.level,validationStatus:e.validationStatus,checklist:checklistSummaryForInstance(e.id)}))},upcoming,markers:{purnama:'red_dot',tilem:'black_dot_highlighted',rerainan:'gold_dot',otonan:'green_dot',merajan:'purple_dot'},validationNote:'Data digital_source_only. Untuk keputusan adat penting tetap verifikasi dengan kalender cetak/resmi, sumber adat setempat, atau pemangku.'};}
     function updateDisplayFeedUrl(){const el=document.getElementById('displayFeedUrl');if(el)el.textContent=liveFeedUrl();}
     async function copyText(text,label){try{await navigator.clipboard.writeText(text);updateBackupStatus(`${label} disalin ke clipboard.`);}catch(e){prompt(`Copy ${label}:`,text);}}
@@ -777,11 +804,11 @@
 
     async function init(){document.getElementById('dowGrid').innerHTML=dows.map(d=>`<div class="dow">${d}</div>`).join('');setupMonthSelect();setupFamilyForm();setupAdatMemory();setupMainNav();setupAdatSubNav();setupGuidanceToggle();const [events,family,coverage]=await Promise.all([getJson(DATA.events),getJson(DATA.family),getJson(DATA.coverage)]);state.events=events;state.sampleFamily=family;state.family=loadFamilyFromStorage(family);state.adatMemory=loadAdatMemory();state.eventChecklists=loadEventChecklists();state.ceremonyArchives=loadCeremonyArchives();state.syncProfile=loadCloudSyncProfile();state.coverage=coverage;state.notifyPref=loadNotifyPref();const params=new URLSearchParams(location.search);if(params.get('feed')==='display'||params.get('feed')==='1'){renderFeedMode(state.selectedDate);return;}if(params.get('display')==='1'){state.displayMode=true;document.body.classList.add('display-mode');document.body.classList.add('tablet-mode');}const picker=document.getElementById('datePicker');setDateField(state.selectedDate);picker.addEventListener('change',()=>{const parsed=parseDMY(picker.value);if(!parsed||parsed.slice(0,4)!=='2026'){alert('Tanggal tampilan kalender harus format dd/mm/yyyy dan tahun 2026. Contoh: 11/07/2026');setDateField(state.selectedDate);return;}state.selectedDate=parsed;renderMonth(+state.selectedDate.slice(5,7));renderFamily();});renderFamily();renderAdatMemory();updateAdatSummary();renderMonth(+state.selectedDate.slice(5,7));renderValidationConsole();updateDisplayFeedUrl();if(state.displayMode){setInterval(()=>{const t=localTodayIso();if(t.slice(0,4)==='2026'&&t!==state.selectedDate){state.selectedDate=t;setDateField(state.selectedDate);renderFamily();renderAdatMemory();renderMonth(+state.selectedDate.slice(5,7));}},900000);}if('serviceWorker' in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.warn);}
     window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();state.deferredPrompt=e;const btn=document.getElementById('installBtn');btn.hidden=false;btn.textContent='Install App';});
-    document.getElementById('installBtn').addEventListener('click',async()=>{const btn=document.getElementById('installBtn');if(state.deferredPrompt){state.deferredPrompt.prompt();await state.deferredPrompt.userChoice;state.deferredPrompt=null;btn.textContent='Panduan Install';return;}alert('Jika tombol install sistem tidak muncul: buka Chrome menu titik tiga → Add to Home screen / Install app. Jika icon lama masih muncul, uninstall dulu app lama dari Settings Android → Apps, lalu install ulang dari link versi 2.4.9.');});
+    document.getElementById('installBtn').addEventListener('click',async()=>{const btn=document.getElementById('installBtn');if(state.deferredPrompt){state.deferredPrompt.prompt();await state.deferredPrompt.userChoice;state.deferredPrompt=null;btn.textContent='Panduan Install';return;}alert('Jika tombol install sistem tidak muncul: buka Chrome menu titik tiga → Add to Home screen / Install app. Jika icon lama masih muncul, uninstall dulu app lama dari Settings Android → Apps, lalu install ulang dari link versi 2.4.10.');});
     document.getElementById('todayBtn').addEventListener('click',()=>{const today=localTodayIso().slice(0,4)==='2026'?localTodayIso():'2026-07-10';state.selectedDate=today;setDateField(state.selectedDate);renderFamily();renderMonth(+state.selectedDate.slice(5,7));});
     document.getElementById('modeBtn').addEventListener('click',()=>{document.body.classList.toggle('tablet-mode');document.getElementById('modeBtn').textContent=document.body.classList.contains('tablet-mode')?'Mode E-paper':'Mode Tablet';});
     document.getElementById('displayBtn').addEventListener('click',()=>{state.displayMode=!state.displayMode;document.body.classList.toggle('display-mode',state.displayMode);renderInfo(state.selectedDate);});
-    document.getElementById('notifyBtn').addEventListener('click',async()=>{if(!('Notification'in window))return alert('Browser ini belum mendukung notifikasi.');const p=await Notification.requestPermission();if(p==='granted'){state.notifyPref={enabled:true,lastTestAt:new Date().toISOString()};saveNotifyPref();const next=buildUpcoming(state.selectedDate)[0];new Notification('Kalender Bali Digital',{body:next?`Reminder terdekat: ${next.title} · ${reminderLabel(next.daysLeft)}`:'Tes notifikasi berhasil. Pusat reminder aktif.',icon:'./assets/icon-192-v144.png?v=249'});renderInfo(state.selectedDate);}else{state.notifyPref.enabled=false;saveNotifyPref();renderInfo(state.selectedDate);}});
+    document.getElementById('notifyBtn').addEventListener('click',async()=>{if(!('Notification'in window))return alert('Browser ini belum mendukung notifikasi.');const p=await Notification.requestPermission();if(p==='granted'){state.notifyPref={enabled:true,lastTestAt:new Date().toISOString()};saveNotifyPref();const next=buildUpcoming(state.selectedDate)[0];new Notification('Kalender Bali Digital',{body:next?`Reminder terdekat: ${next.title} · ${reminderLabel(next.daysLeft)}`:'Tes notifikasi berhasil. Pusat reminder aktif.',icon:'./assets/icon-192-v144.png?v=250'});renderInfo(state.selectedDate);}else{state.notifyPref.enabled=false;saveNotifyPref();renderInfo(state.selectedDate);}});
     init().catch(err=>{console.error(err);alert('Data belum bisa dibaca. Jalankan via local server atau deploy ke Vercel.');});
   </script>
 </body>

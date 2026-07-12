@@ -1,6 +1,5 @@
-# ADP KAI Kalender Bali Digital — Phase 2.4.9
+# KD-Bali Phase 2.4.10
 
-KD-Bali PWA. Phase 2.4.9 merapikan layar Hari Ini agar lebih fokus: panduan setup dilipat, user melihat agenda/progress/aksi berikutnya lebih dulu, dan navigasi HP tetap memakai bottom nav.
+Adat Setup Wizard dan keputusan lanjut sederhana.
 
-Deploy URL:
-https://adp-kai-kalender-bali-app.vercel.app/?v=249&app=kd-bali-v249
+Fokus: isi data inti keluarga berurutan, backup, lalu lanjut banten/arsip/cloud setelah data lokal rapi.
