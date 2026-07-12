@@ -116,3 +116,19 @@ Keputusan produk: KD-Bali default harus sederhana untuk keluarga. Modul detail a
 
 Link setelah deploy:
 `https://adp-kai-kalender-bali-app.vercel.app/?v=242&app=kd-bali-v242`
+
+
+## Phase 2.4.3 - Adat Keluarga Hub Polish
+
+Update ini merapikan menu Adat Keluarga agar tidak terasa seperti semua form tampil sekaligus.
+
+- Menambah Adat Keluarga Hub dengan ringkasan Otonan, Merajan, Pelinggih, dan Checklist
+- Menambah tab modul kerja: Ringkasan, Otonan, Merajan, Banten, Arsip, dan Cloud
+- Form detail hanya tampil saat modulnya dipilih
+- Alur kerja dibuat lebih jelas: catat keluarga → rapikan merajan/pelinggih → detail banten/arsip/cloud
+- Semua fitur dan data lokal lama tetap dipertahankan
+
+Link setelah deploy:
+`https://adp-kai-kalender-bali-app.vercel.app/?v=243&app=kd-bali-v243`
+
+Catatan: phase ini masih fokus simplifikasi UI. Firebase login real ditunda sampai struktur menu stabil.
