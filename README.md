@@ -1,11 +1,11 @@
-# ADP KAI Kalender Bali Digital — Phase 2.5.5
+# ADP KAI Kalender Bali Digital — Phase 2.5.6
 
-Phase 2.5.5 menambahkan Device Transfer Test Flow:
-- checklist kesiapan pindah HP/browser baru
-- panduan perangkat sumber dan perangkat tujuan
-- copy checklist HP lama / HP baru
-- catat uji transfer berhasil
-- export transfer checklist TXT
-- schema data/deviceTransferTest.schema.json
+Phase 2.5.6 menambahkan Transfer Result & Sync Confidence:
+- skor kepercayaan sync pilot
+- ringkasan data lokal, backup, Firebase config, login, upload/fetch/restore Cloud Seed
+- status hasil uji pindah HP/browser
+- tombol Tandai Sync Pilot Aman
+- export Sync Confidence TXT
+- schema data/syncConfidence.schema.json
 
-Catatan: ini masih pilot Cloud Seed, belum real-time multi-device sync penuh.
+Catatan: ini masih pilot Cloud Seed dan restore review, belum real-time multi-device sync penuh.

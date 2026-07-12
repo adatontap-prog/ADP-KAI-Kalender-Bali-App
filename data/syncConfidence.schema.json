@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KD-Bali Sync Confidence Status",
+  "type": "object",
+  "description": "Local-first pilot status that summarizes whether Device Transfer Test and Cloud Seed restore are safe enough before full cloud sync hardening.",
+  "properties": {
+    "lastAcceptedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "level": {
+      "type": "string",
+      "enum": [
+        "Belum aman",
+        "Setengah siap",
+        "Cukup untuk uji lanjutan",
+        "Aman untuk lanjut hardening"
+      ]
+    },
+    "decision": {
+      "type": "string"
+    },
+    "familyId": {
+      "type": "string"
+    },
+    "userEmail": {
+      "type": "string"
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      }
+    }
+  },
+  "required": [
+    "lastAcceptedAt",
+    "score",
+    "level",
+    "decision"
+  ]
+}
