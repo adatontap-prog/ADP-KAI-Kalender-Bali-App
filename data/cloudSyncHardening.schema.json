@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KD-Bali Cloud Sync Hardening Schema",
+  "type": "object",
+  "properties": {
+    "lockedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "level": {
+      "type": "string"
+    },
+    "total": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "counts": {
+      "type": "object"
+    },
+    "path": {
+      "type": "string"
+    },
+    "seedUploadedAt": {
+      "type": "string"
+    },
+    "seedFetchedAt": {
+      "type": "string"
+    },
+    "userEmail": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "lockedAt",
+    "score",
+    "level",
+    "path"
+  ]
+}

@@ -1,11 +1,11 @@
-# ADP KAI Kalender Bali Digital — Phase 2.5.6
+# ADP KAI Kalender Bali Digital — Phase 2.6
 
-Phase 2.5.6 menambahkan Transfer Result & Sync Confidence:
-- skor kepercayaan sync pilot
-- ringkasan data lokal, backup, Firebase config, login, upload/fetch/restore Cloud Seed
-- status hasil uji pindah HP/browser
-- tombol Tandai Sync Pilot Aman
-- export Sync Confidence TXT
-- schema data/syncConfidence.schema.json
+Phase 2.6 menambahkan Cloud Sync Hardening:
+- hardening score sebelum sync otomatis penuh
+- baseline cloud pilot yang bisa dikunci
+- policy manual Cloud Seed only
+- export Cloud Hardening Report TXT
+- copy Hardened Firestore Rules Draft
+- schema data/cloudSyncHardening.schema.json
 
-Catatan: ini masih pilot Cloud Seed dan restore review, belum real-time multi-device sync penuh.
+Catatan: ini masih manual Cloud Seed + restore review. Real-time multi-device sync belum diaktifkan.
