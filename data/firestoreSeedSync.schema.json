@@ -1,0 +1,28 @@
+{
+  "phase": "2.5.2",
+  "name": "Firestore Seed Sync Pilot Schema",
+  "cloudPath": "users/{uid}/families/{familyId}/cloudSeeds/latest",
+  "purpose": "Manual cloud seed upload/restore for KD-Bali before real-time Firestore subcollection sync.",
+  "writeMode": "manual_seed_pilot",
+  "payload": {
+    "app": "ADP KAI Kalender Bali Digital",
+    "shortName": "KD-Bali",
+    "type": "firestore_cloud_seed",
+    "seedVersion": 1,
+    "uploadedBy": {
+      "uid": "firebase uid",
+      "email": "user email",
+      "displayName": "optional"
+    },
+    "familyId": "family id derived from sync profile",
+    "syncProfile": "local sync profile",
+    "family": "otontan/family member array",
+    "adatMemory": "places, shrines, decisions, bantenTemplates",
+    "eventChecklists": "checklist map by event instance",
+    "ceremonyArchives": "ceremony archive array",
+    "cloudMeta": {
+      "syncMode": "manual_seed_pilot"
+    }
+  },
+  "securityRule": "allow read, write only when request.auth.uid == userId"
+}

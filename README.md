@@ -1,21 +1,19 @@
-ADP KAI Kalender Bali Digital / KD-Bali
-Phase 2.5 - Firebase Setup Kit
+# ADP KAI Kalender Bali Digital — Phase 2.5.2
 
-Update ini menyiapkan tahap sebelum login email/Google real:
-- Firebase web config form di Pengaturan
-- Simpan config lokal
-- Export Firebase Config JSON
-- Copy ENV untuk migrasi build app nanti
-- Cloud Readiness Gate sekarang mengarahkan ke Firebase Setup saat data inti sudah siap
+## Firestore Seed Sync Pilot
 
-Catatan: Phase ini belum mengaktifkan Firebase Auth/Firestore real. Login real dilakukan setelah Firebase project config dan security rules siap.
+Update ini menambahkan pilot sync cloud paling aman:
 
+- Firebase Auth Pilot tetap ada.
+- Firestore Seed Sync Pilot ditambahkan di Pengaturan.
+- Data keluarga/adat bisa di-upload sebagai satu Cloud Seed.
+- Di HP baru: login Google, ambil seed, restore ke browser.
+- Belum real-time sync penuh dan belum struktur subcollection final.
 
-## Phase 2.5.1 — Firebase Auth Pilot
+Cloud path pilot:
 
-- Adds a Firebase Auth Pilot panel in Pengaturan.
-- Uses locally saved Firebase web config.
-- Tests Google login only.
-- Does not write family/adat data to Firestore yet.
-- Successful login updates local Sync Profile email/familyId.
-- Next phase can add Firestore write guardrails after Auth is confirmed.
+`users/{uid}/families/{familyId}/cloudSeeds/latest`
+
+Commit:
+
+`ADP KAI Kalender Bali Digital phase 2.5.2 - Firestore Seed Sync Pilot`
