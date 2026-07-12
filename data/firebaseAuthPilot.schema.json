@@ -1,0 +1,22 @@
+{
+  "schema": "kd-bali/firebaseAuthPilot.v2.5.1",
+  "purpose": "Firebase Auth pilot state for KD-Bali before Firestore write sync",
+  "phase": "2.5.1",
+  "authProvider": "google.com",
+  "requiredBeforeAuth": [
+    "firebaseConfig.apiKey",
+    "firebaseConfig.authDomain",
+    "firebaseConfig.projectId",
+    "firebaseConfig.appId",
+    "Google provider enabled in Firebase Authentication",
+    "authorizedDomain includes production Vercel domain"
+  ],
+  "runtimeUserShape": {
+    "uid": "string",
+    "email": "string",
+    "displayName": "string",
+    "photoURL": "string"
+  },
+  "writePolicy": "No family/adat data is written to Firestore in phase 2.5.1. Auth only updates local sync profile email/familyId.",
+  "nextPhase": "Firestore sync dry-run / cloud write guardrails"
+}
