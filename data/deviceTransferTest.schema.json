@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KD-Bali Device Transfer Test Flow",
+  "type": "object",
+  "properties": {
+    "lastTransferTestAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "userEmail": {
+      "type": "string"
+    },
+    "familyId": {
+      "type": "string"
+    },
+    "counts": {
+      "type": "object",
+      "properties": {
+        "Otonan": {
+          "type": "integer"
+        },
+        "Merajan": {
+          "type": "integer"
+        },
+        "Pelinggih": {
+          "type": "integer"
+        },
+        "Checklist": {
+          "type": "integer"
+        },
+        "Arsip": {
+          "type": "integer"
+        }
+      }
+    },
+    "checklist": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "ok": {
+            "type": "boolean"
+          },
+          "detail": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "lastTransferTestAt",
+    "familyId"
+  ]
+}

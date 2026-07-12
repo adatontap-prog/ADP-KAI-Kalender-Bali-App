@@ -1,10 +1,11 @@
-# ADP KAI Kalender Bali Digital — Phase 2.5.4
+# ADP KAI Kalender Bali Digital — Phase 2.5.5
 
-Phase 2.5.4 menambahkan Sync History & Snapshot Log:
-- riwayat lokal untuk cek/upload/fetch/restore Firestore Seed
-- tombol Catat Snapshot Lokal
-- Export Sync Log CSV
-- Clear Sync Log lokal
-- schema data/firestoreSyncLog.schema.json
+Phase 2.5.5 menambahkan Device Transfer Test Flow:
+- checklist kesiapan pindah HP/browser baru
+- panduan perangkat sumber dan perangkat tujuan
+- copy checklist HP lama / HP baru
+- catat uji transfer berhasil
+- export transfer checklist TXT
+- schema data/deviceTransferTest.schema.json
 
-Catatan: ini masih pilot seed sync, belum real-time multi-device sync penuh.
+Catatan: ini masih pilot Cloud Seed, belum real-time multi-device sync penuh.
