@@ -1,0 +1,22 @@
+{
+  "version": "2.4",
+  "collection": "families/{familyId}/ceremonyArchives",
+  "description": "Catatan realisasi upacara keluarga: biaya, pembagian tugas, catatan pelaksanaan, sumber/konfirmasi, dan status arsip.",
+  "fields": {
+    "id": "string",
+    "instanceId": "string - event instance yang diarsipkan",
+    "eventId": "string - adat place/event id",
+    "date": "YYYY-MM-DD",
+    "title": "string",
+    "level": "alit/ageng/rutin/custom",
+    "status": "planned/completed/needs_review/family_confirmed",
+    "budget": "string/number user-entered",
+    "tasks": "string notes",
+    "notes": "string",
+    "sources": "string - pemangku/tetua/serati/kalender cetak/griya",
+    "createdAt": "ISO timestamp",
+    "updatedAt": "ISO timestamp"
+  },
+  "privacy": "private per familyId",
+  "validationNote": "Arsip ini adalah catatan keluarga, bukan standar tunggal adat. Tetap konfirmasi dengan pemangku/tetua/desa/griya/sumber resmi."
+}

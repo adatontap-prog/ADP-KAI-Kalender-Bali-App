@@ -1,4 +1,4 @@
-# ADP KAI Kalender Bali Digital — Phase 2.3
+# ADP KAI Kalender Bali Digital — Phase 2.4
 
 Phase 2.0 menambahkan Data Validation Console untuk audit kualitas data Kalender Bali 2026.
 
@@ -76,3 +76,23 @@ Catatan: template banten/sarana tetap bersifat contoh umum dan harus dikonfirmas
 
 Link setelah deploy:
 `https://adp-kai-kalender-bali-app.vercel.app/?v=230&app=kd-bali-v230`
+
+
+## Phase 2.4 - Arsip Upacara & Biaya/Tugas Adat
+
+Update ini menambahkan modul arsip pelaksanaan upacara keluarga:
+
+- Arsip Upacara per event piodalan merajan/sanggah
+- Catatan status: planned, selesai, perlu review, family confirmed
+- Catatan estimasi/realisasi biaya
+- Catatan pembagian tugas keluarga
+- Catatan pelaksanaan dan evaluasi untuk upacara berikutnya
+- Catatan sumber/konfirmasi: pemangku, tetua keluarga, serati, griya, kalender cetak, atau desa adat
+- Export Arsip Upacara CSV
+- Backup JSON, Adat Memory export, dan Cloud Seed JSON menyertakan `ceremonyArchives`
+- Schema teknis baru: `data/ceremonyArchive.schema.json`
+
+Catatan: Arsip Upacara adalah memori adat keluarga/private. KD-Bali tetap tidak menjadi hakim adat atau standar tunggal.
+
+Link setelah deploy:
+`https://adp-kai-kalender-bali-app.vercel.app/?v=240&app=kd-bali-v240`
