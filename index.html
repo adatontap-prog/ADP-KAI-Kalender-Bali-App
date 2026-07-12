@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#111827" />
-  <title>ADP KAI Kalender Bali Digital — Phase 2.4.4</title>
-  <link rel="manifest" href="manifest-v243.webmanifest?v=244&app=kd-bali-v244" />
-  <link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48-v144.png?v=244" />
-  <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192-v144.png?v=244" />
-  <link rel="apple-touch-icon" href="./assets/apple-touch-icon-v144.png?v=244" />
+  <title>ADP KAI Kalender Bali Digital — Phase 2.4.5</title>
+  <link rel="manifest" href="manifest-v245.webmanifest?v=245&app=kd-bali-v245" />
+  <link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48-v144.png?v=245" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192-v144.png?v=245" />
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon-v144.png?v=245" />
   <style>
     :root{
       --paper:#f4efe4;--ink:#17202a;--muted:#6b7280;--line:#d7cdbc;--red:#dc2626;--black:#111827;--gold:#9a6b1d;--green:#15803d;--blue:#2563eb;--panel:#fffaf0;--tablet-bg:#08111f;--tablet-card:#111827;--tablet-text:#e5e7eb;--tablet-line:rgba(148,163,184,.25);
@@ -58,6 +58,13 @@
     .simple-mode-banner{border:1px solid rgba(21,128,61,.25);background:linear-gradient(135deg,rgba(220,252,231,.75),rgba(255,250,240,.92));border-radius:24px;padding:14px;margin:0 0 14px;display:grid;grid-template-columns:1.1fr .9fr;gap:12px;align-items:center;box-shadow:0 16px 45px rgba(44,31,14,.08)}
     .simple-mode-banner h2{margin:0 0 4px;font-size:1.08rem;letter-spacing:-.02em}.simple-mode-banner p{margin:0;color:var(--muted);line-height:1.45;font-size:.88rem}.simple-mode-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.simple-step{border:1px solid rgba(21,128,61,.2);background:rgba(255,255,255,.62);border-radius:16px;padding:10px}.simple-step strong{display:block;font-size:.82rem}.simple-step span{display:block;margin-top:2px;color:var(--muted);font-size:.72rem;line-height:1.25}
     .calendar-clean-note{border:1px solid rgba(37,99,235,.18);background:rgba(37,99,235,.06);border-radius:18px;padding:12px;margin:14px 0 0;color:var(--muted);font-size:.85rem;line-height:1.45}.calendar-clean-note strong{color:var(--ink)}
+
+    .setup-guide{border:1px solid rgba(154,107,29,.22);background:rgba(255,250,240,.72);border-radius:24px;padding:14px;margin:0 0 14px;box-shadow:0 16px 42px rgba(44,31,14,.07)}
+    .setup-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:12px}.setup-head h2{margin:0 0 4px;font-size:1.04rem}.setup-head p{margin:0;color:var(--muted);line-height:1.45;font-size:.86rem}.setup-priority{border:1px solid rgba(21,128,61,.22);background:rgba(220,252,231,.65);color:#166534;border-radius:999px;padding:7px 10px;font-weight:900;font-size:.72rem;white-space:nowrap}
+    .setup-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.setup-card{border:1px solid rgba(215,205,188,.85);background:rgba(255,255,255,.58);border-radius:18px;padding:12px;min-width:0}.setup-card .num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;background:#171717;color:#fff;font-weight:900;font-size:.8rem;margin-bottom:8px}.setup-card strong{display:block;margin-bottom:4px}.setup-card span{display:block;color:var(--muted);font-size:.78rem;line-height:1.35}.setup-card button{margin-top:10px;border:1px solid #171717;background:#171717;color:#fff;border-radius:12px;padding:9px 10px;font-weight:900;width:100%;cursor:pointer}.setup-card button.secondary{background:#fffaf0;color:var(--ink);border-color:var(--line)}
+    .decision-strip{border:1px solid rgba(37,99,235,.18);background:rgba(37,99,235,.06);border-radius:18px;padding:12px;margin:0 0 14px;color:var(--muted);font-size:.86rem;line-height:1.45}.decision-strip strong{color:var(--ink)}
+    body.tablet-mode .setup-guide,body.tablet-mode .setup-card{background:rgba(15,23,42,.72);border-color:var(--tablet-line);color:var(--tablet-text)}body.tablet-mode .setup-head p,body.tablet-mode .setup-card span,body.tablet-mode .decision-strip{color:#cbd5e1}body.tablet-mode .setup-priority{background:rgba(34,197,94,.12);color:#bbf7d0;border-color:rgba(34,197,94,.25)}
+    @media(max-width:980px){.setup-grid{grid-template-columns:1fr 1fr}.setup-head{display:block}.setup-priority{display:inline-flex;margin-top:10px}}@media(max-width:560px){.setup-grid{grid-template-columns:1fr}.setup-guide{border-radius:20px;padding:12px}}
     body[data-main-view="calendar"] .calendar-shell{margin-bottom:0}body[data-main-view="calendar"] .calendar-clean-note{display:block!important}
     .main-nav button.active strong::after{content:"  ✓";font-weight:900}.topbar .brand p::after{content:" · patch visible";font-weight:800;color:#15803d}
     body.tablet-mode .simple-mode-banner,body.tablet-mode .simple-step{background:rgba(15,23,42,.72);border-color:var(--tablet-line);color:var(--tablet-text)}body.tablet-mode .simple-mode-banner p,body.tablet-mode .simple-step span{color:#cbd5e1}body.tablet-mode .calendar-clean-note{background:rgba(15,23,42,.72);border-color:var(--tablet-line);color:#cbd5e1}body.tablet-mode .calendar-clean-note strong{color:#f8fafc}
@@ -69,7 +76,7 @@
     <section class="topbar">
       <div class="brand">
         <h1>Kalender Bali Digital</h1>
-        <p>Phase 2.4.4 · UI benar-benar sederhana · kalender bersih</p>
+        <p>Phase 2.4.5 · Guided Setup · keputusan langkah berikutnya</p>
       </div>
       <div class="controls">
         <input id="datePicker" type="text" inputmode="numeric" maxlength="10" placeholder="dd/mm/yyyy" aria-label="Tanggal format dd/mm/yyyy">
@@ -91,15 +98,31 @@
 
     <section class="simple-mode-banner view-section view-today" aria-label="Mode sederhana KD-Bali">
       <div>
-        <span class="phase-badge">Phase 2.4.4 · Simple Mode Fix</span>
-        <h2>UI sekarang dipisah tegas: jangan cari semua fitur di bawah kalender</h2>
-        <p>Halaman default hanya untuk ringkasan keluarga. Kalender hanya untuk melihat tanggal. Detail adat masuk ke Adat Keluarga. Backup, validasi, dan display masuk ke Pengaturan.</p>
+        <span class="phase-badge">Phase 2.4.5 · Guided Setup</span>
+        <h2>Sekarang app memberi arahan: isi data inti dulu, detail belakangan</h2>
+        <p>Fokus berikutnya bukan tambah fitur baru, tetapi memastikan user tahu urutan kerja: otonan keluarga, merajan/sanggah, pelinggih, lalu banten/arsip dan backup.</p>
       </div>
       <div class="simple-mode-steps">
         <div class="simple-step"><strong>Hari Ini</strong><span>Ringkasan harian</span></div>
         <div class="simple-step"><strong>Kalender</strong><span>Bulan bersih</span></div>
         <div class="simple-step"><strong>Adat</strong><span>Detail keluarga</span></div>
         <div class="simple-step"><strong>Setting</strong><span>Teknis/export</span></div>
+      </div>
+    </section>
+
+    <section class="setup-guide view-section view-today" aria-label="Panduan setup KD-Bali">
+      <div class="setup-head">
+        <div>
+          <h2>Panduan langkah berikutnya</h2>
+          <p>Jangan isi semuanya sekaligus. Gunakan urutan ini agar KD-Bali menjadi rapi dan tidak membingungkan.</p>
+        </div>
+        <span class="setup-priority">Prioritas: data inti dulu</span>
+      </div>
+      <div class="setup-grid">
+        <div class="setup-card"><span class="num">1</span><strong>Otonan keluarga</strong><span>Pastikan anggota keluarga dan otonan utama sudah tercatat.</span><button type="button" data-jump-view="adat" data-scroll-target="#adatDashboard">Buka Adat</button></div>
+        <div class="setup-card"><span class="num">2</span><strong>Merajan / Sanggah</strong><span>Catat piodalan utama merajan/sanggah sebagai jadwal keluarga.</span><button type="button" data-jump-view="adat" data-scroll-target="#adatDashboard">Buka Merajan</button></div>
+        <div class="setup-card"><span class="num">3</span><strong>Pelinggih</strong><span>Tambahkan pelinggih satu per satu sesuai versi keluarga, bukan standar umum.</span><button type="button" data-jump-view="adat" data-scroll-target="#adatDashboard">Buka Registry</button></div>
+        <div class="setup-card"><span class="num">4</span><strong>Backup dulu</strong><span>Setelah data inti masuk, export backup sebelum lanjut detail banten/arsip.</span><button class="secondary" type="button" data-jump-view="settings">Buka Pengaturan</button></div>
       </div>
     </section>
 
@@ -155,6 +178,8 @@
       <article class="card"><h2>Otonan Keluarga</h2><div id="familyList" class="list"></div></article>
     </section>
     <section class="section-note view-section view-adat"><strong>Adat Keluarga.</strong> Isi bagian ini hanya saat menambah atau merapikan data keluarga: otonan, merajan/sanggah, pelinggih, banten/sarana, arsip upacara, dan keputusan adat. Kalender utama tetap bersih.</section>
+
+    <section class="decision-strip view-section view-adat"><strong>Keputusan produk saat ini:</strong> jangan lanjut desa adat, hardware, atau Firebase real dulu. Rapikan data keluarga lokal sampai jelas, lalu backup. Cloud login real masuk setelah alur Adat Keluarga stabil.</section>
 
     <section class="adat-dashboard view-section view-adat" id="adatDashboard" aria-label="Hub Adat Keluarga">
       <article class="adat-hero">
@@ -369,6 +394,7 @@
       <article class="card"><h2>Backup & Export</h2><p class="small">Backup/export tetap berada di modul Adat Keluarga karena datanya berasal dari otonan dan adat memory keluarga.</p><button class="quick-action" type="button" data-jump-view="adat" data-scroll-target="#adatOtonanPanel">Buka Backup & Export</button></article>
       <article class="card"><h2>Cloud Sync Foundation</h2><p class="small">Profil email/familyId dan Cloud Seed masih local-first. Firebase login real dilakukan setelah UI stabil.</p><button class="quick-action secondary" type="button" data-jump-view="adat" data-scroll-target="#adatMemoryPanel">Buka Cloud Foundation</button></article>
       <article class="card"><h2>Validasi Data</h2><p class="small">Gunakan konsol validasi untuk melihat coverage, quality score, dan antrean cross-check kalender.</p><button class="quick-action secondary" type="button" data-scroll-target="#validationPanel">Lihat Validasi</button></article>
+      <article class="card"><h2>Status & Next Step</h2><p class="small">Phase 2.4.5 mengunci urutan kerja: data inti keluarga → backup → baru cloud login real. Ini mencegah app kembali ramai.</p><button class="quick-action secondary" type="button" data-jump-view="today">Lihat Panduan</button></article>
     </section>
 
     <section class="validation-section view-section view-settings" id="validationPanel" aria-label="Konsol validasi data">
@@ -658,7 +684,7 @@
     document.getElementById('todayBtn').addEventListener('click',()=>{const today=localTodayIso().slice(0,4)==='2026'?localTodayIso():'2026-07-10';state.selectedDate=today;setDateField(state.selectedDate);renderFamily();renderMonth(+state.selectedDate.slice(5,7));});
     document.getElementById('modeBtn').addEventListener('click',()=>{document.body.classList.toggle('tablet-mode');document.getElementById('modeBtn').textContent=document.body.classList.contains('tablet-mode')?'Mode E-paper':'Mode Tablet';});
     document.getElementById('displayBtn').addEventListener('click',()=>{state.displayMode=!state.displayMode;document.body.classList.toggle('display-mode',state.displayMode);renderInfo(state.selectedDate);});
-    document.getElementById('notifyBtn').addEventListener('click',async()=>{if(!('Notification'in window))return alert('Browser ini belum mendukung notifikasi.');const p=await Notification.requestPermission();if(p==='granted'){state.notifyPref={enabled:true,lastTestAt:new Date().toISOString()};saveNotifyPref();const next=buildUpcoming(state.selectedDate)[0];new Notification('Kalender Bali Digital',{body:next?`Reminder terdekat: ${next.title} · ${reminderLabel(next.daysLeft)}`:'Tes notifikasi berhasil. Pusat reminder aktif.',icon:'./assets/icon-192-v144.png?v=244'});renderInfo(state.selectedDate);}else{state.notifyPref.enabled=false;saveNotifyPref();renderInfo(state.selectedDate);}});
+    document.getElementById('notifyBtn').addEventListener('click',async()=>{if(!('Notification'in window))return alert('Browser ini belum mendukung notifikasi.');const p=await Notification.requestPermission();if(p==='granted'){state.notifyPref={enabled:true,lastTestAt:new Date().toISOString()};saveNotifyPref();const next=buildUpcoming(state.selectedDate)[0];new Notification('Kalender Bali Digital',{body:next?`Reminder terdekat: ${next.title} · ${reminderLabel(next.daysLeft)}`:'Tes notifikasi berhasil. Pusat reminder aktif.',icon:'./assets/icon-192-v144.png?v=245'});renderInfo(state.selectedDate);}else{state.notifyPref.enabled=false;saveNotifyPref();renderInfo(state.selectedDate);}});
     init().catch(err=>{console.error(err);alert('Data belum bisa dibaca. Jalankan via local server atau deploy ke Vercel.');});
   </script>
 </body>
