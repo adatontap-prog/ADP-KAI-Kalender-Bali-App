@@ -1,9 +1,10 @@
-# ADP KAI Kalender Bali Digital — Phase 2.5.3
+# ADP KAI Kalender Bali Digital — Phase 2.5.4
 
-Phase 2.5.3 menambahkan Restore Review & Sync Safety:
-- review perbandingan data lokal vs Cloud Seed
-- checkbox konfirmasi sebelum restore
-- backup lokal otomatis/manual sebelum restore
-- perbaikan key status Firestore Seed pilot
+Phase 2.5.4 menambahkan Sync History & Snapshot Log:
+- riwayat lokal untuk cek/upload/fetch/restore Firestore Seed
+- tombol Catat Snapshot Lokal
+- Export Sync Log CSV
+- Clear Sync Log lokal
+- schema data/firestoreSyncLog.schema.json
 
 Catatan: ini masih pilot seed sync, belum real-time multi-device sync penuh.

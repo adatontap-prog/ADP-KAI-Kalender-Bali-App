@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KD-Bali Firestore Sync Log",
+  "description": "Local sync history entries for manual Firestore seed pilot actions.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "check",
+        "upload",
+        "fetch",
+        "restore",
+        "pre_restore_backup",
+        "snapshot",
+        "rules",
+        "error"
+      ]
+    },
+    "message": {
+      "type": "string"
+    },
+    "userEmail": {
+      "type": "string"
+    },
+    "uid": {
+      "type": "string"
+    },
+    "familyId": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
+    "counts": {
+      "type": "object",
+      "properties": {
+        "Otonan": {
+          "type": "integer"
+        },
+        "Merajan": {
+          "type": "integer"
+        },
+        "Pelinggih": {
+          "type": "integer"
+        },
+        "Checklist": {
+          "type": "integer"
+        },
+        "Arsip": {
+          "type": "integer"
+        }
+      }
+    }
+  },
+  "required": [
+    "id",
+    "at",
+    "action"
+  ]
+}
