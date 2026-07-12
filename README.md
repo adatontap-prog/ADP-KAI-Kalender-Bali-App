@@ -1,9 +1,11 @@
 ADP KAI Kalender Bali Digital / KD-Bali
-Phase 2.4.11 - Data Guardrails & Priority Flow
+Phase 2.5 - Firebase Setup Kit
 
-Update ini menjaga UI tetap sederhana dan menambahkan guardrails agar user fokus mengisi data inti keluarga: otonan, merajan/sanggah, pelinggih, lalu backup sebelum melanjutkan fitur besar seperti cloud login real.
+Update ini menyiapkan tahap sebelum login email/Google real:
+- Firebase web config form di Pengaturan
+- Simpan config lokal
+- Export Firebase Config JSON
+- Copy ENV untuk migrasi build app nanti
+- Cloud Readiness Gate sekarang mengarahkan ke Firebase Setup saat data inti sudah siap
 
-
-## Phase 2.4.12 — Cloud Readiness Gate
-
-Menambahkan keputusan kesiapan sebelum cloud login real. App mengecek otonan, merajan/sanggah, pelinggih, backup, dan profil sync agar migrasi Firebase/Auth tidak dilakukan sebelum data inti keluarga aman.
+Catatan: Phase ini belum mengaktifkan Firebase Auth/Firestore real. Login real dilakukan setelah Firebase project config dan security rules siap.

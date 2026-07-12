@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KD-Bali Firebase Setup Config Schema",
+  "phase": "2.5",
+  "type": "object",
+  "required": [
+    "apiKey",
+    "authDomain",
+    "projectId",
+    "appId"
+  ],
+  "properties": {
+    "apiKey": {
+      "type": "string"
+    },
+    "authDomain": {
+      "type": "string"
+    },
+    "projectId": {
+      "type": "string"
+    },
+    "appId": {
+      "type": "string"
+    },
+    "messagingSenderId": {
+      "type": "string"
+    },
+    "storageBucket": {
+      "type": "string"
+    }
+  },
+  "notes": "Config ini disimpan local-first untuk persiapan Firebase Auth + Firestore real. Jangan mengaktifkan login real sebelum Firestore security rules disiapkan."
+}
