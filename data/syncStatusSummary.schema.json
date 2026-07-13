@@ -1,0 +1,23 @@
+{
+  "schema": "kd-bali.syncStatusSummary.v2.6.3",
+  "phase": "2.6.3",
+  "purpose": "Compact status summary for local data, backup, Firebase config, Cloud Seed, restore review, transfer test, and hardening baseline before real-time sync.",
+  "policy": "manual_cloud_seed_only",
+  "fields": {
+    "score": "number 0-100",
+    "level": "Belum aman | Parsial | Pilot cukup siap | Siap hardening lanjutan",
+    "items": [
+      "data",
+      "backup",
+      "firebase",
+      "cloudSeed",
+      "restore",
+      "transfer",
+      "hardening"
+    ],
+    "lastBackupAt": "ISO timestamp optional",
+    "lastCloudSeedUploadAt": "ISO timestamp optional",
+    "lastCloudSeedFetchAt": "ISO timestamp optional",
+    "hardeningLockedAt": "ISO timestamp optional"
+  }
+}

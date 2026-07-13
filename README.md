@@ -8,3 +8,10 @@ Phase 2.6.2 menambahkan Sync Command Center:
 - schema data/syncCommandCenter.schema.json
 
 Catatan: lanjutkan uji transfer HP lama → HP baru sebelum mengaktifkan sync real otomatis.
+
+
+## Phase 2.6.3 — Sync Status Summary
+
+- Menambahkan ringkasan cepat status backup, Firebase config, Cloud Seed, restore, transfer test, dan hardening baseline.
+- Tetap manual Cloud Seed only; real-time sync belum diaktifkan.
+- Menambahkan `data/syncStatusSummary.schema.json`.

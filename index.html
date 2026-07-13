@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#111827" />
-  <title>ADP KAI Kalender Bali Digital — Phase 2.6.2</title>
-  <link rel="manifest" href="manifest-v262.webmanifest?v=262&app=kd-bali-v262" />
-  <link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48-v144.png?v=262" />
-  <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192-v144.png?v=262" />
-  <link rel="apple-touch-icon" href="./assets/apple-touch-icon-v144.png?v=262" />
+  <title>ADP KAI Kalender Bali Digital — Phase 2.6.3</title>
+  <link rel="manifest" href="manifest-v263.webmanifest?v=263&app=kd-bali-v263" />
+  <link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48-v144.png?v=263" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192-v144.png?v=263" />
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon-v144.png?v=263" />
   <style>
     :root{
       --paper:#f4efe4;--ink:#17202a;--muted:#6b7280;--line:#d7cdbc;--red:#dc2626;--black:#111827;--gold:#9a6b1d;--green:#15803d;--blue:#2563eb;--panel:#fffaf0;--tablet-bg:#08111f;--tablet-card:#111827;--tablet-text:#e5e7eb;--tablet-line:rgba(148,163,184,.25);
@@ -174,7 +174,7 @@
     @media(max-width:760px){.firestore-sync-head{display:grid}.firestore-sync-actions button{width:100%}.firestore-sync-grid{grid-template-columns:1fr}}
 
 
-    /* Phase 2.6.2: Sync Command Center */
+    /* Phase 2.6.3: Sync Command Center */
     .sync-command-center{border:1px solid rgba(15,118,110,.22);background:linear-gradient(135deg,rgba(240,253,250,.92),rgba(255,251,235,.82));border-radius:24px;padding:16px;margin:14px 0;display:grid;gap:14px;box-shadow:0 16px 42px rgba(44,31,14,.08)}
     .sync-command-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.sync-command-head h2{margin:4px 0}.sync-command-head p{margin:0;color:var(--muted);line-height:1.45}.sync-command-pill{border:1px solid rgba(15,118,110,.28);border-radius:999px;background:#ccfbf1;color:#0f766e;font-weight:950;padding:8px 10px;white-space:nowrap;font-size:.78rem}
     .sync-command-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.sync-command-card{border:1px solid rgba(215,205,188,.82);border-radius:18px;background:rgba(255,255,255,.62);padding:12px;display:grid;gap:8px;align-content:start}.sync-command-card strong{font-size:.92rem}.sync-command-card span{color:var(--muted);font-size:.78rem;line-height:1.35}.sync-command-card button{border:1px solid #111827;background:#111827;color:#fff;border-radius:12px;padding:9px 10px;font-weight:900;cursor:pointer;width:100%}.sync-command-card button.secondary{background:#fffaf0;color:var(--ink);border-color:var(--line)}
@@ -187,6 +187,13 @@
     body.tablet-mode .sync-command-center,body.tablet-mode .sync-command-card{background:rgba(15,23,42,.72);border-color:var(--tablet-line);color:var(--tablet-text)}body.tablet-mode .sync-command-head p,body.tablet-mode .sync-command-card span,body.tablet-mode .sync-command-decision{color:#cbd5e1}body.tablet-mode .sync-command-pill{background:rgba(20,184,166,.12);color:#99f6e4;border-color:rgba(20,184,166,.25)}body.tablet-mode .sync-command-decision strong{color:var(--tablet-text)}body.tablet-mode .sync-command-card button.secondary{background:var(--tablet-card);color:var(--tablet-text);border-color:var(--tablet-line)}
     @media(max-width:980px){.sync-command-grid{grid-template-columns:1fr 1fr}.sync-command-head{display:block}.sync-command-pill{display:inline-flex;margin-top:10px}}@media(max-width:560px){.sync-command-grid{grid-template-columns:1fr}.sync-command-center{border-radius:20px;padding:12px}}
 
+
+    /* Phase 2.6.3: Sync Status Summary */
+    .sync-status-summary{border:1px solid rgba(37,99,235,.22);background:linear-gradient(135deg,rgba(239,246,255,.92),rgba(255,250,240,.86));border-radius:24px;padding:16px;margin:14px 0;display:grid;gap:14px;box-shadow:0 16px 42px rgba(44,31,14,.08)}
+    .sync-status-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.sync-status-head h2{margin:4px 0}.sync-status-head p{margin:0;color:var(--muted);line-height:1.45}.sync-status-score{border-radius:999px;background:#dbeafe;color:#1d4ed8;border:1px solid rgba(37,99,235,.25);font-weight:950;padding:8px 10px;white-space:nowrap;font-size:.78rem}.sync-status-meter{height:9px;border-radius:999px;background:rgba(37,99,235,.13);overflow:hidden}.sync-status-meter i{display:block;height:100%;width:0%;background:linear-gradient(90deg,#2563eb,#0f766e);border-radius:999px;transition:width .25s ease}.sync-status-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.sync-status-item{border:1px solid rgba(215,205,188,.82);border-radius:16px;background:rgba(255,255,255,.58);padding:10px;display:grid;gap:5px}.sync-status-item strong{font-size:.86rem}.sync-status-item span{font-size:.76rem;color:var(--muted);line-height:1.35}.sync-status-item.ok{border-color:rgba(22,163,74,.26);background:rgba(240,253,244,.72)}.sync-status-item.warn{border-color:rgba(245,158,11,.32);background:rgba(255,251,235,.82)}.sync-status-item.danger{border-color:rgba(220,38,38,.22);background:rgba(254,242,242,.78)}.sync-status-decision{border-left:4px solid #2563eb;border-radius:14px;background:rgba(37,99,235,.08);padding:11px;color:var(--muted);font-size:.84rem;line-height:1.45}.sync-status-decision strong{color:var(--ink)}.sync-status-actions{display:flex;gap:8px;flex-wrap:wrap}.sync-status-actions button{border:1px solid #111827;background:#111827;color:#fff;border-radius:12px;padding:9px 10px;font-weight:900;cursor:pointer}.sync-status-actions button.secondary{background:#fffaf0;color:var(--ink);border-color:var(--line)}
+    body.tablet-mode .sync-status-summary,body.tablet-mode .sync-status-item{background:rgba(15,23,42,.72);border-color:var(--tablet-line);color:var(--tablet-text)}body.tablet-mode .sync-status-head p,body.tablet-mode .sync-status-item span,body.tablet-mode .sync-status-decision{color:#cbd5e1}body.tablet-mode .sync-status-decision strong{color:var(--tablet-text)}body.tablet-mode .sync-status-actions button.secondary{background:var(--tablet-card);color:var(--tablet-text);border-color:var(--tablet-line)}
+    @media(max-width:980px){.sync-status-grid{grid-template-columns:1fr 1fr}.sync-status-head{display:block}.sync-status-score{display:inline-flex;margin-top:10px}}@media(max-width:560px){.sync-status-grid{grid-template-columns:1fr}.sync-status-summary{border-radius:20px;padding:12px}.sync-status-actions button{width:100%}}
+
   </style>
 </head>
 <body data-main-view="today" data-adat-module="overview" data-settings-module="overview">
@@ -194,7 +201,7 @@
     <section class="topbar">
       <div class="brand">
         <h1>Kalender Bali Digital</h1>
-        <p>Phase 2.6.2 · Sync Command Center</p>
+        <p>Phase 2.6.3 · Sync Status Summary</p>
       </div>
       <div class="controls primary-controls" aria-label="Kontrol utama kalender">
         <input id="datePicker" type="text" inputmode="numeric" maxlength="10" placeholder="dd/mm/yyyy" aria-label="Tanggal format dd/mm/yyyy">
@@ -215,9 +222,9 @@
 
     <section class="simple-mode-banner view-section view-today" aria-label="Mode sederhana KD-Bali">
       <div>
-        <span class="phase-badge">Phase 2.6.2 · Sync Command Center</span>
-        <h2>Sync Command Center sebelum sync real</h2>
-        <p>Phase ini merapikan Pengaturan agar proses cloud tidak membingungkan: backup, Firebase, Cloud Seed, transfer HP, dan hardening masuk ke jalur keputusan yang jelas.</p>
+        <span class="phase-badge">Phase 2.6.3 · Sync Status Summary</span>
+        <h2>Sync Status Summary sebelum sync real</h2>
+        <p>Phase ini menambahkan ringkasan cepat agar status backup, Cloud Seed, transfer, dan hardening bisa dibaca tanpa membuka semua panel teknis.</p>
       </div>
       <div class="simple-mode-steps focus-actions">
         <button id="toggleSetupGuideBtn" class="guide-toggle" type="button">Lihat Panduan Setup</button>
@@ -509,7 +516,7 @@
     <section class="device-transfer-panel view-section view-today view-settings settings-detail-section settings-sync-section" id="autoBackupReminderPanel" aria-label="Auto Backup Reminder">
       <div class="device-transfer-head">
         <div>
-          <span class="phase-badge">Phase 2.6.2 · Sync Command Center</span>
+          <span class="phase-badge">Phase 2.6.3 · Sync Command Center</span>
           <h2>Backup Discipline</h2>
           <p>Panel ini memastikan data lokal tidak berjalan terlalu jauh tanpa backup. App membaca umur backup, status Cloud Seed, hardening baseline, dan log sync sebelum menyarankan langkah berikutnya.</p>
         </div>
@@ -820,7 +827,7 @@
     <section class="sync-command-center view-section view-settings" id="syncCommandCenter" aria-label="Sync Command Center">
       <div class="sync-command-head">
         <div>
-          <span class="phase-badge">Phase 2.6.2 · Sync Command Center</span>
+          <span class="phase-badge">Phase 2.6.3 · Sync Command Center</span>
           <h2>Sync Command Center</h2>
           <p>Satu pintu untuk proses cloud. Default tetap aman: backup lokal dulu, Cloud Seed manual, review restore, baru hardening. Real-time sync penuh belum diaktifkan.</p>
         </div>
@@ -835,6 +842,27 @@
       <div class="sync-command-decision"><strong>Keputusan phase ini:</strong> Pengaturan tidak lagi menampilkan semua panel teknis sekaligus. Buka jalur yang dibutuhkan saja agar user tidak bingung saat cloud pilot.</div>
     </section>
 
+    <section class="sync-status-summary view-section view-settings" id="syncStatusSummaryPanel" aria-label="Sync Status Summary">
+      <div class="sync-status-head">
+        <div>
+          <span class="phase-badge">Phase 2.6.3 · Sync Status Summary</span>
+          <h2>Ringkasan status sync & backup</h2>
+          <p>Panel ini membaca status utama tanpa membuka semua alat teknis: data lokal, backup, Cloud Seed, transfer test, dan hardening baseline.</p>
+        </div>
+        <span class="sync-status-score" id="syncStatusScore">0% aman</span>
+      </div>
+      <div class="sync-status-meter" aria-hidden="true"><i id="syncStatusBar"></i></div>
+      <div class="sync-status-grid" id="syncStatusGrid">
+        <div class="sync-status-item warn"><strong>Memuat status</strong><span>App sedang membaca localStorage, Firebase pilot, dan sync log.</span></div>
+      </div>
+      <div class="sync-status-decision"><strong id="syncStatusDecisionTitle">Keputusan belum tersedia</strong><span id="syncStatusDecisionText">Buka Pengaturan setelah data selesai dimuat.</span></div>
+      <div class="sync-status-actions">
+        <button id="refreshSyncStatusBtn" type="button">Refresh Status</button>
+        <button id="exportSyncStatusBtn" class="secondary" type="button">Export Status TXT</button>
+        <button class="secondary" type="button" data-settings-nav="sync" data-scroll-target="#autoBackupReminderPanel">Buka Backup & Hardening</button>
+      </div>
+    </section>
+
     <section class="settings-hub view-section view-settings" id="settingsPanel" aria-label="Pengaturan dan alat teknis">
       <article class="card"><h2>Backup & Export</h2><p class="small">Backup/export tetap berada di modul Adat Keluarga karena datanya berasal dari otonan dan adat memory keluarga.</p><button class="quick-action" type="button" data-jump-view="adat" data-scroll-target="#adatOtonanPanel">Buka Backup & Export</button></article>
       <article class="card"><h2>Cloud Sync Foundation</h2><p class="small">Profil email/familyId dan Cloud Seed masih local-first. Firebase login real dilakukan setelah UI stabil.</p><button class="quick-action secondary" type="button" data-jump-view="adat" data-scroll-target="#adatMemoryPanel">Buka Cloud Foundation</button></article>
@@ -847,7 +875,7 @@
       <article class="card"><h2>Sync Confidence</h2><p class="small">Ringkasan hasil uji pindah HP: apakah cloud seed, restore, backup, login, dan log sudah cukup aman sebelum sync otomatis penuh.</p><button class="quick-action secondary" type="button" data-settings-nav="sync" data-scroll-target="#syncConfidencePanel">Buka Sync Confidence</button></article>
       <article class="card"><h2>Backup Discipline</h2><p class="small">Pengingat backup berdasarkan umur backup, Cloud Seed, baseline hardening, dan log sync. Gunakan sebelum sync real.</p><button class="quick-action secondary" type="button" data-settings-nav="sync" data-scroll-target="#autoBackupReminderPanel">Buka Backup Discipline</button></article>
       <article class="card"><h2>Cloud Sync Hardening</h2><p class="small">Kunci baseline, rules draft, policy manual seed, dan laporan hardening sebelum sync otomatis penuh.</p><button class="quick-action secondary" type="button" data-settings-nav="sync" data-scroll-target="#cloudHardeningPanel">Buka Hardening</button></article>
-      <article class="card"><h2>Status & Next Step</h2><p class="small">Phase 2.6.2 menambahkan Sync Command Center: satu pintu untuk backup, Firebase, Cloud Seed, uji pindah HP, dan hardening.</p><button class="quick-action secondary" type="button" data-jump-view="today">Lihat Panduan</button></article>
+      <article class="card"><h2>Status & Next Step</h2><p class="small">Phase 2.6.3 menambahkan Sync Status Summary: ringkasan cepat status backup, Cloud Seed, transfer, dan hardening.</p><button class="quick-action secondary" type="button" data-jump-view="today">Lihat Panduan</button></article>
     </section>
 
     <section class="validation-section view-section view-settings settings-detail-section settings-validation-section" id="validationPanel" aria-label="Konsol validasi data">
@@ -1558,6 +1586,57 @@
     function exportBackupDisciplineReport(){downloadText(`kd-bali-backup-discipline-${new Date().toLocaleDateString('sv-SE')}.txt`,backupDisciplineReportText(),'text/plain');setFirestoreSeedStatus('Backup Discipline Report TXT berhasil dibuat.', 'ok');}
     function markBackupReminderReviewed(){saveAutoBackupReminder({reviewedAt:new Date().toISOString(),score:buildBackupDisciplineReport().score});addSyncLog('backup_review','Backup discipline direview.');renderAutoBackupReminder();setFirestoreSeedStatus('Backup discipline sudah direview. Tetap buat backup baru setelah perubahan data besar.', 'ok');}
 
+
+    function buildSyncStatusSummary(){
+      const backup=getLastBackupStatus();
+      const seed=firestoreSeedStatusLocal();
+      const hard=cloudHardeningLocal();
+      const transfer=deviceTransferLocal();
+      const confidence=syncConfidenceLocal();
+      const fb=firebaseConfigStatusSummary();
+      const logs=syncLogLocal();
+      const local=snapshotCounts(null);
+      const total=(local.Otonan||0)+(local.Merajan||0)+(local.Pelinggih||0)+(local.Checklist||0)+(local.Arsip||0);
+      const backupAge=backup.lastBackupAt?Math.max(0,Math.round((Date.now()-new Date(backup.lastBackupAt).getTime())/86400000)):999;
+      const seedAge=seed.lastUploadedAt?Math.max(0,Math.round((Date.now()-new Date(seed.lastUploadedAt).getTime())/86400000)):999;
+      const hasUpload=!!seed.lastUploadedAt||logs.some(l=>l.action==='upload');
+      const hasFetch=!!seed.lastFetchedAt||logs.some(l=>l.action==='fetch');
+      const hasRestore=logs.some(l=>l.action==='restore');
+      const items=[
+        {key:'data',label:'Data lokal',ok:total>0,detail:total?`${total} item lokal tersimpan.`:'Belum ada data adat/keluarga yang perlu disync.'},
+        {key:'backup',label:'Backup lokal',ok:!!backup.lastBackupAt&&backupAge<=7,partial:!!backup.lastBackupAt,detail:backup.lastBackupAt?`Backup ${backupAge} hari lalu.`:'Belum ada backup JSON.'},
+        {key:'firebase',label:'Firebase config',ok:fb.ready,partial:fb.requiredDone>0,detail:fb.ready?`Project ${fb.projectId||'-'} siap.`:`${fb.requiredDone}/${fb.requiredTotal} field wajib terisi.`},
+        {key:'cloudSeed',label:'Cloud Seed',ok:hasUpload&&seedAge<=14,partial:hasUpload,detail:hasUpload?`Upload ${seedAge} hari lalu.`:'Belum ada Cloud Seed upload.'},
+        {key:'restore',label:'Review/restore',ok:hasFetch&&hasRestore,partial:hasFetch||hasRestore,detail:hasRestore?'Restore pernah tercatat.':hasFetch?'Seed sudah diambil, belum restore.':'Belum ada fetch/review seed.'},
+        {key:'transfer',label:'Uji pindah HP',ok:!!transfer.successAt,partial:!!transfer.updatedAt,detail:transfer.successAt?`Berhasil: ${new Date(transfer.successAt).toLocaleDateString('id-ID')}`:'Belum ditandai berhasil.'},
+        {key:'hardening',label:'Hardening',ok:!!hard.lockedAt,partial:!!confidence.acceptedAt,detail:hard.lockedAt?`Baseline score ${hard.score||0}%.`:confidence.acceptedAt?'Confidence diterima, baseline belum lock.':'Belum lock baseline.'}
+      ];
+      const points=items.reduce((sum,i)=>sum+(i.ok?1:(i.partial?.5:0)),0);
+      const score=Math.round(points/items.length*100);
+      let level='Belum aman';let decision='Mulai dari backup lokal, lalu Firebase config dan Cloud Seed manual.';
+      if(score>=85){level='Siap hardening lanjutan';decision='Manual Cloud Seed sudah cukup kuat untuk uji lebih serius. Real-time sync tetap butuh conflict guard.';}
+      else if(score>=65){level='Pilot cukup siap';decision='Lanjutkan uji pindah HP dan lock baseline sebelum sync otomatis.';}
+      else if(score>=40){level='Parsial';decision='Data mulai siap. Lengkapi backup, Firebase config, upload/fetch Cloud Seed, lalu transfer test.';}
+      return {items,score,level,decision,backup,seed,hard,transfer,confidence,local,total,fb};
+    }
+    function renderSyncStatusSummary(){
+      const panel=document.getElementById('syncStatusSummaryPanel');if(!panel)return;
+      const r=buildSyncStatusSummary();
+      const score=document.getElementById('syncStatusScore');if(score)score.textContent=`${r.score}% · ${r.level}`;
+      const bar=document.getElementById('syncStatusBar');if(bar)bar.style.width=r.score+'%';
+      const grid=document.getElementById('syncStatusGrid');if(grid)grid.innerHTML=r.items.map(i=>`<div class="sync-status-item ${i.ok?'ok':i.partial?'warn':'danger'}"><strong>${i.ok?'✅':i.partial?'◐':'□'} ${i.label}</strong><span>${i.detail}</span></div>`).join('');
+      const title=document.getElementById('syncStatusDecisionTitle');if(title)title.textContent=r.level;
+      const body=document.getElementById('syncStatusDecisionText');if(body)body.textContent=' '+r.decision;
+    }
+    function syncStatusSummaryText(){
+      const r=buildSyncStatusSummary();
+      const lines=['KD-Bali Sync Status Summary',`Tanggal: ${new Date().toLocaleString('id-ID')}`,`Score: ${r.score}%`,`Level: ${r.level}`,`Keputusan: ${r.decision}`,'',`Total data lokal: ${r.total}`,`Otonan ${r.local.Otonan||0} · Merajan ${r.local.Merajan||0} · Pelinggih ${r.local.Pelinggih||0} · Checklist ${r.local.Checklist||0} · Arsip ${r.local.Arsip||0}`,'','Status:'];
+      r.items.forEach(i=>lines.push(`${i.ok?'[OK]':i.partial?'[PARTIAL]':'[ ]'} ${i.label} - ${i.detail}`));
+      lines.push('',`Backup terakhir: ${r.backup.lastBackupAt?new Date(r.backup.lastBackupAt).toLocaleString('id-ID'):'-'}`,`Cloud Seed upload: ${r.seed.lastUploadedAt?new Date(r.seed.lastUploadedAt).toLocaleString('id-ID'):'-'}`,`Cloud Seed fetch: ${r.seed.lastFetchedAt?new Date(r.seed.lastFetchedAt).toLocaleString('id-ID'):'-'}`,`Hardening baseline: ${r.hard.lockedAt?new Date(r.hard.lockedAt).toLocaleString('id-ID'):'-'}`,'','Policy: manual Cloud Seed only. Real-time sync belum aktif.');
+      return lines.join('\n');
+    }
+    function exportSyncStatusSummary(){downloadText(`kd-bali-sync-status-summary-${new Date().toLocaleDateString('sv-SE')}.txt`,syncStatusSummaryText(),'text/plain');setFirestoreSeedStatus('Sync Status Summary TXT berhasil dibuat.', 'ok');}
+
     function setupFirestoreSeedPilot(){
       const check=document.getElementById('checkFirestoreSeedBtn');if(check)check.addEventListener('click',checkFirestoreSeed);
       const upload=document.getElementById('uploadFirestoreSeedBtn');if(upload)upload.addEventListener('click',uploadFirestoreSeed);
@@ -1583,18 +1662,21 @@
       const backupNow=document.getElementById('downloadBackupFromReminderBtn');if(backupNow)backupNow.addEventListener('click',exportBackup);
       const exportBackupDisc=document.getElementById('exportBackupDisciplineBtn');if(exportBackupDisc)exportBackupDisc.addEventListener('click',exportBackupDisciplineReport);
       const markBackupReview=document.getElementById('markBackupReminderReviewedBtn');if(markBackupReview)markBackupReview.addEventListener('click',markBackupReminderReviewed);
+      const refreshSyncStatus=document.getElementById('refreshSyncStatusBtn');if(refreshSyncStatus)refreshSyncStatus.addEventListener('click',renderSyncStatusSummary);
+      const exportSyncStatus=document.getElementById('exportSyncStatusBtn');if(exportSyncStatus)exportSyncStatus.addEventListener('click',exportSyncStatusSummary);
       renderFirestoreSeedPilot();
       renderDeviceTransferTest();
       renderSyncConfidencePanel();
+      renderSyncStatusSummary();
     }
 
-    async function init(){document.getElementById('dowGrid').innerHTML=dows.map(d=>`<div class="dow">${d}</div>`).join('');setupMonthSelect();setupFamilyForm();setupAdatMemory();setupMainNav();setupSettingsNav();setupAdatSubNav();setupGuidanceToggle();setupFirebasePrep();setupFirebaseAuthPilot();setupFirestoreSeedPilot();const [events,family,coverage]=await Promise.all([getJson(DATA.events),getJson(DATA.family),getJson(DATA.coverage)]);state.events=events;state.sampleFamily=family;state.family=loadFamilyFromStorage(family);state.adatMemory=loadAdatMemory();state.eventChecklists=loadEventChecklists();state.ceremonyArchives=loadCeremonyArchives();state.syncProfile=loadCloudSyncProfile();state.firebaseConfig=loadFirebaseConfig();state.coverage=coverage;renderFirebaseAuthPilot();renderFirestoreSeedPilot();state.notifyPref=loadNotifyPref();const params=new URLSearchParams(location.search);if(params.get('feed')==='display'||params.get('feed')==='1'){renderFeedMode(state.selectedDate);return;}if(params.get('display')==='1'){state.displayMode=true;document.body.classList.add('display-mode');document.body.classList.add('tablet-mode');}const picker=document.getElementById('datePicker');setDateField(state.selectedDate);picker.addEventListener('change',()=>{const parsed=parseDMY(picker.value);if(!parsed||parsed.slice(0,4)!=='2026'){alert('Tanggal tampilan kalender harus format dd/mm/yyyy dan tahun 2026. Contoh: 11/07/2026');setDateField(state.selectedDate);return;}state.selectedDate=parsed;renderMonth(+state.selectedDate.slice(5,7));renderFamily();});renderFamily();renderAdatMemory();updateAdatSummary();renderWizardGuardrails();renderCloudReadinessGate();renderFirebaseConfig();renderFirestoreSeedPilot();renderMonth(+state.selectedDate.slice(5,7));renderValidationConsole();updateDisplayFeedUrl();if(state.displayMode){setInterval(()=>{const t=localTodayIso();if(t.slice(0,4)==='2026'&&t!==state.selectedDate){state.selectedDate=t;setDateField(state.selectedDate);renderFamily();renderAdatMemory();renderMonth(+state.selectedDate.slice(5,7));}},900000);}if('serviceWorker' in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.warn);}
+    async function init(){document.getElementById('dowGrid').innerHTML=dows.map(d=>`<div class="dow">${d}</div>`).join('');setupMonthSelect();setupFamilyForm();setupAdatMemory();setupMainNav();setupSettingsNav();setupAdatSubNav();setupGuidanceToggle();setupFirebasePrep();setupFirebaseAuthPilot();setupFirestoreSeedPilot();const [events,family,coverage]=await Promise.all([getJson(DATA.events),getJson(DATA.family),getJson(DATA.coverage)]);state.events=events;state.sampleFamily=family;state.family=loadFamilyFromStorage(family);state.adatMemory=loadAdatMemory();state.eventChecklists=loadEventChecklists();state.ceremonyArchives=loadCeremonyArchives();state.syncProfile=loadCloudSyncProfile();state.firebaseConfig=loadFirebaseConfig();state.coverage=coverage;renderFirebaseAuthPilot();renderFirestoreSeedPilot();state.notifyPref=loadNotifyPref();const params=new URLSearchParams(location.search);if(params.get('feed')==='display'||params.get('feed')==='1'){renderFeedMode(state.selectedDate);return;}if(params.get('display')==='1'){state.displayMode=true;document.body.classList.add('display-mode');document.body.classList.add('tablet-mode');}const picker=document.getElementById('datePicker');setDateField(state.selectedDate);picker.addEventListener('change',()=>{const parsed=parseDMY(picker.value);if(!parsed||parsed.slice(0,4)!=='2026'){alert('Tanggal tampilan kalender harus format dd/mm/yyyy dan tahun 2026. Contoh: 11/07/2026');setDateField(state.selectedDate);return;}state.selectedDate=parsed;renderMonth(+state.selectedDate.slice(5,7));renderFamily();});renderFamily();renderAdatMemory();updateAdatSummary();renderWizardGuardrails();renderCloudReadinessGate();renderFirebaseConfig();renderFirestoreSeedPilot();renderSyncStatusSummary();renderMonth(+state.selectedDate.slice(5,7));renderValidationConsole();updateDisplayFeedUrl();if(state.displayMode){setInterval(()=>{const t=localTodayIso();if(t.slice(0,4)==='2026'&&t!==state.selectedDate){state.selectedDate=t;setDateField(state.selectedDate);renderFamily();renderAdatMemory();renderMonth(+state.selectedDate.slice(5,7));}},900000);}if('serviceWorker' in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.warn);}
     window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();state.deferredPrompt=e;const btn=document.getElementById('installBtn');btn.hidden=false;btn.textContent='Install App';});
-    document.getElementById('installBtn').addEventListener('click',async()=>{const btn=document.getElementById('installBtn');if(state.deferredPrompt){state.deferredPrompt.prompt();await state.deferredPrompt.userChoice;state.deferredPrompt=null;btn.textContent='Panduan Install';return;}alert('Jika tombol install sistem tidak muncul: buka Chrome menu titik tiga → Add to Home screen / Install app. Jika icon lama masih muncul, uninstall dulu app lama dari Settings Android → Apps, lalu install ulang dari link versi 2.6.2.');});
+    document.getElementById('installBtn').addEventListener('click',async()=>{const btn=document.getElementById('installBtn');if(state.deferredPrompt){state.deferredPrompt.prompt();await state.deferredPrompt.userChoice;state.deferredPrompt=null;btn.textContent='Panduan Install';return;}alert('Jika tombol install sistem tidak muncul: buka Chrome menu titik tiga → Add to Home screen / Install app. Jika icon lama masih muncul, uninstall dulu app lama dari Settings Android → Apps, lalu install ulang dari link versi 2.6.3.');});
     document.getElementById('todayBtn').addEventListener('click',()=>{const today=localTodayIso().slice(0,4)==='2026'?localTodayIso():'2026-07-10';state.selectedDate=today;setDateField(state.selectedDate);renderFamily();renderMonth(+state.selectedDate.slice(5,7));});
     document.getElementById('modeBtn').addEventListener('click',()=>{document.body.classList.toggle('tablet-mode');document.getElementById('modeBtn').textContent=document.body.classList.contains('tablet-mode')?'Mode E-paper':'Mode Tablet';});
     document.getElementById('displayBtn').addEventListener('click',()=>{state.displayMode=!state.displayMode;document.body.classList.toggle('display-mode',state.displayMode);renderInfo(state.selectedDate);});
-    document.getElementById('notifyBtn').addEventListener('click',async()=>{if(!('Notification'in window))return alert('Browser ini belum mendukung notifikasi.');const p=await Notification.requestPermission();if(p==='granted'){state.notifyPref={enabled:true,lastTestAt:new Date().toISOString()};saveNotifyPref();const next=buildUpcoming(state.selectedDate)[0];new Notification('Kalender Bali Digital',{body:next?`Reminder terdekat: ${next.title} · ${reminderLabel(next.daysLeft)}`:'Tes notifikasi berhasil. Pusat reminder aktif.',icon:'./assets/icon-192-v144.png?v=262'});renderInfo(state.selectedDate);}else{state.notifyPref.enabled=false;saveNotifyPref();renderInfo(state.selectedDate);}});
+    document.getElementById('notifyBtn').addEventListener('click',async()=>{if(!('Notification'in window))return alert('Browser ini belum mendukung notifikasi.');const p=await Notification.requestPermission();if(p==='granted'){state.notifyPref={enabled:true,lastTestAt:new Date().toISOString()};saveNotifyPref();const next=buildUpcoming(state.selectedDate)[0];new Notification('Kalender Bali Digital',{body:next?`Reminder terdekat: ${next.title} · ${reminderLabel(next.daysLeft)}`:'Tes notifikasi berhasil. Pusat reminder aktif.',icon:'./assets/icon-192-v144.png?v=263'});renderInfo(state.selectedDate);}else{state.notifyPref.enabled=false;saveNotifyPref();renderInfo(state.selectedDate);}});
     init().catch(err=>{console.error(err);alert('Data belum bisa dibaca. Jalankan via local server atau deploy ke Vercel.');});
   </script>
 </body>
