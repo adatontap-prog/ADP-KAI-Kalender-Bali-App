@@ -1,0 +1,21 @@
+{
+  "schemaName": "KD-Bali Sync Command Center",
+  "phase": "2.6.2",
+  "version": "1.6.2",
+  "policy": "manual_cloud_seed_only",
+  "realTimeSync": "off",
+  "modules": [
+    "backup_hardening",
+    "firebase_cloud_seed",
+    "device_transfer_test",
+    "data_validation"
+  ],
+  "settingsModuleStates": [
+    "overview",
+    "sync",
+    "firebase",
+    "transfer",
+    "validation"
+  ],
+  "decision": "Settings should open one sync lane at a time to reduce confusion before real-time sync."
+}

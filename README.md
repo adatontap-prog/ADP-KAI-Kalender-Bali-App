@@ -1,11 +1,10 @@
-# ADP KAI Kalender Bali Digital — Phase 2.6.1
+# ADP KAI Kalender Bali Digital — Phase 2.6.2
 
-Phase 2.6.1 menambahkan Auto Backup Reminder / Backup Discipline:
-- panel Backup Discipline di Hari Ini dan Pengaturan
-- skor umur backup lokal, Cloud Seed, baseline hardening, dan restore review
-- tombol Export Backup JSON dari panel reminder
-- Export Backup Discipline Report TXT
-- status review backup discipline lokal
-- schema data/autoBackupReminder.schema.json
+Phase 2.6.2 menambahkan Sync Command Center:
+- satu pintu di Pengaturan untuk Backup & Hardening, Firebase & Cloud Seed, Uji Pindah HP, dan Validasi Data
+- panel teknis cloud tidak lagi tampil semua sekaligus di Pengaturan
+- settings module state: overview / sync / firebase / transfer / validation
+- policy tetap manual Cloud Seed only; real-time sync penuh belum aktif
+- schema data/syncCommandCenter.schema.json
 
-Catatan: real-time multi-device sync belum diaktifkan. Policy tetap: backup lokal dulu → Cloud Seed manual → review restore → hardening → baru desain sync real.
+Catatan: lanjutkan uji transfer HP lama → HP baru sebelum mengaktifkan sync real otomatis.
