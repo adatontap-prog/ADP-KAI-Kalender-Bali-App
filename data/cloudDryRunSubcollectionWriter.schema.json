@@ -1,0 +1,28 @@
+{
+  "schema": "KD-Bali Cloud Dry Run Subcollection Writer",
+  "phase": "2.6.6",
+  "mode": "dry_run_only",
+  "writesToFirestore": false,
+  "purpose": "Simulate how local family/adat data will be split into final Firestore subcollections before actual Cloud Sync Real.",
+  "requiredReviewBeforeWrite": true,
+  "targetCollections": [
+    "users/{uid}",
+    "families/{familyId}",
+    "families/{familyId}/members",
+    "families/{familyId}/adatPlaces",
+    "families/{familyId}/shrines",
+    "families/{familyId}/adatDecisions",
+    "families/{familyId}/bantenTemplates",
+    "families/{familyId}/eventChecklists",
+    "families/{familyId}/ceremonyArchives",
+    "families/{familyId}/eventInstances",
+    "families/{familyId}/syncSnapshots"
+  ],
+  "guardrails": [
+    "No Firestore write in this phase",
+    "No realtime listener",
+    "No silent overwrite",
+    "Dry-run payload must be reviewed",
+    "Actual writer requires backup and rollback path"
+  ]
+}

@@ -1,18 +1,19 @@
-# ADP KAI Kalender Bali Digital — Phase 2.6.5
+# ADP KAI Kalender Bali Digital — Phase 2.6.6
 
 ## Phase
-Cloud Sync Real Blueprint before implementation.
+Dry Run Subcollection Writer before Cloud Sync Real.
 
 ## Isi update
-- Tambah panel Cloud Sync Real Blueprint di Pengaturan.
-- Memetakan struktur Firestore target berbasis user/family/subcollection.
-- Menetapkan conflict policy: tidak ada silent overwrite, wajib review, backup sebelum restore, sync log, dan rollback path.
-- Export Blueprint TXT dan Copy Blueprint.
-- Menambah schema: data/cloudSyncRealBlueprint.schema.json.
-- Service worker cache naik ke v2.6.5.
+- Tambah panel Dry Run Subcollection Writer di Pengaturan.
+- Simulasi pemecahan data lokal ke Firestore subcollection final.
+- Generate/Copy/Export Dry Run JSON.
+- Export Dry Run Report TXT.
+- Belum ada write ke Firestore dan belum real-time sync.
+- Menambah schema: data/cloudDryRunSubcollectionWriter.schema.json.
+- Service worker cache naik ke v2.6.6.
 
 ## Policy
-Real-time sync penuh belum diaktifkan. Manual Cloud Seed tetap menjadi mode aman sampai dry-run subcollection writer diuji.
+Manual Cloud Seed tetap aman. Dry-run wajib direview sebelum writer subcollection nyata dibuat.
 
 ## Commit
-ADP KAI Kalender Bali Digital phase 2.6.5 - Cloud Sync Real Blueprint
+ADP KAI Kalender Bali Digital phase 2.6.6 - Dry Run Subcollection Writer
