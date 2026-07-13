@@ -1,0 +1,28 @@
+{
+  "schema": "kd-bali-dry-run-validation-gate-v2-6-7",
+  "phase": "2.6.7",
+  "purpose": "Validate Dry Run Subcollection Writer output before any actual Firestore write pilot.",
+  "policy": {
+    "writesToFirestore": false,
+    "realTimeSync": false,
+    "manualSeedOnly": true,
+    "actualWriteRequiresExplicitUserAction": true,
+    "backupBeforeWritePilot": true,
+    "rollbackRequired": true
+  },
+  "checks": [
+    "dryRunPayload",
+    "docCount",
+    "dryRunOnlyPolicy",
+    "uniquePaths",
+    "pathScope",
+    "requiredDocs",
+    "coreLocalData",
+    "firebaseConfig",
+    "googleAuth",
+    "localBackup",
+    "realSyncGate",
+    "manualSeedStable",
+    "userAcceptedGate"
+  ]
+}

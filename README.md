@@ -1,19 +1,16 @@
-# ADP KAI Kalender Bali Digital — Phase 2.6.6
+# ADP KAI Kalender Bali Digital — Phase 2.6.7
 
-## Phase
-Dry Run Subcollection Writer before Cloud Sync Real.
+Phase 2.6.7 menambahkan **Dry Run Validation & Write Gate** sebelum actual Firestore write pilot.
 
-## Isi update
-- Tambah panel Dry Run Subcollection Writer di Pengaturan.
-- Simulasi pemecahan data lokal ke Firestore subcollection final.
-- Generate/Copy/Export Dry Run JSON.
-- Export Dry Run Report TXT.
-- Belum ada write ke Firestore dan belum real-time sync.
-- Menambah schema: data/cloudDryRunSubcollectionWriter.schema.json.
-- Service worker cache naik ke v2.6.6.
+## Fokus
+- Validasi hasil Dry Run Subcollection Writer.
+- Cek path unik, scope user/family, doc count, policy dry-run, Firebase config, Google Auth, backup lokal, Real Sync Gate, dan manual seed stability.
+- Tambah tombol Validasi Dry Run, Tandai Dry Run Aman, dan Export Write Gate Report.
+- Tidak ada actual write ke Firestore.
+- Real-time sync masih belum aktif.
 
 ## Policy
-Manual Cloud Seed tetap aman. Dry-run wajib direview sebelum writer subcollection nyata dibuat.
+Manual Cloud Seed tetap menjadi mode aman sampai write gate valid. Actual write pilot berikutnya harus manual, eksplisit, ter-log, terbatas, dan memiliki backup/rollback.
 
 ## Commit
-ADP KAI Kalender Bali Digital phase 2.6.6 - Dry Run Subcollection Writer
+ADP KAI Kalender Bali Digital phase 2.6.7 - Dry Run Validation and Write Gate
