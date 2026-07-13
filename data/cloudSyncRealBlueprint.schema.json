@@ -1,0 +1,28 @@
+{
+  "version": "2.6.5",
+  "name": "cloudSyncRealBlueprint",
+  "status": "blueprint_only",
+  "policy": "manual_cloud_seed_until_blueprint_dry_run_is_safe",
+  "collections": [
+    "users/{uid}",
+    "families/{familyId}",
+    "families/{familyId}/members/{memberId}",
+    "families/{familyId}/adatPlaces/{placeId}",
+    "families/{familyId}/shrines/{shrineId}",
+    "families/{familyId}/adatEvents/{eventId}",
+    "families/{familyId}/bantenTemplates/{templateId}",
+    "families/{familyId}/eventChecklists/{checklistId}",
+    "families/{familyId}/ceremonyArchives/{archiveId}",
+    "families/{familyId}/adatDecisions/{decisionId}",
+    "families/{familyId}/syncSnapshots/{snapshotId}",
+    "families/{familyId}/syncLogs/{logId}"
+  ],
+  "conflictPolicy": [
+    "never_silent_overwrite",
+    "review_required_before_restore",
+    "local_backup_before_destructive_restore",
+    "log_every_sync_action",
+    "rollback_path_required"
+  ],
+  "nextPhase": "2.6.6 Cloud Sync Dry Run Subcollection Writer"
+}

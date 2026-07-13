@@ -1,22 +1,18 @@
-# ADP KAI Kalender Bali Digital — Phase 2.6.2
+# ADP KAI Kalender Bali Digital — Phase 2.6.5
 
-Phase 2.6.2 menambahkan Sync Command Center:
-- satu pintu di Pengaturan untuk Backup & Hardening, Firebase & Cloud Seed, Uji Pindah HP, dan Validasi Data
-- panel teknis cloud tidak lagi tampil semua sekaligus di Pengaturan
-- settings module state: overview / sync / firebase / transfer / validation
-- policy tetap manual Cloud Seed only; real-time sync penuh belum aktif
-- schema data/syncCommandCenter.schema.json
+## Phase
+Cloud Sync Real Blueprint before implementation.
 
-Catatan: lanjutkan uji transfer HP lama → HP baru sebelum mengaktifkan sync real otomatis.
+## Isi update
+- Tambah panel Cloud Sync Real Blueprint di Pengaturan.
+- Memetakan struktur Firestore target berbasis user/family/subcollection.
+- Menetapkan conflict policy: tidak ada silent overwrite, wajib review, backup sebelum restore, sync log, dan rollback path.
+- Export Blueprint TXT dan Copy Blueprint.
+- Menambah schema: data/cloudSyncRealBlueprint.schema.json.
+- Service worker cache naik ke v2.6.5.
 
+## Policy
+Real-time sync penuh belum diaktifkan. Manual Cloud Seed tetap menjadi mode aman sampai dry-run subcollection writer diuji.
 
-## Phase 2.6.3 — Sync Status Summary
-
-- Menambahkan ringkasan cepat status backup, Firebase config, Cloud Seed, restore, transfer test, dan hardening baseline.
-- Tetap manual Cloud Seed only; real-time sync belum diaktifkan.
-- Menambahkan `data/syncStatusSummary.schema.json`.
-
-
-## Phase 2.6.4 — Real Sync Decision Gate
-
-Menambahkan gerbang Go/No-Go sebelum Cloud Sync Real. App tetap memakai manual Cloud Seed sampai backup, Firebase config, Cloud Seed, restore review, uji pindah HP, hardening baseline, dan manual seed stability dinyatakan aman.
+## Commit
+ADP KAI Kalender Bali Digital phase 2.6.5 - Cloud Sync Real Blueprint
