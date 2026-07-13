@@ -15,3 +15,8 @@ Catatan: lanjutkan uji transfer HP lama → HP baru sebelum mengaktifkan sync re
 - Menambahkan ringkasan cepat status backup, Firebase config, Cloud Seed, restore, transfer test, dan hardening baseline.
 - Tetap manual Cloud Seed only; real-time sync belum diaktifkan.
 - Menambahkan `data/syncStatusSummary.schema.json`.
+
+
+## Phase 2.6.4 — Real Sync Decision Gate
+
+Menambahkan gerbang Go/No-Go sebelum Cloud Sync Real. App tetap memakai manual Cloud Seed sampai backup, Firebase config, Cloud Seed, restore review, uji pindah HP, hardening baseline, dan manual seed stability dinyatakan aman.

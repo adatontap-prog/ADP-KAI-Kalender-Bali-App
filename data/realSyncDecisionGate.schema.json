@@ -1,0 +1,21 @@
+{
+  "schema": "kd-bali.realSyncDecisionGate.v2.6.4",
+  "purpose": "Go/No-Go gate before Cloud Sync Real. It checks manual seed pilot readiness without enabling real-time sync.",
+  "policy": "manual_cloud_seed_only_until_gate_passes",
+  "requiredSignals": [
+    "backupLocalSafe",
+    "firebaseConfigReady",
+    "cloudSeedUploaded",
+    "restoreReviewed",
+    "deviceTransferSucceeded",
+    "hardeningBaselineLocked",
+    "manualSeedMarkedStable"
+  ],
+  "decisionLevels": [
+    "NO-GO",
+    "WAIT",
+    "HAMPIR GO",
+    "GO: siap desain Cloud Sync Real"
+  ],
+  "nextAllowedWhenGo": "Design Firestore subcollections, conflict guard, backup-before-overwrite, rollback path, and explicit user confirmation before any real-time sync."
+}
