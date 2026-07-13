@@ -1,0 +1,16 @@
+{
+  "schema": "kd-bali-auto-backup-reminder-v2-6-1",
+  "phase": "2.6.1",
+  "purpose": "Track backup discipline before real-time cloud sync.",
+  "fields": {
+    "reviewedAt": "ISO datetime when user reviewed backup discipline.",
+    "score": "Backup discipline score at review time.",
+    "updatedAt": "ISO datetime when local status was updated."
+  },
+  "policy": [
+    "Export local Backup JSON after major local data changes.",
+    "Upload Cloud Seed only after local backup exists.",
+    "Before restore, review cloud-vs-local data and create pre-restore backup.",
+    "Do not enable real-time sync until backup and hardening gates are stable."
+  ]
+}

@@ -1,11 +1,11 @@
-# ADP KAI Kalender Bali Digital — Phase 2.6
+# ADP KAI Kalender Bali Digital — Phase 2.6.1
 
-Phase 2.6 menambahkan Cloud Sync Hardening:
-- hardening score sebelum sync otomatis penuh
-- baseline cloud pilot yang bisa dikunci
-- policy manual Cloud Seed only
-- export Cloud Hardening Report TXT
-- copy Hardened Firestore Rules Draft
-- schema data/cloudSyncHardening.schema.json
+Phase 2.6.1 menambahkan Auto Backup Reminder / Backup Discipline:
+- panel Backup Discipline di Hari Ini dan Pengaturan
+- skor umur backup lokal, Cloud Seed, baseline hardening, dan restore review
+- tombol Export Backup JSON dari panel reminder
+- Export Backup Discipline Report TXT
+- status review backup discipline lokal
+- schema data/autoBackupReminder.schema.json
 
-Catatan: ini masih manual Cloud Seed + restore review. Real-time multi-device sync belum diaktifkan.
+Catatan: real-time multi-device sync belum diaktifkan. Policy tetap: backup lokal dulu → Cloud Seed manual → review restore → hardening → baru desain sync real.

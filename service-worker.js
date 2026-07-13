@@ -1,8 +1,8 @@
-const CACHE_NAME = 'adp-kai-kalender-bali-v2-6-0';
+const CACHE_NAME = 'adp-kai-kalender-bali-v2-6-1';
 const APP_SHELL = [
   './',
-  './index.html?v=260&app=kd-bali-v260',
-  './manifest-v260.webmanifest?v=260',
+  './index.html?v=261&app=kd-bali-v261',
+  './manifest-v261.webmanifest?v=261',
   './data/events.2026.json',
   './data/familyMembers.sample.json',
   './data/dataCoverage.2026.json',
@@ -18,10 +18,11 @@ const APP_SHELL = [
   './data/deviceTransferTest.schema.json',
   './data/syncConfidence.schema.json',
   './data/cloudSyncHardening.schema.json',
-  './assets/icon-192-v144.png?v=260',
-  './assets/icon-512-v144.png?v=260',
-  './assets/favicon-48-v144.png?v=260',
-  './assets/apple-touch-icon-v144.png?v=260'
+  './data/autoBackupReminder.schema.json',
+  './assets/icon-192-v144.png?v=261',
+  './assets/icon-512-v144.png?v=261',
+  './assets/favicon-48-v144.png?v=261',
+  './assets/apple-touch-icon-v144.png?v=261'
 ];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)));
@@ -33,7 +34,7 @@ self.addEventListener('activate', event => {
 });
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
-  if (url.searchParams.get('v') === '260' || event.request.mode === 'navigate') {
+  if (url.searchParams.get('v') === '261' || event.request.mode === 'navigate') {
     event.respondWith(fetch(event.request).then(res => {
       const copy = res.clone();
       caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
