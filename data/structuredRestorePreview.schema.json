@@ -1,0 +1,31 @@
+{
+  "schema": "kd-bali.structuredRestorePreview.v2.6.11",
+  "phase": "2.6.11",
+  "mode": "read_only_restore_preview",
+  "purpose": "Read full Firestore subcollection docs and generate a local restore candidate without writing to localStorage or Firestore.",
+  "storageKey": "adp-kai-kalender-bali-structured-restore-preview-v2-6-11",
+  "inputs": [
+    "firebaseConfig",
+    "firebaseAuthUser",
+    "firestoreFamilyId",
+    "cloudPullPreview",
+    "cloudSubcollectionDocs"
+  ],
+  "candidateTargets": [
+    "family",
+    "adatMemory.places",
+    "adatMemory.shrines",
+    "adatMemory.decisions",
+    "adatMemory.bantenTemplates",
+    "eventChecklists",
+    "ceremonyArchives"
+  ],
+  "safetyPolicy": {
+    "localStorageOverwrite": false,
+    "firestoreWrite": false,
+    "autoSync": false,
+    "realTimeListener": false,
+    "requiresBackupBeforeFutureRestore": true,
+    "requiresExplicitConfirmationBeforeFutureRestore": true
+  }
+}

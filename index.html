@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#111827" />
-  <title>ADP KAI Kalender Bali Digital — Phase 2.6.10</title>
-  <link rel="manifest" href="manifest-v270.webmanifest?v=270&app=kd-bali-v270" />
-  <link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48-v144.png?v=270" />
-  <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192-v144.png?v=270" />
-  <link rel="apple-touch-icon" href="./assets/apple-touch-icon-v144.png?v=270" />
+  <title>ADP KAI Kalender Bali Digital — Phase 2.6.11</title>
+  <link rel="manifest" href="manifest-v271.webmanifest?v=271&app=kd-bali-v271" />
+  <link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48-v144.png?v=271" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192-v144.png?v=271" />
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon-v144.png?v=271" />
   <style>
     :root{
       --paper:#f4efe4;--ink:#17202a;--muted:#6b7280;--line:#d7cdbc;--red:#dc2626;--black:#111827;--gold:#9a6b1d;--green:#15803d;--blue:#2563eb;--panel:#fffaf0;--tablet-bg:#08111f;--tablet-card:#111827;--tablet-text:#e5e7eb;--tablet-line:rgba(148,163,184,.25);
@@ -219,7 +219,7 @@
     <section class="topbar">
       <div class="brand">
         <h1>Kalender Bali Digital</h1>
-        <p>Phase 2.6.10 · Cloud Pull Preview</p>
+        <p>Phase 2.6.11 · Structured Restore Preview</p>
       </div>
       <div class="controls primary-controls" aria-label="Kontrol utama kalender">
         <input id="datePicker" type="text" inputmode="numeric" maxlength="10" placeholder="dd/mm/yyyy" aria-label="Tanggal format dd/mm/yyyy">
@@ -1053,6 +1053,29 @@
       </div>
     </section>
 
+    <section class="real-sync-gate view-section view-settings" id="structuredRestorePreviewPanel" aria-label="Structured Restore Preview and Local Apply Plan">
+      <div class="real-sync-head">
+        <div>
+          <span class="phase-badge">Phase 2.6.11 · Restore Preview</span>
+          <h2>Structured Restore Preview</h2>
+          <p>Panel ini membaca dokumen Firestore subcollection final secara penuh, lalu membuat kandidat restore lokal tanpa menulis ke localStorage. Tidak ada restore aktual, tidak ada write, dan tidak ada auto-sync.</p>
+        </div>
+        <span class="real-sync-pill" id="structuredRestorePreviewPill">Belum restore preview</span>
+      </div>
+      <div class="real-sync-grid" id="structuredRestorePreviewGrid">
+        <div class="real-sync-item warn"><strong>Menunggu restore preview</strong><span>Jalankan Cloud Pull Preview dulu, lalu buat Restore Preview.</span></div>
+      </div>
+      <div class="real-sync-decision"><strong id="structuredRestorePreviewTitle">Belum ada restore preview</strong><span id="structuredRestorePreviewDecision">Tujuan panel ini memastikan cloud data bisa dipetakan kembali ke struktur lokal sebelum fitur restore manual dibuat.</span></div>
+      <div class="cloud-sync-blueprint-policy"><strong>Policy keselamatan</strong> Restore preview hanya menyusun rencana apply lokal. Tidak menimpa data browser, tidak menghapus data lokal, tidak write Firestore, dan tidak menjalankan listener real-time.</div>
+      <pre class="cloud-sync-blueprint-code" id="structuredRestorePreviewCode">Belum ada Restore Preview.</pre>
+      <div class="cloud-sync-blueprint-actions">
+        <button id="runStructuredRestorePreviewBtn" type="button">Build Restore Preview</button>
+        <button id="exportStructuredRestorePreviewBtn" class="secondary" type="button">Export Restore Preview Report</button>
+        <button id="markStructuredRestorePreviewSafeBtn" class="secondary" type="button">Tandai Restore Preview Aman</button>
+        <button class="secondary" type="button" data-scroll-target="#cloudPullPreviewPanel">Kembali ke Pull Preview</button>
+      </div>
+    </section>
+
     <section class="settings-hub view-section view-settings" id="settingsPanel" aria-label="Pengaturan dan alat teknis">
       <article class="card"><h2>Backup & Export</h2><p class="small">Backup/export tetap berada di modul Adat Keluarga karena datanya berasal dari otonan dan adat memory keluarga.</p><button class="quick-action" type="button" data-jump-view="adat" data-scroll-target="#adatOtonanPanel">Buka Backup & Export</button></article>
       <article class="card"><h2>Cloud Sync Foundation</h2><p class="small">Profil email/familyId dan Cloud Seed masih local-first. Firebase login real dilakukan setelah UI stabil.</p><button class="quick-action secondary" type="button" data-jump-view="adat" data-scroll-target="#adatMemoryPanel">Buka Cloud Foundation</button></article>
@@ -1072,6 +1095,7 @@
       <article class="card"><h2>Actual Write Pilot Manual</h2><p class="small">Write pilot manual ke Firestore subcollection final. Tidak real-time, tidak auto-sync, wajib konfirmasi eksplisit.</p><button class="quick-action secondary" type="button" data-scroll-target="#actualWritePilotPanel">Buka Write Pilot</button></article>
       <article class="card"><h2>Actual Write Verification</h2><p class="small">Baca ulang dokumen Firestore hasil write pilot dan bandingkan dengan dry-run payload sebelum lanjut ke sync real.</p><button class="quick-action secondary" type="button" data-scroll-target="#actualWriteVerifyPanel">Buka Readback Verification</button></article>
       <article class="card"><h2>Cloud Pull Preview</h2><p class="small">Baca struktur Firestore final dari cloud dan bandingkan dengan data lokal/dry-run tanpa restore dan tanpa write.</p><button class="quick-action secondary" type="button" data-scroll-target="#cloudPullPreviewPanel">Buka Pull Preview</button></article>
+      <article class="card"><h2>Structured Restore Preview</h2><p class="small">Baca dokumen cloud penuh dan buat rencana restore lokal tanpa menimpa data browser.</p><button class="quick-action secondary" type="button" data-scroll-target="#structuredRestorePreviewPanel">Buka Restore Preview</button></article>
     </section>
 
     <section class="validation-section view-section view-settings settings-detail-section settings-validation-section" id="validationPanel" aria-label="Konsol validasi data">
@@ -1130,6 +1154,7 @@
     const ACTUAL_WRITE_PILOT_KEY='adp-kai-kalender-bali-actual-write-pilot-v2-6-8';
     const ACTUAL_WRITE_VERIFY_KEY='adp-kai-kalender-bali-actual-write-readback-v2-6-9';
     const CLOUD_PULL_PREVIEW_KEY='adp-kai-kalender-bali-cloud-pull-preview-v2-6-10';
+    const STRUCTURED_RESTORE_PREVIEW_KEY='adp-kai-kalender-bali-structured-restore-preview-v2-6-11';
     const RESTORE_REVIEW_STATUS_KEY='adp-kai-kalender-bali-restore-review-v2-5-3';
     function localTodayIso(){const now=new Date();const y=now.getFullYear();const m=String(now.getMonth()+1).padStart(2,'0');const d=String(now.getDate()).padStart(2,'0');return `${y}-${m}-${d}`;}
     function getInitialSelectedDate(){const params=new URLSearchParams(location.search);const qDate=params.get('date');const qD=params.get('d');if(qDate&&/^\d{4}-\d{2}-\d{2}$/.test(qDate))return qDate;if(qD){const parsed=parseDMY(qD);if(parsed)return parsed;}const today=localTodayIso();if(today.slice(0,4)==='2026')return today;return '2026-07-10';}
@@ -1173,8 +1198,8 @@
     function exportCalendarIcs(){const calendarEvents=state.events.map(e=>({date:e.date,title:e.title,type:e.type||e.category||'rahinan',description:`Kalender Bali Digital · ${e.category||'event'} · status ${e.source?.verificationStatus||'digital_source_only'} · sumber ${e.source?.sourceName||'SRC-001'} · Untuk keputusan adat penting tetap verifikasi dengan kalender cetak/sumber adat/pemangku.`,uid:`${e.id||uidSafe(e.title)}-${e.date}`}));const otonanEvents=[];state.family.forEach(m=>{otonanDatesInYear(m).forEach(date=>{otonanEvents.push({date,title:`Otonan ${m.name}`,type:'otonan',description:`Otonan keluarga · ${otonanSourceLabel(m)} · ${otonanStatusLabel(m)} · data lokal KD-Bali. Verifikasi adat tetap diperlukan untuk keputusan penting.`,uid:`otonan-${uidSafe(m.id||m.name)}-${date}`});});});const adatEvents=buildAdatInstancesInYear(2026).map(e=>({date:e.date,title:e.title,type:'adat',description:`Adat keluarga KD-Bali · ${e.category} · ${e.level||'level belum diatur'} · ${e.validationStatus||'user_recorded'} · bukan keputusan adat resmi.`,uid:`adat-${uidSafe(e.id)}-${e.date}`}));const all=[...calendarEvents,...otonanEvents,...adatEvents].sort((a,b)=>a.date.localeCompare(b.date)||a.title.localeCompare(b.title));const body=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//ADP KAI//KD-Bali Calendar//ID','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:KD-Bali 2026','X-WR-TIMEZONE:Asia/Makassar',...all.map(buildIcsEvent),'END:VCALENDAR'].join('\r\n');downloadText('kd-bali-kalender-2026.ics',body,'text/calendar;charset=utf-8');updateBackupStatus(`Export ICS dibuat: ${all.length} event kalender + otonan + adat keluarga. Import file .ics ini ke Google Calendar/Apple Calendar jika dibutuhkan.`);}
     function appBaseUrl(){return location.origin+location.pathname.replace(/[^/]*$/,'');}
     function selectedDateParam(){return encodeURIComponent(formatDMY(state.selectedDate));}
-    function displayUrl(){return `${appBaseUrl()}?v=270&app=kd-bali-v270&display=1&d=${selectedDateParam()}`;}
-    function liveFeedUrl(){return `${appBaseUrl()}?v=270&app=kd-bali-v270&feed=display&d=${selectedDateParam()}`;}
+    function displayUrl(){return `${appBaseUrl()}?v=271&app=kd-bali-v271&display=1&d=${selectedDateParam()}`;}
+    function liveFeedUrl(){return `${appBaseUrl()}?v=271&app=kd-bali-v271&feed=display&d=${selectedDateParam()}`;}
     function buildDisplayPayload(iso=state.selectedDate){const evs=eventsOn(iso);const ots=otonanOn(iso);const ads=adatOn(iso);const upcoming=buildUpcoming(iso).slice(0,12).map(e=>({date:e.displayDate,displayDate:formatDMY(e.displayDate),title:e.title,type:e.type||e.category,kind:e.kind,daysLeft:e.daysLeft,label:reminderLabel(e.daysLeft),marker:eventPillClass(e)}));return {app:'KD-Bali',phase:'2.6',feedType:'live_selected_day_display_feed',generatedAt:new Date().toISOString(),selectedDate:iso,displayDate:formatDMY(iso),timezone:'Asia/Makassar / device local',deviceUse:{tabletDisplayUrl:displayUrl(),liveFeedUrl:liveFeedUrl(),refreshSeconds:900},today:{label:idDate(iso),events:evs.map(e=>({title:e.title,type:e.type,category:e.category,marker:eventPillClass(e),isPurnama:!!e.isPurnama,isTilem:!!e.isTilem,verificationStatus:e.source?.verificationStatus||'digital_source_only',source:e.source?.sourceName||'SRC-001'})),otonan:ots.map(m=>({title:`Otonan ${m.name}`,memberName:m.name,source:m.otonan?.source,validationStatus:m.otonan?.validationStatus||'needs_bali_day_confirmation'})),adat:ads.map(e=>({title:e.title,category:e.category,level:e.level,validationStatus:e.validationStatus,checklist:checklistSummaryForInstance(e.id)}))},upcoming,markers:{purnama:'red_dot',tilem:'black_dot_highlighted',rerainan:'gold_dot',otonan:'green_dot',merajan:'purple_dot'},validationNote:'Data digital_source_only. Untuk keputusan adat penting tetap verifikasi dengan kalender cetak/resmi, sumber adat setempat, atau pemangku.'};}
     function updateDisplayFeedUrl(){const el=document.getElementById('displayFeedUrl');if(el)el.textContent=liveFeedUrl();}
     async function copyText(text,label){try{await navigator.clipboard.writeText(text);updateBackupStatus(`${label} disalin ke clipboard.`);}catch(e){prompt(`Copy ${label}:`,text);}}
@@ -2320,6 +2345,96 @@
     function exportCloudPullPreviewReport(){downloadText(`kd-bali-cloud-pull-preview-${new Date().toLocaleDateString('sv-SE')}.txt`,cloudPullPreviewReportText(),'text/plain');setFirestoreSeedStatus('Cloud Pull Preview Report TXT berhasil dibuat.','ok');}
     function markCloudPullPreviewSafe(){const r=cloudPullPreviewReportFromResult(cloudPullPreviewLocal().lastResult||null);if(r.score<80){setFirestoreSeedStatus('Pull Preview belum cukup aman untuk ditandai. Target minimal 80%.','warn');return;}saveCloudPullPreview({lastMarkedSafeAt:new Date().toISOString(),safeScore:r.score,safeLevel:r.level,expectedCount:r.expectedCount,foundCount:r.foundCount});addSyncLog('cloud_pull_preview','Cloud Pull Preview ditandai aman.',{score:r.score,found:r.foundCount,expected:r.expectedCount});renderCloudPullPreview();setFirestoreSeedStatus('Cloud Pull Preview ditandai aman. Phase berikutnya boleh restore preview berbasis subcollection, bukan auto-sync penuh langsung.','ok');}
 
+    function structuredRestorePreviewLocal(){try{return JSON.parse(localStorage.getItem(STRUCTURED_RESTORE_PREVIEW_KEY)||'{}');}catch(e){return {};}}
+    function localBackupStatus(){try{return JSON.parse(localStorage.getItem(BACKUP_STATUS_KEY)||'{}');}catch(e){return {};}}
+    function saveStructuredRestorePreview(data){localStorage.setItem(STRUCTURED_RESTORE_PREVIEW_KEY,JSON.stringify({...structuredRestorePreviewLocal(),...data,updatedAt:new Date().toISOString()}));}
+    function normalizeFirestoreValue(v){
+      if(v&&typeof v.toDate==='function')return v.toDate().toISOString();
+      if(Array.isArray(v))return v.map(normalizeFirestoreValue);
+      if(v&&typeof v==='object'){
+        const out={};Object.entries(v).forEach(([k,val])=>{out[k]=normalizeFirestoreValue(val);});return out;
+      }
+      return v;
+    }
+    function buildRestoreCandidateFromCloudDocs(docs=[]){
+      const byType=(type)=>docs.filter(d=>d.type===type).map(d=>normalizeFirestoreValue(d.data||{}));
+      const family=byType('members').map(normalizeMember);
+      const adatMemory=normalizeAdatMemory({
+        places:byType('adatPlaces'),
+        shrines:byType('shrines'),
+        decisions:byType('adatDecisions'),
+        bantenTemplates:byType('bantenTemplates')
+      });
+      const eventChecklists={};byType('eventChecklists').forEach(c=>{const id=c.instanceId||c.id||c.docId||uidSafe(c.title||'checklist');eventChecklists[id]={...c,instanceId:id,items:(c.items||[]).map(normalizeChecklistItem)};});
+      const ceremonyArchives=normalizeCeremonyArchives(byType('ceremonyArchives'));
+      const counts={family:family.length,places:adatMemory.places.length,shrines:adatMemory.shrines.length,decisions:adatMemory.decisions.length,bantenTemplates:adatMemory.bantenTemplates.length,eventChecklists:Object.keys(eventChecklists).length,ceremonyArchives:ceremonyArchives.length};
+      return {family,adatMemory,eventChecklists,ceremonyArchives,counts};
+    }
+    function restorePreviewSummaryFromResult(result){
+      const docs=result?.docs||[];const candidate=result?.candidate||buildRestoreCandidateFromCloudDocs(docs);
+      const local=snapshotCounts(null);
+      const cloudCounts=candidate.counts||{};
+      const pathScopeOk=docs.every(d=>String(d.path||'').startsWith('users/')||String(d.path||'').startsWith(`families/${firestoreFamilyId()}`));
+      const pull=cloudPullPreviewLocal();
+      const checks=[
+        {key:'config',label:'Firebase config siap',ok:firebaseConfigStatusSummary().ready,detail:firebaseConfigStatusSummary().ready?`Project ${firebaseConfigStatusSummary().projectId}`:'Lengkapi Firebase Setup Kit.'},
+        {key:'login',label:'Login Google aktif',ok:!!state.firebaseAuthUser?.uid,detail:state.firebaseAuthUser?.email||'Login dulu.'},
+        {key:'pull',label:'Cloud Pull Preview tersedia/aman',ok:!!(pull.lastMarkedSafeAt||pull.lastCheckedAt),detail:pull.lastMarkedSafeAt?'Pull Preview ditandai aman.':pull.lastCheckedAt?'Pull Preview pernah dijalankan.':'Jalankan Pull Preview dulu.'},
+        {key:'docs',label:'Cloud docs penuh terbaca',ok:docs.length>0,detail:docs.length?`${docs.length} dokumen cloud dibaca penuh.`:'Belum ada dokumen cloud penuh.'},
+        {key:'scope',label:'Path tetap di scope user/family',ok:pathScopeOk&&docs.length>0,detail:pathScopeOk?'Semua path dalam scope user/family aktif.':'Ada path di luar scope family aktif.'},
+        {key:'candidate',label:'Restore candidate terbentuk',ok:(cloudCounts.family||0)+(cloudCounts.places||0)+(cloudCounts.shrines||0)+(cloudCounts.eventChecklists||0)+(cloudCounts.ceremonyArchives||0)>0,detail:`family ${cloudCounts.family||0}, merajan ${cloudCounts.places||0}, pelinggih ${cloudCounts.shrines||0}, checklist ${cloudCounts.eventChecklists||0}, arsip ${cloudCounts.ceremonyArchives||0}.`},
+        {key:'localBackup',label:'Backup lokal tersedia',ok:!!localBackupStatus().lastBackupAt,detail:localBackupStatus().lastBackupAt?`Backup terakhir ${new Date(localBackupStatus().lastBackupAt).toLocaleString('id-ID')}`:'Buat backup lokal dulu sebelum restore aktual nanti.'},
+        {key:'policy',label:'Preview only policy',ok:true,detail:'Tidak ada localStorage overwrite dan tidak ada write Firestore.'}
+      ];
+      const score=Math.round(checks.filter(x=>x.ok).length/checks.length*100);
+      let level='Belum aman',decision='Jangan buat restore aktual. Lengkapi pull preview, backup, login, dan pastikan candidate terbentuk.';
+      if(score>=90){level='Restore preview aman';decision='Cloud data bisa dipetakan ke struktur lokal. Phase berikutnya boleh membuat manual restore terbatas dengan backup dan checkbox konfirmasi.';}
+      else if(score>=70){level='Restore preview parsial';decision='Candidate terbentuk, tapi masih ada blocker. Selesaikan sebelum restore aktual.';}
+      else if(score>=50){level='Butuh review';decision='Cloud data belum cukup jelas untuk restore. Cek rules, login, path family, dan hasil pull preview.';}
+      return {checkedAt:result?.checkedAt||structuredRestorePreviewLocal().lastCheckedAt||'',score,level,decision,checks,local,cloudCounts,candidate,docCount:docs.length,docs:docs.map(d=>({path:d.path,type:d.type,id:d.id,hasSyncMeta:!!(d.data&&d.data._syncMeta)}))};
+    }
+    function renderStructuredRestorePreview(){
+      const stored=structuredRestorePreviewLocal();const r=restorePreviewSummaryFromResult(stored.lastResult||null);
+      const pill=document.getElementById('structuredRestorePreviewPill');if(pill)pill.textContent=`${r.score}% · ${r.level}`;
+      const grid=document.getElementById('structuredRestorePreviewGrid');if(grid)grid.innerHTML=r.checks.map(x=>`<div class="real-sync-item ${x.ok?'ok':'warn'}"><strong>${x.label}</strong><span>${x.ok?'OK':'Perlu cek'} · ${x.detail}</span></div>`).join('');
+      const title=document.getElementById('structuredRestorePreviewTitle');if(title)title.textContent=r.level;
+      const dec=document.getElementById('structuredRestorePreviewDecision');if(dec)dec.textContent=r.decision;
+      const code=document.getElementById('structuredRestorePreviewCode');
+      if(code)code.textContent=JSON.stringify({checkedAt:r.checkedAt||null,score:r.score,level:r.level,cloudDocs:r.docCount,localCounts:r.local,restoreCandidateCounts:r.cloudCounts,sampleDocs:r.docs.slice(0,12),policy:'PREVIEW ONLY. No localStorage overwrite, no Firestore write, no auto-sync.'},null,2);
+    }
+    async function runStructuredRestorePreview(){
+      try{
+        setFirestoreSeedStatus('Membaca cloud docs penuh untuk Restore Preview...', 'info');
+        const {db,fsMod}=await initFirestoreRuntime();
+        const uid=state.firebaseAuthUser?.uid;const familyId=firestoreFamilyId();
+        const docs=[];
+        const readDoc=async(path,type)=>{const snap=await fsMod.getDoc(fsMod.doc(db,...path.split('/')));if(snap.exists()){docs.push({path,type,id:snap.id,data:normalizeFirestoreValue(snap.data())});}};
+        await readDoc(`users/${uid}`,'user');
+        await readDoc(`families/${familyId}`,'family');
+        const cols=['members','adatPlaces','shrines','adatDecisions','bantenTemplates','eventChecklists','ceremonyArchives','eventInstances','syncSnapshots','syncLogs'];
+        for(const col of cols){const qs=await fsMod.getDocs(fsMod.collection(db,'families',familyId,col));qs.forEach(s=>docs.push({path:`families/${familyId}/${col}/${s.id}`,type:col,id:s.id,data:normalizeFirestoreValue(s.data())}));}
+        const candidate=buildRestoreCandidateFromCloudDocs(docs);
+        const result={checkedAt:new Date().toISOString(),uid,familyId,docCount:docs.length,docs,candidate,policy:{previewOnly:true,localOverwrite:false,firestoreWrite:false,autoSync:false}};
+        saveStructuredRestorePreview({lastCheckedAt:result.checkedAt,lastResult:result});
+        const r=restorePreviewSummaryFromResult(result);
+        addSyncLog('structured_restore_preview',`Restore Preview dibuat: ${docs.length} docs cloud · ${r.score}% ${r.level}.`,{counts:candidate.counts});
+        renderStructuredRestorePreview();
+        setFirestoreSeedStatus(`Restore Preview: ${docs.length} docs · ${r.level}.`,r.score>=70?'ok':'warn');
+      }catch(err){console.error(err);addSyncLog('error','Structured Restore Preview gagal: '+(err?.message||err));setFirestoreSeedStatus('Structured Restore Preview gagal: '+(err?.message||err),'error');alert('Restore Preview gagal. Cek Firebase config, login, Firestore rules, dan path family. Detail: '+(err?.message||err));}
+    }
+    function structuredRestorePreviewReportText(){
+      const r=restorePreviewSummaryFromResult(structuredRestorePreviewLocal().lastResult||null);
+      const lines=['KD-Bali Structured Restore Preview Report',`Tanggal: ${new Date().toLocaleString('id-ID')}`,`Phase: 2.6.11`,`Score: ${r.score}%`,`Level: ${r.level}`,`Decision: ${r.decision}`,`User: ${state.firebaseAuthUser?.email||normalizeSyncProfile(state.syncProfile).email||'-'}`,`Family ID: ${firestoreFamilyId()}`,`Cloud docs: ${r.docCount}`,'','Local counts:'];
+      Object.entries(r.local||{}).forEach(([k,v])=>lines.push(`- ${k}: ${v}`));
+      lines.push('','Restore candidate counts:');Object.entries(r.cloudCounts||{}).forEach(([k,v])=>lines.push(`- ${k}: ${v}`));
+      lines.push('','Checks:');r.checks.forEach(x=>lines.push(`- [${x.ok?'OK':'CEK'}] ${x.label}: ${x.detail}`));
+      lines.push('','Sample cloud docs:');(r.docs||[]).slice(0,25).forEach(d=>lines.push(`- ${d.path} [${d.type}]`));
+      lines.push('','Policy: PREVIEW ONLY. No localStorage overwrite, no Firestore write, no auto-sync, no silent restore.');
+      return lines.join('\n');
+    }
+    function exportStructuredRestorePreviewReport(){downloadText(`kd-bali-structured-restore-preview-${new Date().toLocaleDateString('sv-SE')}.txt`,structuredRestorePreviewReportText(),'text/plain');setFirestoreSeedStatus('Structured Restore Preview Report TXT berhasil dibuat.','ok');}
+    function markStructuredRestorePreviewSafe(){const r=restorePreviewSummaryFromResult(structuredRestorePreviewLocal().lastResult||null);if(r.score<80){setFirestoreSeedStatus('Restore Preview belum cukup aman untuk ditandai. Target minimal 80%.','warn');return;}saveStructuredRestorePreview({lastMarkedSafeAt:new Date().toISOString(),safeScore:r.score,safeLevel:r.level,cloudDocs:r.docCount,cloudCounts:r.cloudCounts});addSyncLog('structured_restore_preview','Structured Restore Preview ditandai aman.',{score:r.score,cloudDocs:r.docCount});renderStructuredRestorePreview();setFirestoreSeedStatus('Restore Preview ditandai aman. Phase berikutnya boleh Manual Local Restore Pilot dengan backup + konfirmasi eksplisit, bukan auto-sync.', 'ok');}
+
     function setupFirestoreSeedPilot(){
       const check=document.getElementById('checkFirestoreSeedBtn');if(check)check.addEventListener('click',checkFirestoreSeed);
       const upload=document.getElementById('uploadFirestoreSeedBtn');if(upload)upload.addEventListener('click',uploadFirestoreSeed);
@@ -2367,6 +2482,9 @@
       const runPullPreview=document.getElementById('runCloudPullPreviewBtn');if(runPullPreview)runPullPreview.addEventListener('click',runCloudPullPreview);
       const exportPullPreview=document.getElementById('exportCloudPullPreviewBtn');if(exportPullPreview)exportPullPreview.addEventListener('click',exportCloudPullPreviewReport);
       const markPullPreview=document.getElementById('markCloudPullPreviewSafeBtn');if(markPullPreview)markPullPreview.addEventListener('click',markCloudPullPreviewSafe);
+      const runRestorePreview=document.getElementById('runStructuredRestorePreviewBtn');if(runRestorePreview)runRestorePreview.addEventListener('click',runStructuredRestorePreview);
+      const exportRestorePreview=document.getElementById('exportStructuredRestorePreviewBtn');if(exportRestorePreview)exportRestorePreview.addEventListener('click',exportStructuredRestorePreviewReport);
+      const markRestorePreview=document.getElementById('markStructuredRestorePreviewSafeBtn');if(markRestorePreview)markRestorePreview.addEventListener('click',markStructuredRestorePreviewSafe);
       renderFirestoreSeedPilot();
       renderDeviceTransferTest();
       renderSyncConfidencePanel();
@@ -2377,15 +2495,16 @@
       renderActualWritePilot();
       renderActualWriteReadback();
       renderCloudPullPreview();
+      renderStructuredRestorePreview();
     }
 
-    async function init(){document.getElementById('dowGrid').innerHTML=dows.map(d=>`<div class="dow">${d}</div>`).join('');setupMonthSelect();setupFamilyForm();setupAdatMemory();setupMainNav();setupSettingsNav();setupAdatSubNav();setupGuidanceToggle();setupFirebasePrep();setupFirebaseAuthPilot();setupFirestoreSeedPilot();const [events,family,coverage]=await Promise.all([getJson(DATA.events),getJson(DATA.family),getJson(DATA.coverage)]);state.events=events;state.sampleFamily=family;state.family=loadFamilyFromStorage(family);state.adatMemory=loadAdatMemory();state.eventChecklists=loadEventChecklists();state.ceremonyArchives=loadCeremonyArchives();state.syncProfile=loadCloudSyncProfile();state.firebaseConfig=loadFirebaseConfig();state.coverage=coverage;renderFirebaseAuthPilot();renderFirestoreSeedPilot();state.notifyPref=loadNotifyPref();const params=new URLSearchParams(location.search);if(params.get('feed')==='display'||params.get('feed')==='1'){renderFeedMode(state.selectedDate);return;}if(params.get('display')==='1'){state.displayMode=true;document.body.classList.add('display-mode');document.body.classList.add('tablet-mode');}const picker=document.getElementById('datePicker');setDateField(state.selectedDate);picker.addEventListener('change',()=>{const parsed=parseDMY(picker.value);if(!parsed||parsed.slice(0,4)!=='2026'){alert('Tanggal tampilan kalender harus format dd/mm/yyyy dan tahun 2026. Contoh: 11/07/2026');setDateField(state.selectedDate);return;}state.selectedDate=parsed;renderMonth(+state.selectedDate.slice(5,7));renderFamily();});renderFamily();renderAdatMemory();updateAdatSummary();renderWizardGuardrails();renderCloudReadinessGate();renderFirebaseConfig();renderFirestoreSeedPilot();renderSyncStatusSummary();renderRealSyncDecisionGate();renderCloudDryRunWriter();renderDryRunValidationGate();renderActualWritePilot();renderActualWriteReadback();renderCloudPullPreview();renderMonth(+state.selectedDate.slice(5,7));renderValidationConsole();updateDisplayFeedUrl();if(state.displayMode){setInterval(()=>{const t=localTodayIso();if(t.slice(0,4)==='2026'&&t!==state.selectedDate){state.selectedDate=t;setDateField(state.selectedDate);renderFamily();renderAdatMemory();renderMonth(+state.selectedDate.slice(5,7));}},900000);}if('serviceWorker' in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.warn);}
+    async function init(){document.getElementById('dowGrid').innerHTML=dows.map(d=>`<div class="dow">${d}</div>`).join('');setupMonthSelect();setupFamilyForm();setupAdatMemory();setupMainNav();setupSettingsNav();setupAdatSubNav();setupGuidanceToggle();setupFirebasePrep();setupFirebaseAuthPilot();setupFirestoreSeedPilot();const [events,family,coverage]=await Promise.all([getJson(DATA.events),getJson(DATA.family),getJson(DATA.coverage)]);state.events=events;state.sampleFamily=family;state.family=loadFamilyFromStorage(family);state.adatMemory=loadAdatMemory();state.eventChecklists=loadEventChecklists();state.ceremonyArchives=loadCeremonyArchives();state.syncProfile=loadCloudSyncProfile();state.firebaseConfig=loadFirebaseConfig();state.coverage=coverage;renderFirebaseAuthPilot();renderFirestoreSeedPilot();state.notifyPref=loadNotifyPref();const params=new URLSearchParams(location.search);if(params.get('feed')==='display'||params.get('feed')==='1'){renderFeedMode(state.selectedDate);return;}if(params.get('display')==='1'){state.displayMode=true;document.body.classList.add('display-mode');document.body.classList.add('tablet-mode');}const picker=document.getElementById('datePicker');setDateField(state.selectedDate);picker.addEventListener('change',()=>{const parsed=parseDMY(picker.value);if(!parsed||parsed.slice(0,4)!=='2026'){alert('Tanggal tampilan kalender harus format dd/mm/yyyy dan tahun 2026. Contoh: 11/07/2026');setDateField(state.selectedDate);return;}state.selectedDate=parsed;renderMonth(+state.selectedDate.slice(5,7));renderFamily();});renderFamily();renderAdatMemory();updateAdatSummary();renderWizardGuardrails();renderCloudReadinessGate();renderFirebaseConfig();renderFirestoreSeedPilot();renderSyncStatusSummary();renderRealSyncDecisionGate();renderCloudDryRunWriter();renderDryRunValidationGate();renderActualWritePilot();renderActualWriteReadback();renderCloudPullPreview();renderStructuredRestorePreview();renderMonth(+state.selectedDate.slice(5,7));renderValidationConsole();updateDisplayFeedUrl();if(state.displayMode){setInterval(()=>{const t=localTodayIso();if(t.slice(0,4)==='2026'&&t!==state.selectedDate){state.selectedDate=t;setDateField(state.selectedDate);renderFamily();renderAdatMemory();renderMonth(+state.selectedDate.slice(5,7));}},900000);}if('serviceWorker' in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.warn);}
     window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();state.deferredPrompt=e;const btn=document.getElementById('installBtn');btn.hidden=false;btn.textContent='Install App';});
-    document.getElementById('installBtn').addEventListener('click',async()=>{const btn=document.getElementById('installBtn');if(state.deferredPrompt){state.deferredPrompt.prompt();await state.deferredPrompt.userChoice;state.deferredPrompt=null;btn.textContent='Panduan Install';return;}alert('Jika tombol install sistem tidak muncul: buka Chrome menu titik tiga → Add to Home screen / Install app. Jika icon lama masih muncul, uninstall dulu app lama dari Settings Android → Apps, lalu install ulang dari link versi 2.6.10.');});
+    document.getElementById('installBtn').addEventListener('click',async()=>{const btn=document.getElementById('installBtn');if(state.deferredPrompt){state.deferredPrompt.prompt();await state.deferredPrompt.userChoice;state.deferredPrompt=null;btn.textContent='Panduan Install';return;}alert('Jika tombol install sistem tidak muncul: buka Chrome menu titik tiga → Add to Home screen / Install app. Jika icon lama masih muncul, uninstall dulu app lama dari Settings Android → Apps, lalu install ulang dari link versi 2.6.11.');});
     document.getElementById('todayBtn').addEventListener('click',()=>{const today=localTodayIso().slice(0,4)==='2026'?localTodayIso():'2026-07-10';state.selectedDate=today;setDateField(state.selectedDate);renderFamily();renderMonth(+state.selectedDate.slice(5,7));});
     document.getElementById('modeBtn').addEventListener('click',()=>{document.body.classList.toggle('tablet-mode');document.getElementById('modeBtn').textContent=document.body.classList.contains('tablet-mode')?'Mode E-paper':'Mode Tablet';});
     document.getElementById('displayBtn').addEventListener('click',()=>{state.displayMode=!state.displayMode;document.body.classList.toggle('display-mode',state.displayMode);renderInfo(state.selectedDate);});
-    document.getElementById('notifyBtn').addEventListener('click',async()=>{if(!('Notification'in window))return alert('Browser ini belum mendukung notifikasi.');const p=await Notification.requestPermission();if(p==='granted'){state.notifyPref={enabled:true,lastTestAt:new Date().toISOString()};saveNotifyPref();const next=buildUpcoming(state.selectedDate)[0];new Notification('Kalender Bali Digital',{body:next?`Reminder terdekat: ${next.title} · ${reminderLabel(next.daysLeft)}`:'Tes notifikasi berhasil. Pusat reminder aktif.',icon:'./assets/icon-192-v144.png?v=270'});renderInfo(state.selectedDate);}else{state.notifyPref.enabled=false;saveNotifyPref();renderInfo(state.selectedDate);}});
+    document.getElementById('notifyBtn').addEventListener('click',async()=>{if(!('Notification'in window))return alert('Browser ini belum mendukung notifikasi.');const p=await Notification.requestPermission();if(p==='granted'){state.notifyPref={enabled:true,lastTestAt:new Date().toISOString()};saveNotifyPref();const next=buildUpcoming(state.selectedDate)[0];new Notification('Kalender Bali Digital',{body:next?`Reminder terdekat: ${next.title} · ${reminderLabel(next.daysLeft)}`:'Tes notifikasi berhasil. Pusat reminder aktif.',icon:'./assets/icon-192-v144.png?v=271'});renderInfo(state.selectedDate);}else{state.notifyPref.enabled=false;saveNotifyPref();renderInfo(state.selectedDate);}});
     init().catch(err=>{console.error(err);alert('Data belum bisa dibaca. Jalankan via local server atau deploy ke Vercel.');});
   </script>
 </body>
