@@ -1,0 +1,39 @@
+{
+  "schema": "kd-bali-actual-write-pilot-v2-6-8",
+  "phase": "2.6.8",
+  "purpose": "Manual Firestore actual write pilot based on validated dry-run payload.",
+  "policy": {
+    "manualExecutionOnly": true,
+    "requiresExplicitCheckbox": true,
+    "mergeWrite": true,
+    "realTimeSync": false,
+    "silentOverwrite": false,
+    "requiresBackup": true,
+    "requiresDryRunGate": ">=80%",
+    "writesToFirestore": true
+  },
+  "collections": [
+    "users/{uid}",
+    "families/{familyId}",
+    "families/{familyId}/members",
+    "families/{familyId}/adatPlaces",
+    "families/{familyId}/shrines",
+    "families/{familyId}/adatEvents",
+    "families/{familyId}/bantenTemplates",
+    "families/{familyId}/eventChecklists",
+    "families/{familyId}/ceremonyArchives",
+    "families/{familyId}/adatDecisions",
+    "families/{familyId}/eventInstances",
+    "families/{familyId}/syncSnapshots"
+  ],
+  "guards": [
+    "firebaseConfig",
+    "googleAuth",
+    "dryRunPayload",
+    "dryRunGate",
+    "uniquePaths",
+    "scopedPaths",
+    "localBackup",
+    "manualAck"
+  ]
+}
