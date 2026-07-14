@@ -1,0 +1,37 @@
+{
+  "schema": "kd-bali-cloud-pull-preview-v2-6-10",
+  "phase": "2.6.10",
+  "purpose": "Read-only preview of structured Firestore subcollections before any subcollection restore or real-time sync.",
+  "policy": {
+    "writesToFirestore": false,
+    "restoresLocalStorage": false,
+    "realtimeSync": false,
+    "silentOverwrite": false,
+    "requiresReviewBeforeRestore": true
+  },
+  "collectionsRead": [
+    "users/{uid}",
+    "families/{familyId}",
+    "families/{familyId}/members",
+    "families/{familyId}/adatPlaces",
+    "families/{familyId}/shrines",
+    "families/{familyId}/adatDecisions",
+    "families/{familyId}/bantenTemplates",
+    "families/{familyId}/eventChecklists",
+    "families/{familyId}/ceremonyArchives",
+    "families/{familyId}/eventInstances",
+    "families/{familyId}/syncSnapshots",
+    "families/{familyId}/syncLogs"
+  ],
+  "checks": [
+    "firebase_config",
+    "google_login",
+    "actual_write_exists",
+    "readback_available",
+    "dry_run_expected_paths",
+    "cloud_docs_found",
+    "missing_expected_paths",
+    "extra_docs",
+    "sync_meta"
+  ]
+}

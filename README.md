@@ -34,3 +34,22 @@ Policy tetap aman:
 - Tidak ada restore lokal.
 - Tidak ada write tambahan dari panel readback.
 - Tidak ada silent overwrite.
+
+
+## Phase 2.6.10 — Cloud Pull Preview & Conflict Guard
+
+Update ini menambahkan panel **Structured Cloud Pull Preview** di menu Pengaturan.
+
+Fungsi utama:
+- Membaca struktur Firestore final hasil Actual Write Pilot secara read-only.
+- Membandingkan cloud docs dengan Dry Run Payload dan data lokal.
+- Menandai missing path, extra path, dan dokumen tanpa `_syncMeta`.
+- Export Cloud Pull Preview Report TXT.
+- Menandai Pull Preview aman sebagai gate sebelum restore preview berbasis subcollection.
+
+Policy tetap aman:
+- Tidak ada write Firestore.
+- Tidak ada restore ke localStorage.
+- Tidak ada auto-sync.
+- Tidak ada real-time listener.
+- Tidak ada silent overwrite.
