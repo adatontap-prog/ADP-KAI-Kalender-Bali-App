@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "2.6.13",
+  "module": "postRestoreVerificationRollbackGuard",
+  "purpose": "Verify Manual Local Restore results and allow explicit rollback to the pre-restore local snapshot.",
+  "policy": [
+    "Read localStorage status and saved restore metadata only",
+    "No Firestore write",
+    "No auto-sync",
+    "No silent overwrite",
+    "Rollback only uses preRestoreSnapshot created by Manual Local Restore",
+    "Rollback requires explicit checkbox confirmation"
+  ],
+  "checks": [
+    "manual_restore_executed",
+    "candidate_counts_available",
+    "current_local_counts_match_candidate",
+    "critical_data_not_empty",
+    "pre_restore_snapshot_available",
+    "sync_log_contains_manual_restore"
+  ],
+  "localStorageKey": "adp-kai-kalender-bali-post-restore-verification-v2-6-13"
+}

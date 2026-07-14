@@ -41,3 +41,10 @@ https://adp-kai-kalender-bali-app.vercel.app/?v=272&app=kd-bali-v272
 8. Execute Manual Local Restore.
 9. Cek Otonan, Adat Keluarga, Kalender.
 10. Export Restore Report.
+
+
+## Phase 2.6.13 - Post-Restore Verification & Rollback Guard
+
+- Verifies the result of Manual Local Restore against the restore candidate counts.
+- Provides explicit rollback to the pre-restore snapshot saved during Manual Local Restore.
+- Keeps policy safe: no Firestore write, no auto-sync, no silent overwrite.
