@@ -1,0 +1,26 @@
+{
+  "phase": "2.6.12",
+  "feature": "Manual Local Restore Pilot",
+  "storageKey": "adp-kai-kalender-bali-manual-local-restore-v2-6-12",
+  "policy": {
+    "manualOnly": true,
+    "requiresStructuredRestorePreviewSafe": true,
+    "requiresLocalBackup": true,
+    "requiresExplicitCheckbox": true,
+    "writesFirestore": false,
+    "realTimeSync": false,
+    "silentOverwrite": false
+  },
+  "localWrites": [
+    "family",
+    "adatMemory",
+    "eventChecklists",
+    "ceremonyArchives"
+  ],
+  "reportFields": [
+    "beforeCounts",
+    "candidateCounts",
+    "afterCounts",
+    "lastExecutedAt"
+  ]
+}
