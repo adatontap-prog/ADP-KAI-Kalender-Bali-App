@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#111827" />
-  <title>ADP KAI Kalender Bali Digital — Phase 2.6.13</title>
-  <link rel="manifest" href="manifest-v273.webmanifest?v=273&app=kd-bali-v273" />
-  <link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48-v144.png?v=273" />
-  <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192-v144.png?v=273" />
-  <link rel="apple-touch-icon" href="./assets/apple-touch-icon-v144.png?v=273" />
+  <title>ADP KAI Kalender Bali Digital — Phase 2.6.14</title>
+  <link rel="manifest" href="manifest-v274.webmanifest?v=274&app=kd-bali-v274" />
+  <link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48-v144.png?v=274" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192-v144.png?v=274" />
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon-v144.png?v=274" />
   <style>
     :root{
       --paper:#f4efe4;--ink:#17202a;--muted:#6b7280;--line:#d7cdbc;--red:#dc2626;--black:#111827;--gold:#9a6b1d;--green:#15803d;--blue:#2563eb;--panel:#fffaf0;--tablet-bg:#08111f;--tablet-card:#111827;--tablet-text:#e5e7eb;--tablet-line:rgba(148,163,184,.25);
@@ -202,6 +202,9 @@
     @media(max-width:980px){.real-sync-grid{grid-template-columns:1fr 1fr}.real-sync-head{display:block}.real-sync-pill{display:inline-flex;margin-top:10px}}@media(max-width:560px){.real-sync-grid{grid-template-columns:1fr}.real-sync-gate{border-radius:20px;padding:12px}.real-sync-actions button{width:100%}}
 
 
+
+    /* Phase 2.6.14: Stable Baseline Gate */
+    .stable-baseline-policy{margin-top:12px;padding:12px;border-radius:16px;background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.22);color:#374151;font-size:13px}
     /* Phase 2.6.8: Cloud Sync Real Blueprint */
     .cloud-sync-blueprint{border:1px solid rgba(124,58,237,.24);background:linear-gradient(135deg,rgba(245,243,255,.94),rgba(236,253,245,.86));border-radius:24px;padding:16px;margin:14px 0;display:grid;gap:14px;box-shadow:0 16px 42px rgba(44,31,14,.08)}
     .cloud-sync-blueprint-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.cloud-sync-blueprint-head h2{margin:4px 0}.cloud-sync-blueprint-head p{margin:0;color:var(--muted);line-height:1.45}.cloud-sync-blueprint-pill{border-radius:999px;background:#ede9fe;color:#6d28d9;border:1px solid rgba(124,58,237,.25);font-weight:950;padding:8px 10px;white-space:nowrap;font-size:.78rem}
@@ -219,7 +222,7 @@
     <section class="topbar">
       <div class="brand">
         <h1>Kalender Bali Digital</h1>
-        <p>Phase 2.6.13 · Restore Verification & Rollback Guard</p>
+        <p>Phase 2.6.14 · Stable Baseline Gate</p>
       </div>
       <div class="controls primary-controls" aria-label="Kontrol utama kalender">
         <input id="datePicker" type="text" inputmode="numeric" maxlength="10" placeholder="dd/mm/yyyy" aria-label="Tanggal format dd/mm/yyyy">
@@ -240,9 +243,9 @@
 
     <section class="simple-mode-banner view-section view-today" aria-label="Mode sederhana KD-Bali">
       <div>
-        <span class="phase-badge">Phase 2.6.12 · Manual Restore Pilot</span>
+        <span class="phase-badge">Phase 2.6.14 · Stable Baseline Gate</span>
         <h2>Manual Local Restore Pilot</h2>
-        <p>Phase ini menambahkan restore manual dari kandidat cloud ke data lokal browser dengan backup, checkbox konfirmasi, dan sync log. Real-time sync tetap belum aktif.</p>
+        <p>Phase ini mengunci status pilot cloud restore setelah write/readback/pull/restore/verification aman. Real-time sync tetap belum aktif.</p>
       </div>
       <div class="simple-mode-steps focus-actions">
         <button id="toggleSetupGuideBtn" class="guide-toggle" type="button">Lihat Panduan Setup</button>
@@ -1128,6 +1131,31 @@
       </div>
     </section>
 
+    <section class="real-sync-gate view-section view-settings" id="pilotStableBaselinePanel" aria-label="Pilot Stable Baseline Gate">
+      <div class="real-sync-head">
+        <div>
+          <span class="phase-badge">Phase 2.6.14 · Stable Baseline Gate</span>
+          <h2>Pilot Stable Baseline Gate</h2>
+          <p>Panel ini mengunci status pilot cloud setelah actual write, readback, pull preview, restore preview, manual restore, dan post-restore verification aman. Tujuannya menentukan apakah pilot sudah cukup stabil untuk lanjut ke desain sync terbatas berikutnya.</p>
+        </div>
+        <span class="real-sync-pill" id="pilotStableBaselinePill">Belum dikunci</span>
+      </div>
+      <div class="real-sync-grid" id="pilotStableBaselineGrid">
+        <div class="real-sync-item warn"><strong>Menunggu rangkaian pilot</strong><span>Lengkapi write → readback → pull → restore preview → restore → verification.</span></div>
+      </div>
+      <div class="real-sync-decision"><strong id="pilotStableBaselineTitle">Belum ada stable baseline</strong><span id="pilotStableBaselineDecision">Tujuan panel ini mengunci milestone cloud pilot sebelum membuat sync terbatas berikutnya.</span></div>
+      <div class="stable-baseline-policy"><strong>Policy keselamatan</strong> Phase ini hanya membaca status lokal dan menandai baseline pilot. Tidak ada write Firestore, tidak ada restore localStorage, tidak ada auto-sync, dan tidak ada listener real-time.</div>
+      <pre class="cloud-sync-blueprint-code" id="pilotStableBaselineCode">Belum ada ringkasan baseline.</pre>
+      <div class="cloud-sync-blueprint-actions">
+        <button id="refreshPilotStableBaselineBtn" type="button">Refresh Baseline Gate</button>
+        <button id="lockPilotStableBaselineBtn" class="secondary" type="button">Lock Pilot Stable Baseline</button>
+        <button id="exportPilotStableBaselineBtn" class="secondary" type="button">Export Baseline Report</button>
+        <button id="resetPilotStableBaselineBtn" class="secondary" type="button">Reset Baseline Status</button>
+        <button class="secondary" type="button" data-scroll-target="#postRestoreVerificationPanel">Kembali ke Restore Verification</button>
+      </div>
+    </section>
+
+
     <section class="settings-hub view-section view-settings" id="settingsPanel" aria-label="Pengaturan dan alat teknis">
       <article class="card"><h2>Backup & Export</h2><p class="small">Backup/export tetap berada di modul Adat Keluarga karena datanya berasal dari otonan dan adat memory keluarga.</p><button class="quick-action" type="button" data-jump-view="adat" data-scroll-target="#adatOtonanPanel">Buka Backup & Export</button></article>
       <article class="card"><h2>Cloud Sync Foundation</h2><p class="small">Profil email/familyId dan Cloud Seed masih local-first. Firebase login real dilakukan setelah UI stabil.</p><button class="quick-action secondary" type="button" data-jump-view="adat" data-scroll-target="#adatMemoryPanel">Buka Cloud Foundation</button></article>
@@ -1139,6 +1167,7 @@
       <article class="card" id="displayToolsPanel"><h2>Alat Tampilan & Install</h2><p class="small">Kontrol teknis dipindahkan ke sini agar header app tetap bersih. Gunakan hanya saat perlu uji tampilan, notifikasi, display, atau install ulang.</p><div class="display-tools-grid"><button id="modeBtn" type="button">Mode Tablet</button><button id="notifyBtn" type="button" class="secondary">Tes Notifikasi</button><button id="displayBtn" type="button" class="secondary">Mode Display</button><button id="installBtn" type="button">Install App</button></div><div class="tools-note">Header sekarang hanya menyisakan tanggal, bulan, Hari Ini, dan tombol Alat.</div></article>
       <article class="card"><h2>Sync Confidence</h2><p class="small">Ringkasan hasil uji pindah HP: apakah cloud seed, restore, backup, login, dan log sudah cukup aman sebelum sync otomatis penuh.</p><button class="quick-action secondary" type="button" data-settings-nav="sync" data-scroll-target="#syncConfidencePanel">Buka Sync Confidence</button></article>
       <article class="card"><h2>Restore Verification</h2><p class="small">Cek hasil Manual Local Restore dan siapkan rollback lokal jika hasil restore tidak sesuai.</p><button class="quick-action secondary" type="button" data-settings-nav="sync" data-scroll-target="#postRestoreVerificationPanel">Buka Restore Verification</button></article>
+      <article class="card"><h2>Pilot Stable Baseline</h2><p class="small">Kunci milestone cloud pilot setelah write, readback, pull, restore, dan verification aman. Ini gerbang sebelum sync terbatas berikutnya.</p><button class="quick-action secondary" type="button" data-settings-nav="sync" data-scroll-target="#pilotStableBaselinePanel">Buka Stable Baseline</button></article>
       <article class="card"><h2>Backup Discipline</h2><p class="small">Pengingat backup berdasarkan umur backup, Cloud Seed, baseline hardening, dan log sync. Gunakan sebelum sync real.</p><button class="quick-action secondary" type="button" data-settings-nav="sync" data-scroll-target="#autoBackupReminderPanel">Buka Backup Discipline</button></article>
       <article class="card"><h2>Cloud Sync Hardening</h2><p class="small">Kunci baseline, rules draft, policy manual seed, dan laporan hardening sebelum sync otomatis penuh.</p><button class="quick-action secondary" type="button" data-settings-nav="sync" data-scroll-target="#cloudHardeningPanel">Buka Hardening</button></article>
       <article class="card"><h2>Real Sync Decision Gate</h2><p class="small">Keputusan Go/No-Go sebelum masuk desain Cloud Sync Real. Manual Cloud Seed tetap dipakai sampai gate aman.</p><button class="quick-action secondary" type="button" data-scroll-target="#realSyncDecisionGatePanel">Buka Real Sync Gate</button></article>
@@ -1211,6 +1240,7 @@
     const STRUCTURED_RESTORE_PREVIEW_KEY='adp-kai-kalender-bali-structured-restore-preview-v2-6-11';
     const MANUAL_LOCAL_RESTORE_KEY='adp-kai-kalender-bali-manual-local-restore-v2-6-12';
     const POST_RESTORE_VERIFICATION_KEY='adp-kai-kalender-bali-post-restore-verification-v2-6-13';
+    const PILOT_STABLE_BASELINE_KEY='adp-kai-kalender-bali-pilot-stable-baseline-v2-6-14';
     const RESTORE_REVIEW_STATUS_KEY='adp-kai-kalender-bali-restore-review-v2-5-3';
     function localTodayIso(){const now=new Date();const y=now.getFullYear();const m=String(now.getMonth()+1).padStart(2,'0');const d=String(now.getDate()).padStart(2,'0');return `${y}-${m}-${d}`;}
     function getInitialSelectedDate(){const params=new URLSearchParams(location.search);const qDate=params.get('date');const qD=params.get('d');if(qDate&&/^\d{4}-\d{2}-\d{2}$/.test(qDate))return qDate;if(qD){const parsed=parseDMY(qD);if(parsed)return parsed;}const today=localTodayIso();if(today.slice(0,4)==='2026')return today;return '2026-07-10';}
@@ -1254,8 +1284,8 @@
     function exportCalendarIcs(){const calendarEvents=state.events.map(e=>({date:e.date,title:e.title,type:e.type||e.category||'rahinan',description:`Kalender Bali Digital · ${e.category||'event'} · status ${e.source?.verificationStatus||'digital_source_only'} · sumber ${e.source?.sourceName||'SRC-001'} · Untuk keputusan adat penting tetap verifikasi dengan kalender cetak/sumber adat/pemangku.`,uid:`${e.id||uidSafe(e.title)}-${e.date}`}));const otonanEvents=[];state.family.forEach(m=>{otonanDatesInYear(m).forEach(date=>{otonanEvents.push({date,title:`Otonan ${m.name}`,type:'otonan',description:`Otonan keluarga · ${otonanSourceLabel(m)} · ${otonanStatusLabel(m)} · data lokal KD-Bali. Verifikasi adat tetap diperlukan untuk keputusan penting.`,uid:`otonan-${uidSafe(m.id||m.name)}-${date}`});});});const adatEvents=buildAdatInstancesInYear(2026).map(e=>({date:e.date,title:e.title,type:'adat',description:`Adat keluarga KD-Bali · ${e.category} · ${e.level||'level belum diatur'} · ${e.validationStatus||'user_recorded'} · bukan keputusan adat resmi.`,uid:`adat-${uidSafe(e.id)}-${e.date}`}));const all=[...calendarEvents,...otonanEvents,...adatEvents].sort((a,b)=>a.date.localeCompare(b.date)||a.title.localeCompare(b.title));const body=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//ADP KAI//KD-Bali Calendar//ID','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:KD-Bali 2026','X-WR-TIMEZONE:Asia/Makassar',...all.map(buildIcsEvent),'END:VCALENDAR'].join('\r\n');downloadText('kd-bali-kalender-2026.ics',body,'text/calendar;charset=utf-8');updateBackupStatus(`Export ICS dibuat: ${all.length} event kalender + otonan + adat keluarga. Import file .ics ini ke Google Calendar/Apple Calendar jika dibutuhkan.`);}
     function appBaseUrl(){return location.origin+location.pathname.replace(/[^/]*$/,'');}
     function selectedDateParam(){return encodeURIComponent(formatDMY(state.selectedDate));}
-    function displayUrl(){return `${appBaseUrl()}?v=273&app=kd-bali-v273&display=1&d=${selectedDateParam()}`;}
-    function liveFeedUrl(){return `${appBaseUrl()}?v=273&app=kd-bali-v273&feed=display&d=${selectedDateParam()}`;}
+    function displayUrl(){return `${appBaseUrl()}?v=274&app=kd-bali-v274&display=1&d=${selectedDateParam()}`;}
+    function liveFeedUrl(){return `${appBaseUrl()}?v=274&app=kd-bali-v274&feed=display&d=${selectedDateParam()}`;}
     function buildDisplayPayload(iso=state.selectedDate){const evs=eventsOn(iso);const ots=otonanOn(iso);const ads=adatOn(iso);const upcoming=buildUpcoming(iso).slice(0,12).map(e=>({date:e.displayDate,displayDate:formatDMY(e.displayDate),title:e.title,type:e.type||e.category,kind:e.kind,daysLeft:e.daysLeft,label:reminderLabel(e.daysLeft),marker:eventPillClass(e)}));return {app:'KD-Bali',phase:'2.6',feedType:'live_selected_day_display_feed',generatedAt:new Date().toISOString(),selectedDate:iso,displayDate:formatDMY(iso),timezone:'Asia/Makassar / device local',deviceUse:{tabletDisplayUrl:displayUrl(),liveFeedUrl:liveFeedUrl(),refreshSeconds:900},today:{label:idDate(iso),events:evs.map(e=>({title:e.title,type:e.type,category:e.category,marker:eventPillClass(e),isPurnama:!!e.isPurnama,isTilem:!!e.isTilem,verificationStatus:e.source?.verificationStatus||'digital_source_only',source:e.source?.sourceName||'SRC-001'})),otonan:ots.map(m=>({title:`Otonan ${m.name}`,memberName:m.name,source:m.otonan?.source,validationStatus:m.otonan?.validationStatus||'needs_bali_day_confirmation'})),adat:ads.map(e=>({title:e.title,category:e.category,level:e.level,validationStatus:e.validationStatus,checklist:checklistSummaryForInstance(e.id)}))},upcoming,markers:{purnama:'red_dot',tilem:'black_dot_highlighted',rerainan:'gold_dot',otonan:'green_dot',merajan:'purple_dot'},validationNote:'Data digital_source_only. Untuk keputusan adat penting tetap verifikasi dengan kalender cetak/resmi, sumber adat setempat, atau pemangku.'};}
     function updateDisplayFeedUrl(){const el=document.getElementById('displayFeedUrl');if(el)el.textContent=liveFeedUrl();}
     async function copyText(text,label){try{await navigator.clipboard.writeText(text);updateBackupStatus(`${label} disalin ke clipboard.`);}catch(e){prompt(`Copy ${label}:`,text);}}
@@ -2603,6 +2633,57 @@
     function resetPostRestoreVerification(){if(confirm('Reset status Post-Restore Verification? Ini tidak menghapus data kalender/adat.')){localStorage.removeItem(POST_RESTORE_VERIFICATION_KEY);renderPostRestoreVerification();setFirestoreSeedStatus('Status Post-Restore Verification direset.', 'ok');}}
 
 
+    function pilotStableBaselineLocal(){try{return JSON.parse(localStorage.getItem(PILOT_STABLE_BASELINE_KEY)||'{}');}catch(e){return {};}}
+    function savePilotStableBaseline(data){localStorage.setItem(PILOT_STABLE_BASELINE_KEY,JSON.stringify({...pilotStableBaselineLocal(),...data,updatedAt:new Date().toISOString()}));}
+    function localJsonForBaseline(key){try{return JSON.parse(localStorage.getItem(key)||'{}');}catch(e){return {};}}
+    function baselineDateLabel(v){return v?new Date(v).toLocaleString('id-ID'):'-';}
+    function buildPilotStableBaselineSummary(){
+      const actual=localJsonForBaseline(ACTUAL_WRITE_PILOT_KEY);
+      const readback=localJsonForBaseline(ACTUAL_WRITE_VERIFY_KEY);
+      const pull=localJsonForBaseline(CLOUD_PULL_PREVIEW_KEY);
+      const restorePreview=localJsonForBaseline(STRUCTURED_RESTORE_PREVIEW_KEY);
+      const manual=localJsonForBaseline(MANUAL_LOCAL_RESTORE_KEY);
+      const post=localJsonForBaseline(POST_RESTORE_VERIFICATION_KEY);
+      const hardening=localJsonForBaseline(CLOUD_HARDENING_KEY);
+      const baseline=pilotStableBaselineLocal();
+      const localCounts=snapshotCounts(null);
+      const hasRollbackAfterSafe=!!(post.lastRollbackAt&&post.lastMarkedSafeAt&&new Date(post.lastRollbackAt)>new Date(post.lastMarkedSafeAt));
+      const checks=[
+        {key:'backup',label:'Backup lokal tersedia',ok:!!localStorage.getItem(BACKUP_STATUS_KEY),detail:localJsonForBaseline(BACKUP_STATUS_KEY).lastBackupAt?`Backup terakhir ${baselineDateLabel(localJsonForBaseline(BACKUP_STATUS_KEY).lastBackupAt)}`:'Backup belum tercatat.'},
+        {key:'firebase',label:'Firebase config siap',ok:!!(state.firebaseConfig?.apiKey&&state.firebaseConfig?.projectId&&state.firebaseConfig?.appId),detail:state.firebaseConfig?.projectId?`Project: ${state.firebaseConfig.projectId}`:'Lengkapi Firebase Setup Kit.'},
+        {key:'auth',label:'Login Google terverifikasi',ok:!!state.firebaseAuthUser?.email,detail:state.firebaseAuthUser?.email||'Login Google belum aktif di browser ini.'},
+        {key:'hardening',label:'Hardening baseline terkunci',ok:!!hardening.lockedAt,detail:hardening.lockedAt?`Locked ${baselineDateLabel(hardening.lockedAt)}`:'Lock baseline di Cloud Sync Hardening.'},
+        {key:'actualWrite',label:'Actual Write Pilot pernah sukses',ok:!!(actual.lastWriteAt||actual.lastExecutedAt||actual.lastSummary),detail:actual.lastWriteAt?`Write ${baselineDateLabel(actual.lastWriteAt)}`:'Jalankan/verify Actual Write Pilot.'},
+        {key:'readback',label:'Readback Verification aman',ok:!!readback.acceptedAt,detail:readback.acceptedAt?`Accepted ${baselineDateLabel(readback.acceptedAt)}`:'Tandai Actual Write Readback aman.'},
+        {key:'pull',label:'Cloud Pull Preview aman',ok:!!pull.lastMarkedSafeAt,detail:pull.lastMarkedSafeAt?`Safe ${baselineDateLabel(pull.lastMarkedSafeAt)}`:'Tandai Pull Preview aman.'},
+        {key:'restorePreview',label:'Structured Restore Preview aman',ok:!!restorePreview.lastMarkedSafeAt,detail:restorePreview.lastMarkedSafeAt?`Safe ${baselineDateLabel(restorePreview.lastMarkedSafeAt)}`:'Tandai Restore Preview aman.'},
+        {key:'manualRestore',label:'Manual Local Restore pernah dieksekusi',ok:!!manual.lastExecutedAt,detail:manual.lastExecutedAt?`Executed ${baselineDateLabel(manual.lastExecutedAt)}`:'Jalankan Manual Local Restore di perangkat uji.'},
+        {key:'postRestore',label:'Post-Restore Verification valid',ok:!!post.lastMarkedSafeAt&&!hasRollbackAfterSafe,detail:post.lastMarkedSafeAt?`Valid ${baselineDateLabel(post.lastMarkedSafeAt)}${hasRollbackAfterSafe?' · ada rollback setelah validasi':''}`:'Tandai Restore Valid.'},
+        {key:'localCounts',label:'Data lokal tidak kosong',ok:Object.values(localCounts||{}).some(v=>Number(v||0)>0),detail:`Otonan ${localCounts.Otonan||0}, Merajan ${localCounts.Merajan||0}, Pelinggih ${localCounts.Pelinggih||0}, Checklist ${localCounts.Checklist||0}, Arsip ${localCounts.Arsip||0}.`},
+        {key:'syncLog',label:'Sync Log tersedia',ok:syncLogLocal().length>0,detail:`${syncLogLocal().length} log lokal.`},
+        {key:'policy',label:'Policy masih manual/pilot',ok:true,detail:'Tidak ada auto-sync dan tidak ada real-time listener.'}
+      ];
+      const score=Math.round(checks.filter(x=>x.ok).length/checks.length*100);
+      let level='Belum stabil',decision='Jangan lanjut sync terbatas. Selesaikan blocker write/readback/pull/restore/verification.';
+      if(score>=92&&!hasRollbackAfterSafe){level='Stable baseline siap dikunci';decision='Pilot cloud write/read/restore sudah cukup aman untuk dikunci sebagai baseline. Phase berikutnya boleh mendesain sync terbatas, tetap manual dan bertahap.';}
+      else if(score>=75){level='Hampir siap';decision='Mayoritas guardrail aman, tetapi masih ada blocker penting sebelum baseline dikunci.';}
+      else if(score>=50){level='Parsial';decision='Cloud pilot baru sebagian selesai. Jangan naik ke sync terbatas.';}
+      return {phase:'2.6.14',score,level,decision,checks,localCounts,lastLockedAt:baseline.lockedAt||null,lockedScore:baseline.score||null,lockedBy:baseline.lockedBy||'',hasRollbackAfterSafe,policy:'READ STATUS ONLY. No Firestore write. No local restore. No auto-sync.'};
+    }
+    function renderPilotStableBaselineGate(){
+      const r=buildPilotStableBaselineSummary();
+      const pill=document.getElementById('pilotStableBaselinePill');if(pill)pill.textContent=r.lastLockedAt?`Locked · ${baselineDateLabel(r.lastLockedAt)}`:`${r.score}% · ${r.level}`;
+      const grid=document.getElementById('pilotStableBaselineGrid');if(grid)grid.innerHTML=r.checks.map(x=>`<div class="real-sync-item ${x.ok?'ok':'warn'}"><strong>${x.label}</strong><span>${x.ok?'OK':'Perlu cek'} · ${x.detail}</span></div>`).join('');
+      const title=document.getElementById('pilotStableBaselineTitle');if(title)title.textContent=r.lastLockedAt?'Pilot Stable Baseline sudah dikunci':r.level;
+      const dec=document.getElementById('pilotStableBaselineDecision');if(dec)dec.textContent=r.decision;
+      const code=document.getElementById('pilotStableBaselineCode');if(code)code.textContent=JSON.stringify(r,null,2);
+    }
+    function pilotStableBaselineReportText(){const r=buildPilotStableBaselineSummary();const lines=['KD-Bali Pilot Stable Baseline Gate Report',`Tanggal: ${new Date().toLocaleString('id-ID')}`,`Phase: 2.6.14`,`Score: ${r.score}%`,`Level: ${r.level}`,`Decision: ${r.decision}`,`Last locked: ${r.lastLockedAt||'-'}`,`User: ${state.firebaseAuthUser?.email||normalizeSyncProfile(state.syncProfile).email||'-'}`,`Family ID: ${firestoreFamilyId()}`,'','Local counts:'];Object.entries(r.localCounts||{}).forEach(([k,v])=>lines.push(`- ${k}: ${v}`));lines.push('','Checks:');r.checks.forEach(x=>lines.push(`- [${x.ok?'OK':'CEK'}] ${x.label}: ${x.detail}`));lines.push('','Policy: no Firestore write, no local restore, no auto-sync, no real-time listener. Baseline only marks pilot confidence.');return lines.join('\n');}
+    function exportPilotStableBaselineReport(){downloadText(`kd-bali-pilot-stable-baseline-${new Date().toLocaleDateString('sv-SE')}.txt`,pilotStableBaselineReportText(),'text/plain');setFirestoreSeedStatus('Pilot Stable Baseline Report TXT berhasil dibuat.','ok');}
+    function lockPilotStableBaseline(){const r=buildPilotStableBaselineSummary();if(r.score<90||r.hasRollbackAfterSafe){setFirestoreSeedStatus('Baseline belum aman untuk dikunci. Target minimal 90% dan tidak boleh ada rollback setelah restore valid.', 'warn');alert('Baseline belum aman untuk dikunci. Selesaikan blocker dulu.');return;}savePilotStableBaseline({lockedAt:new Date().toISOString(),score:r.score,level:r.level,localCounts:r.localCounts,lockedBy:state.firebaseAuthUser?.email||normalizeSyncProfile(state.syncProfile).email||'local_user'});addSyncLog('pilot_stable_baseline','Pilot Stable Baseline dikunci.',{score:r.score,counts:r.localCounts});renderPilotStableBaselineGate();setFirestoreSeedStatus('Pilot Stable Baseline dikunci. Phase berikutnya boleh desain sync terbatas, bukan auto-sync penuh.', 'ok');}
+    function resetPilotStableBaseline(){if(confirm('Reset status Pilot Stable Baseline? Ini tidak menghapus data kalender/adat/cloud.')){localStorage.removeItem(PILOT_STABLE_BASELINE_KEY);renderPilotStableBaselineGate();setFirestoreSeedStatus('Status Pilot Stable Baseline direset.', 'ok');}}
+
+
     function setupFirestoreSeedPilot(){
       const check=document.getElementById('checkFirestoreSeedBtn');if(check)check.addEventListener('click',checkFirestoreSeed);
       const upload=document.getElementById('uploadFirestoreSeedBtn');if(upload)upload.addEventListener('click',uploadFirestoreSeed);
@@ -2664,6 +2745,10 @@
       const rollbackRestore=document.getElementById('executeRestoreRollbackBtn');if(rollbackRestore)rollbackRestore.addEventListener('click',executeRestoreRollback);
       const resetPostRestore=document.getElementById('resetPostRestoreVerificationBtn');if(resetPostRestore)resetPostRestore.addEventListener('click',resetPostRestoreVerification);
       const confirmRollback=document.getElementById('confirmRollbackRestoreChk');if(confirmRollback)confirmRollback.addEventListener('change',renderPostRestoreVerification);
+      const refreshPilotBaseline=document.getElementById('refreshPilotStableBaselineBtn');if(refreshPilotBaseline)refreshPilotBaseline.addEventListener('click',renderPilotStableBaselineGate);
+      const lockPilotBaseline=document.getElementById('lockPilotStableBaselineBtn');if(lockPilotBaseline)lockPilotBaseline.addEventListener('click',lockPilotStableBaseline);
+      const exportPilotBaseline=document.getElementById('exportPilotStableBaselineBtn');if(exportPilotBaseline)exportPilotBaseline.addEventListener('click',exportPilotStableBaselineReport);
+      const resetPilotBaseline=document.getElementById('resetPilotStableBaselineBtn');if(resetPilotBaseline)resetPilotBaseline.addEventListener('click',resetPilotStableBaseline);
       renderFirestoreSeedPilot();
       renderDeviceTransferTest();
       renderSyncConfidencePanel();
@@ -2677,15 +2762,16 @@
       renderStructuredRestorePreview();
       renderManualLocalRestorePilot();
       renderPostRestoreVerification();
+      renderPilotStableBaselineGate();
     }
 
-    async function init(){document.getElementById('dowGrid').innerHTML=dows.map(d=>`<div class="dow">${d}</div>`).join('');setupMonthSelect();setupFamilyForm();setupAdatMemory();setupMainNav();setupSettingsNav();setupAdatSubNav();setupGuidanceToggle();setupFirebasePrep();setupFirebaseAuthPilot();setupFirestoreSeedPilot();const [events,family,coverage]=await Promise.all([getJson(DATA.events),getJson(DATA.family),getJson(DATA.coverage)]);state.events=events;state.sampleFamily=family;state.family=loadFamilyFromStorage(family);state.adatMemory=loadAdatMemory();state.eventChecklists=loadEventChecklists();state.ceremonyArchives=loadCeremonyArchives();state.syncProfile=loadCloudSyncProfile();state.firebaseConfig=loadFirebaseConfig();state.coverage=coverage;renderFirebaseAuthPilot();renderFirestoreSeedPilot();state.notifyPref=loadNotifyPref();const params=new URLSearchParams(location.search);if(params.get('feed')==='display'||params.get('feed')==='1'){renderFeedMode(state.selectedDate);return;}if(params.get('display')==='1'){state.displayMode=true;document.body.classList.add('display-mode');document.body.classList.add('tablet-mode');}const picker=document.getElementById('datePicker');setDateField(state.selectedDate);picker.addEventListener('change',()=>{const parsed=parseDMY(picker.value);if(!parsed||parsed.slice(0,4)!=='2026'){alert('Tanggal tampilan kalender harus format dd/mm/yyyy dan tahun 2026. Contoh: 11/07/2026');setDateField(state.selectedDate);return;}state.selectedDate=parsed;renderMonth(+state.selectedDate.slice(5,7));renderFamily();});renderFamily();renderAdatMemory();updateAdatSummary();renderWizardGuardrails();renderCloudReadinessGate();renderFirebaseConfig();renderFirestoreSeedPilot();renderSyncStatusSummary();renderRealSyncDecisionGate();renderCloudDryRunWriter();renderDryRunValidationGate();renderActualWritePilot();renderActualWriteReadback();renderCloudPullPreview();renderStructuredRestorePreview();renderManualLocalRestorePilot();renderPostRestoreVerification();renderMonth(+state.selectedDate.slice(5,7));renderValidationConsole();updateDisplayFeedUrl();if(state.displayMode){setInterval(()=>{const t=localTodayIso();if(t.slice(0,4)==='2026'&&t!==state.selectedDate){state.selectedDate=t;setDateField(state.selectedDate);renderFamily();renderAdatMemory();renderMonth(+state.selectedDate.slice(5,7));}},900000);}if('serviceWorker' in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.warn);}
+    async function init(){document.getElementById('dowGrid').innerHTML=dows.map(d=>`<div class="dow">${d}</div>`).join('');setupMonthSelect();setupFamilyForm();setupAdatMemory();setupMainNav();setupSettingsNav();setupAdatSubNav();setupGuidanceToggle();setupFirebasePrep();setupFirebaseAuthPilot();setupFirestoreSeedPilot();const [events,family,coverage]=await Promise.all([getJson(DATA.events),getJson(DATA.family),getJson(DATA.coverage)]);state.events=events;state.sampleFamily=family;state.family=loadFamilyFromStorage(family);state.adatMemory=loadAdatMemory();state.eventChecklists=loadEventChecklists();state.ceremonyArchives=loadCeremonyArchives();state.syncProfile=loadCloudSyncProfile();state.firebaseConfig=loadFirebaseConfig();state.coverage=coverage;renderFirebaseAuthPilot();renderFirestoreSeedPilot();state.notifyPref=loadNotifyPref();const params=new URLSearchParams(location.search);if(params.get('feed')==='display'||params.get('feed')==='1'){renderFeedMode(state.selectedDate);return;}if(params.get('display')==='1'){state.displayMode=true;document.body.classList.add('display-mode');document.body.classList.add('tablet-mode');}const picker=document.getElementById('datePicker');setDateField(state.selectedDate);picker.addEventListener('change',()=>{const parsed=parseDMY(picker.value);if(!parsed||parsed.slice(0,4)!=='2026'){alert('Tanggal tampilan kalender harus format dd/mm/yyyy dan tahun 2026. Contoh: 11/07/2026');setDateField(state.selectedDate);return;}state.selectedDate=parsed;renderMonth(+state.selectedDate.slice(5,7));renderFamily();});renderFamily();renderAdatMemory();updateAdatSummary();renderWizardGuardrails();renderCloudReadinessGate();renderFirebaseConfig();renderFirestoreSeedPilot();renderSyncStatusSummary();renderRealSyncDecisionGate();renderCloudDryRunWriter();renderDryRunValidationGate();renderActualWritePilot();renderActualWriteReadback();renderCloudPullPreview();renderStructuredRestorePreview();renderManualLocalRestorePilot();renderPostRestoreVerification();renderPilotStableBaselineGate();renderMonth(+state.selectedDate.slice(5,7));renderValidationConsole();updateDisplayFeedUrl();if(state.displayMode){setInterval(()=>{const t=localTodayIso();if(t.slice(0,4)==='2026'&&t!==state.selectedDate){state.selectedDate=t;setDateField(state.selectedDate);renderFamily();renderAdatMemory();renderMonth(+state.selectedDate.slice(5,7));}},900000);}if('serviceWorker' in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.warn);}
     window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();state.deferredPrompt=e;const btn=document.getElementById('installBtn');btn.hidden=false;btn.textContent='Install App';});
-    document.getElementById('installBtn').addEventListener('click',async()=>{const btn=document.getElementById('installBtn');if(state.deferredPrompt){state.deferredPrompt.prompt();await state.deferredPrompt.userChoice;state.deferredPrompt=null;btn.textContent='Panduan Install';return;}alert('Jika tombol install sistem tidak muncul: buka Chrome menu titik tiga → Add to Home screen / Install app. Jika icon lama masih muncul, uninstall dulu app lama dari Settings Android → Apps, lalu install ulang dari link versi 2.6.13.');});
+    document.getElementById('installBtn').addEventListener('click',async()=>{const btn=document.getElementById('installBtn');if(state.deferredPrompt){state.deferredPrompt.prompt();await state.deferredPrompt.userChoice;state.deferredPrompt=null;btn.textContent='Panduan Install';return;}alert('Jika tombol install sistem tidak muncul: buka Chrome menu titik tiga → Add to Home screen / Install app. Jika icon lama masih muncul, uninstall dulu app lama dari Settings Android → Apps, lalu install ulang dari link versi 2.6.14.');});
     document.getElementById('todayBtn').addEventListener('click',()=>{const today=localTodayIso().slice(0,4)==='2026'?localTodayIso():'2026-07-10';state.selectedDate=today;setDateField(state.selectedDate);renderFamily();renderMonth(+state.selectedDate.slice(5,7));});
     document.getElementById('modeBtn').addEventListener('click',()=>{document.body.classList.toggle('tablet-mode');document.getElementById('modeBtn').textContent=document.body.classList.contains('tablet-mode')?'Mode E-paper':'Mode Tablet';});
     document.getElementById('displayBtn').addEventListener('click',()=>{state.displayMode=!state.displayMode;document.body.classList.toggle('display-mode',state.displayMode);renderInfo(state.selectedDate);});
-    document.getElementById('notifyBtn').addEventListener('click',async()=>{if(!('Notification'in window))return alert('Browser ini belum mendukung notifikasi.');const p=await Notification.requestPermission();if(p==='granted'){state.notifyPref={enabled:true,lastTestAt:new Date().toISOString()};saveNotifyPref();const next=buildUpcoming(state.selectedDate)[0];new Notification('Kalender Bali Digital',{body:next?`Reminder terdekat: ${next.title} · ${reminderLabel(next.daysLeft)}`:'Tes notifikasi berhasil. Pusat reminder aktif.',icon:'./assets/icon-192-v144.png?v=273'});renderInfo(state.selectedDate);}else{state.notifyPref.enabled=false;saveNotifyPref();renderInfo(state.selectedDate);}});
+    document.getElementById('notifyBtn').addEventListener('click',async()=>{if(!('Notification'in window))return alert('Browser ini belum mendukung notifikasi.');const p=await Notification.requestPermission();if(p==='granted'){state.notifyPref={enabled:true,lastTestAt:new Date().toISOString()};saveNotifyPref();const next=buildUpcoming(state.selectedDate)[0];new Notification('Kalender Bali Digital',{body:next?`Reminder terdekat: ${next.title} · ${reminderLabel(next.daysLeft)}`:'Tes notifikasi berhasil. Pusat reminder aktif.',icon:'./assets/icon-192-v144.png?v=274'});renderInfo(state.selectedDate);}else{state.notifyPref.enabled=false;saveNotifyPref();renderInfo(state.selectedDate);}});
     init().catch(err=>{console.error(err);alert('Data belum bisa dibaca. Jalankan via local server atau deploy ke Vercel.');});
   </script>
 </body>

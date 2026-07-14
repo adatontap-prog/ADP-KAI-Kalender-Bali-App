@@ -1,0 +1,34 @@
+{
+  "schema": "kd-bali.pilotStableBaseline.v2.6.14",
+  "purpose": "Status-only gate that locks the manual cloud pilot as a stable baseline after write/readback/pull/restore/verification have passed.",
+  "policy": [
+    "no_firestore_write",
+    "no_local_restore",
+    "no_auto_sync",
+    "no_realtime_listener",
+    "explicit_lock_only"
+  ],
+  "localStorageKey": "adp-kai-kalender-bali-pilot-stable-baseline-v2-6-14",
+  "requiredChecks": [
+    "backup",
+    "firebase_config",
+    "google_auth",
+    "hardening_locked",
+    "actual_write_success",
+    "readback_safe",
+    "cloud_pull_safe",
+    "restore_preview_safe",
+    "manual_restore_executed",
+    "post_restore_valid",
+    "local_counts_non_empty",
+    "sync_log_present"
+  ],
+  "fields": {
+    "lockedAt": "ISO timestamp",
+    "score": "number",
+    "level": "string",
+    "localCounts": "object",
+    "lockedBy": "email/local_user",
+    "updatedAt": "ISO timestamp"
+  }
+}

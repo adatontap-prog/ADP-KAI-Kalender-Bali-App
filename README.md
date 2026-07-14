@@ -1,16 +1,13 @@
-# ADP KAI Kalender Bali Digital — Phase 2.6.12
+# ADP KAI Kalender Bali Digital — Phase 2.6.14
 
-Phase 2.6.12 menambahkan **Manual Local Restore Pilot**.
+Phase 2.6.14 menambahkan **Pilot Stable Baseline Gate**.
 
 ## Fokus
 
-- Terapkan kandidat cloud dari Structured Restore Preview ke data lokal browser secara manual.
-- Wajib backup sebelum restore.
-- Wajib checkbox konfirmasi eksplisit.
-- Tidak ada write Firestore.
-- Tidak ada real-time sync.
-- Tidak ada auto-sync.
-- Tidak ada silent overwrite.
+- Mengunci milestone cloud pilot setelah write/readback/pull/restore/verification aman.
+- Menampilkan score stable baseline.
+- Export baseline report TXT.
+- Tetap aman: tidak ada Firestore write, tidak ada restore localStorage, tidak ada auto-sync, tidak ada real-time listener.
 
 ## Cara deploy
 
@@ -19,32 +16,25 @@ Phase 2.6.12 menambahkan **Manual Local Restore Pilot**.
 3. Commit:
 
 ```txt
-ADP KAI Kalender Bali Digital phase 2.6.12 - Manual Local Restore Pilot
+ADP KAI Kalender Bali Digital phase 2.6.14 - Pilot Stable Baseline Gate
 ```
 
 4. Push origin.
 5. Buka:
 
 ```txt
-https://adp-kai-kalender-bali-app.vercel.app/?v=272&app=kd-bali-v272
+https://adp-kai-kalender-bali-app.vercel.app/?v=274&app=kd-bali-v274
 ```
 
 ## Urutan test aman
 
-1. Jalankan Cloud Pull Preview.
-2. Jalankan Structured Restore Preview.
-3. Tandai Restore Preview Aman.
-4. Masuk Pengaturan → Manual Local Restore Pilot.
-5. Preview Manual Restore Plan.
-6. Download Backup Sebelum Restore.
-7. Centang konfirmasi.
-8. Execute Manual Local Restore.
-9. Cek Otonan, Adat Keluarga, Kalender.
-10. Export Restore Report.
-
-
-## Phase 2.6.13 - Post-Restore Verification & Rollback Guard
-
-- Verifies the result of Manual Local Restore against the restore candidate counts.
-- Provides explicit rollback to the pre-restore snapshot saved during Manual Local Restore.
-- Keeps policy safe: no Firestore write, no auto-sync, no silent overwrite.
+1. Pastikan Actual Write Pilot pernah sukses.
+2. Pastikan Readback Verification aman.
+3. Pastikan Cloud Pull Preview aman.
+4. Pastikan Structured Restore Preview aman.
+5. Pastikan Manual Local Restore pernah dieksekusi.
+6. Pastikan Post-Restore Verification valid.
+7. Masuk Pengaturan → Pilot Stable Baseline.
+8. Refresh Baseline Gate.
+9. Jika score aman, Lock Pilot Stable Baseline.
+10. Export Baseline Report TXT.
