@@ -1,0 +1,42 @@
+{
+  "schema": "kd-bali.actualWriteReadback.v2.6.9",
+  "phase": "2.6.9",
+  "purpose": "Read back Firestore documents written by the manual Actual Write Pilot and compare them against the dry-run payload before any real sync is considered.",
+  "policy": {
+    "readOnly": true,
+    "writesToFirestore": false,
+    "restoreLocalData": false,
+    "realtimeSync": false,
+    "silentOverwrite": false,
+    "requiresManualActualWriteFirst": true
+  },
+  "storageKey": "adp-kai-kalender-bali-actual-write-readback-v2-6-9",
+  "checks": [
+    "actual_write_executed",
+    "readback_executed",
+    "all_docs_found",
+    "no_major_field_mismatch",
+    "sync_meta_present",
+    "no_failed_write"
+  ],
+  "resultShape": {
+    "checkedAt": "ISO datetime",
+    "totalDocs": "number",
+    "existsCount": "number",
+    "missing": [
+      "firestore path"
+    ],
+    "mismatches": [
+      {
+        "path": "firestore path",
+        "fields": [
+          "fieldName"
+        ]
+      }
+    ],
+    "metaMissing": [
+      "firestore path"
+    ],
+    "pathScope": "families/{familyId}"
+  }
+}

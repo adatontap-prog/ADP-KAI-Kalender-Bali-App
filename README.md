@@ -15,3 +15,22 @@ Manual actual write only. Tidak ada listener real-time, tidak ada auto-sync, dan
 
 ## Commit
 ADP KAI Kalender Bali Digital phase 2.6.8 - Actual Write Pilot Manual
+
+
+## Phase 2.6.9 — Actual Write Readback Verification
+
+Update ini menambahkan panel **Actual Write Readback Verification** di menu Pengaturan.
+
+Fungsi utama:
+- Membaca ulang dokumen Firestore hasil Actual Write Pilot Manual.
+- Membandingkan target Dry Run Payload dengan dokumen cloud yang ditemukan.
+- Menandai missing docs, field mismatch, dan dokumen tanpa `_syncMeta`.
+- Export Readback Verification Report TXT.
+- Menandai readback aman sebagai gate sebelum phase read/write guard berikutnya.
+
+Policy tetap aman:
+- Tidak ada real-time sync.
+- Tidak ada auto-sync.
+- Tidak ada restore lokal.
+- Tidak ada write tambahan dari panel readback.
+- Tidak ada silent overwrite.

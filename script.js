@@ -1,4 +1,3 @@
-
     const DATA={events:'./data/events.2026.json',family:'./data/familyMembers.sample.json',coverage:'./data/dataCoverage.2026.json'};
     const STORAGE_KEY='adp-kai-kalender-bali-family-v1-6';
     const ADAT_MEMORY_KEY='adp-kai-kalender-bali-adat-memory-v2-1';
@@ -22,6 +21,7 @@
     const CLOUD_DRY_RUN_KEY='adp-kai-kalender-bali-cloud-dry-run-v2-6-8';
     const DRY_RUN_VALIDATION_GATE_KEY='adp-kai-kalender-bali-dry-run-validation-gate-v2-6-8';
     const ACTUAL_WRITE_PILOT_KEY='adp-kai-kalender-bali-actual-write-pilot-v2-6-8';
+    const ACTUAL_WRITE_VERIFY_KEY='adp-kai-kalender-bali-actual-write-readback-v2-6-9';
     const RESTORE_REVIEW_STATUS_KEY='adp-kai-kalender-bali-restore-review-v2-5-3';
     function localTodayIso(){const now=new Date();const y=now.getFullYear();const m=String(now.getMonth()+1).padStart(2,'0');const d=String(now.getDate()).padStart(2,'0');return `${y}-${m}-${d}`;}
     function getInitialSelectedDate(){const params=new URLSearchParams(location.search);const qDate=params.get('date');const qD=params.get('d');if(qDate&&/^\d{4}-\d{2}-\d{2}$/.test(qDate))return qDate;if(qD){const parsed=parseDMY(qD);if(parsed)return parsed;}const today=localTodayIso();if(today.slice(0,4)==='2026')return today;return '2026-07-10';}
@@ -65,8 +65,8 @@
     function exportCalendarIcs(){const calendarEvents=state.events.map(e=>({date:e.date,title:e.title,type:e.type||e.category||'rahinan',description:`Kalender Bali Digital · ${e.category||'event'} · status ${e.source?.verificationStatus||'digital_source_only'} · sumber ${e.source?.sourceName||'SRC-001'} · Untuk keputusan adat penting tetap verifikasi dengan kalender cetak/sumber adat/pemangku.`,uid:`${e.id||uidSafe(e.title)}-${e.date}`}));const otonanEvents=[];state.family.forEach(m=>{otonanDatesInYear(m).forEach(date=>{otonanEvents.push({date,title:`Otonan ${m.name}`,type:'otonan',description:`Otonan keluarga · ${otonanSourceLabel(m)} · ${otonanStatusLabel(m)} · data lokal KD-Bali. Verifikasi adat tetap diperlukan untuk keputusan penting.`,uid:`otonan-${uidSafe(m.id||m.name)}-${date}`});});});const adatEvents=buildAdatInstancesInYear(2026).map(e=>({date:e.date,title:e.title,type:'adat',description:`Adat keluarga KD-Bali · ${e.category} · ${e.level||'level belum diatur'} · ${e.validationStatus||'user_recorded'} · bukan keputusan adat resmi.`,uid:`adat-${uidSafe(e.id)}-${e.date}`}));const all=[...calendarEvents,...otonanEvents,...adatEvents].sort((a,b)=>a.date.localeCompare(b.date)||a.title.localeCompare(b.title));const body=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//ADP KAI//KD-Bali Calendar//ID','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:KD-Bali 2026','X-WR-TIMEZONE:Asia/Makassar',...all.map(buildIcsEvent),'END:VCALENDAR'].join('\r\n');downloadText('kd-bali-kalender-2026.ics',body,'text/calendar;charset=utf-8');updateBackupStatus(`Export ICS dibuat: ${all.length} event kalender + otonan + adat keluarga. Import file .ics ini ke Google Calendar/Apple Calendar jika dibutuhkan.`);}
     function appBaseUrl(){return location.origin+location.pathname.replace(/[^/]*$/,'');}
     function selectedDateParam(){return encodeURIComponent(formatDMY(state.selectedDate));}
-    function displayUrl(){return `${appBaseUrl()}?v=268&app=kd-bali-v268&display=1&d=${selectedDateParam()}`;}
-    function liveFeedUrl(){return `${appBaseUrl()}?v=268&app=kd-bali-v268&feed=display&d=${selectedDateParam()}`;}
+    function displayUrl(){return `${appBaseUrl()}?v=269&app=kd-bali-v269&display=1&d=${selectedDateParam()}`;}
+    function liveFeedUrl(){return `${appBaseUrl()}?v=269&app=kd-bali-v269&feed=display&d=${selectedDateParam()}`;}
     function buildDisplayPayload(iso=state.selectedDate){const evs=eventsOn(iso);const ots=otonanOn(iso);const ads=adatOn(iso);const upcoming=buildUpcoming(iso).slice(0,12).map(e=>({date:e.displayDate,displayDate:formatDMY(e.displayDate),title:e.title,type:e.type||e.category,kind:e.kind,daysLeft:e.daysLeft,label:reminderLabel(e.daysLeft),marker:eventPillClass(e)}));return {app:'KD-Bali',phase:'2.6',feedType:'live_selected_day_display_feed',generatedAt:new Date().toISOString(),selectedDate:iso,displayDate:formatDMY(iso),timezone:'Asia/Makassar / device local',deviceUse:{tabletDisplayUrl:displayUrl(),liveFeedUrl:liveFeedUrl(),refreshSeconds:900},today:{label:idDate(iso),events:evs.map(e=>({title:e.title,type:e.type,category:e.category,marker:eventPillClass(e),isPurnama:!!e.isPurnama,isTilem:!!e.isTilem,verificationStatus:e.source?.verificationStatus||'digital_source_only',source:e.source?.sourceName||'SRC-001'})),otonan:ots.map(m=>({title:`Otonan ${m.name}`,memberName:m.name,source:m.otonan?.source,validationStatus:m.otonan?.validationStatus||'needs_bali_day_confirmation'})),adat:ads.map(e=>({title:e.title,category:e.category,level:e.level,validationStatus:e.validationStatus,checklist:checklistSummaryForInstance(e.id)}))},upcoming,markers:{purnama:'red_dot',tilem:'black_dot_highlighted',rerainan:'gold_dot',otonan:'green_dot',merajan:'purple_dot'},validationNote:'Data digital_source_only. Untuk keputusan adat penting tetap verifikasi dengan kalender cetak/resmi, sumber adat setempat, atau pemangku.'};}
     function updateDisplayFeedUrl(){const el=document.getElementById('displayFeedUrl');if(el)el.textContent=liveFeedUrl();}
     async function copyText(text,label){try{await navigator.clipboard.writeText(text);updateBackupStatus(`${label} disalin ke clipboard.`);}catch(e){prompt(`Copy ${label}:`,text);}}
@@ -846,7 +846,7 @@
       const snapshot={id:`snapshot_${Date.now()}`,createdAt:new Date().toISOString(),counts:snapshotCounts(null),source:'dry_run_subcollection_writer',note:'Dry-run only. No Firestore write executed.'};
       docs.push(dryRunDoc(`${rootFamily}/syncSnapshots/${snapshot.id}`,'syncSnapshot',snapshot));
       const byType=docs.reduce((acc,d)=>{acc[d.type]=(acc[d.type]||0)+1;return acc;},{});
-      return {app:'KD-Bali',phase:'2.6.8',mode:'dry_run_subcollection_writer',generatedAt:new Date().toISOString(),policy:{writesToFirestore:false,realtimeSync:false,manualSeedOnly:true,requiresReviewBeforeActualWrite:true},identity:{uid,email,familyId},docCount:docs.length,countsByType:byType,docs,notes:'Payload ini hanya simulasi write plan. Gunakan untuk review path dan struktur sebelum Cloud Sync Real.'};
+      return {app:'KD-Bali',phase:'2.6.9',mode:'dry_run_subcollection_writer',generatedAt:new Date().toISOString(),policy:{writesToFirestore:false,realtimeSync:false,manualSeedOnly:true,requiresReviewBeforeActualWrite:true},identity:{uid,email,familyId},docCount:docs.length,countsByType:byType,docs,notes:'Payload ini hanya simulasi write plan. Gunakan untuk review path dan struktur sebelum Cloud Sync Real.'};
     }
     function setDryRunStatus(text,kind='info'){
       const pill=document.getElementById('dryRunWriterPill');if(pill)pill.textContent=kind==='ok'?'Dry-run generated':kind==='warn'?'Review needed':'Dry-run only';
@@ -1019,7 +1019,7 @@
         const startedAt=new Date().toISOString();
         let written=0;let failed=[];
         for(const d of plan.docs){
-          try{const ref=fsMod.doc(db,...d.path.split('/'));await fsMod.setDoc(ref,{...sanitizeFirestoreData(d.data),_syncMeta:{source:'kd_bali_actual_write_pilot',phase:'2.6.8',type:d.type,path:d.path,updatedAt:new Date().toISOString(),mergeWrite:true}}, {merge:true});written++;}
+          try{const ref=fsMod.doc(db,...d.path.split('/'));await fsMod.setDoc(ref,{...sanitizeFirestoreData(d.data),_syncMeta:{source:'kd_bali_actual_write_pilot',phase:'2.6.9',type:d.type,path:d.path,updatedAt:new Date().toISOString(),mergeWrite:true}}, {merge:true});written++;}
           catch(e){failed.push({path:d.path,message:e?.message||String(e)});}
         }
         const result={lastWriteAt:new Date().toISOString(),startedAt,writtenCount:written,failedCount:failed.length,failed,docCount:plan.docs.length,countsByType:plan.countsByType,familyId:firestoreFamilyId(),uid:state.firebaseAuthUser?.uid||'',email:state.firebaseAuthUser?.email||''};
@@ -1046,7 +1046,7 @@
     }
     function actualWritePilotReportText(){
       const plan=buildActualWritePilotPlan();const stored=actualWritePilotLocal();
-      const lines=['KD-Bali Actual Write Pilot Manual Report',`Tanggal: ${new Date().toLocaleString('id-ID')}`,`Phase: 2.6.8`,`Status: ${plan.level}`,`Score: ${plan.score}%`,`Decision: ${plan.decision}`,`Doc plan: ${plan.docs.length}`,'','Counts by type:'];
+      const lines=['KD-Bali Actual Write Pilot Manual Report',`Tanggal: ${new Date().toLocaleString('id-ID')}`,`Phase: 2.6.9`,`Status: ${plan.level}`,`Score: ${plan.score}%`,`Decision: ${plan.decision}`,`Doc plan: ${plan.docs.length}`,'','Counts by type:'];
       Object.entries(plan.countsByType||{}).forEach(([k,v])=>lines.push(`${k}: ${v}`));
       lines.push('','Checks:');plan.checks.forEach(c=>lines.push(`${c.ok?'[OK]':'[BLOCKER]'} ${c.label} - ${c.detail}`));
       if(stored.lastWriteAt){lines.push('',`Last write: ${new Date(stored.lastWriteAt).toLocaleString('id-ID')}`,`Written: ${stored.writtenCount||0}/${stored.docCount||0}`,`Failed: ${stored.failedCount||0}`);(stored.failed||[]).slice(0,10).forEach(f=>lines.push(`FAIL ${f.path}: ${f.message}`));}
@@ -1056,6 +1056,81 @@
     function exportActualWriteReport(){downloadText(`kd-bali-actual-write-pilot-${new Date().toLocaleDateString('sv-SE')}.txt`,actualWritePilotReportText(),'text/plain');setFirestoreSeedStatus('Actual Write Pilot Report TXT berhasil dibuat.','ok');}
     function actualWriteRulesText(){return `rules_version = '2';\nservice cloud.firestore {\n  match /databases/{database}/documents {\n    function signedIn(){ return request.auth != null; }\n    match /users/{userId} {\n      allow read, write: if signedIn() && request.auth.uid == userId;\n    }\n    match /families/{familyId} {\n      allow read, write: if signedIn() && (resource.data.ownerUid == request.auth.uid || request.resource.data.ownerUid == request.auth.uid);\n      match /{document=**} {\n        allow read, write: if signedIn() && exists(/databases/$(database)/documents/families/$(familyId)) && get(/databases/$(database)/documents/families/$(familyId)).data.ownerUid == request.auth.uid;\n      }\n    }\n  }\n}`;}
     async function copyActualWriteRules(){const text=actualWriteRulesText();try{await navigator.clipboard.writeText(text);addSyncLog('rules','Actual Write Pilot rules draft disalin.');setFirestoreSeedStatus('Rules pilot actual write disalin. Review di Firebase Console sebelum dipakai production.','ok');}catch(e){alert(text);}}
+
+
+    function actualWriteVerifyLocal(){try{return JSON.parse(localStorage.getItem(ACTUAL_WRITE_VERIFY_KEY)||'{}');}catch(e){return {};}}
+    function saveActualWriteVerify(data){localStorage.setItem(ACTUAL_WRITE_VERIFY_KEY,JSON.stringify({...actualWriteVerifyLocal(),...data,updatedAt:new Date().toISOString()}));}
+    function compareExpectedDoc(expected,actual){
+      const cleanExpected=sanitizeFirestoreData(expected||{});const mismatches=[];
+      Object.keys(cleanExpected).forEach(k=>{try{if(JSON.stringify(cleanExpected[k])!==JSON.stringify(actual?.[k]))mismatches.push(k);}catch(e){mismatches.push(k);}});
+      return mismatches;
+    }
+    function buildActualWriteReadbackSummary(result){
+      const stored=actualWriteVerifyLocal();const plan=buildActualWritePilotPlan();const write=actualWritePilotLocal();
+      const res=result||stored.lastResult||{};const total=res.totalDocs??plan.docs.length??0;const exists=res.existsCount||0;const missing=(res.missing||[]).length;const mismatch=(res.mismatches||[]).length;const metaMissing=(res.metaMissing||[]).length;
+      const checks=[
+        {label:'Actual Write pernah dijalankan',ok:!!write.lastWriteAt,detail:write.lastWriteAt?`Write terakhir ${new Date(write.lastWriteAt).toLocaleString('id-ID')} · ${write.writtenCount||0}/${write.docCount||0} docs.`:'Jalankan Actual Write Pilot Manual dulu.'},
+        {label:'Readback pernah dijalankan',ok:!!(res.checkedAt||stored.lastCheckedAt),detail:(res.checkedAt||stored.lastCheckedAt)?`Readback ${new Date(res.checkedAt||stored.lastCheckedAt).toLocaleString('id-ID')}`:'Belum ada readback.'},
+        {label:'Semua target doc ditemukan',ok:total>0&&exists===total&&missing===0,detail:total?`${exists}/${total} dokumen ditemukan.`:'Tidak ada dry-run doc plan.'},
+        {label:'Tidak ada field mismatch besar',ok:mismatch===0,detail:mismatch?`${mismatch} dokumen punya field berbeda.`:'Tidak ada mismatch field utama pada hasil terakhir.'},
+        {label:'Sync meta tersedia',ok:metaMissing===0&&exists>0,detail:metaMissing?`${metaMissing} dokumen tanpa _syncMeta.`:'_syncMeta terbaca pada dokumen yang ditemukan.'},
+        {label:'Tidak ada failed write terakhir',ok:!write.failedCount,detail:write.failedCount?`${write.failedCount} failed write pada pilot terakhir.`:'Tidak ada failed write tercatat.'}
+      ];
+      const score=Math.round(checks.filter(c=>c.ok).length/checks.length*100);
+      let level='Belum aman';let decision='Jalankan write pilot dan readback verification sebelum lanjut cloud sync real.';
+      if(score>=95){level='Readback aman';decision='Hasil write pilot terbaca kembali dengan baik. Boleh lanjut desain read/write conflict guard berikutnya, bukan auto-sync penuh langsung.';}
+      else if(score>=75){level='Readback cukup baik';decision='Sebagian besar dokumen terbaca. Periksa mismatch/missing sebelum lanjut.';}
+      else if(score>=50){level='Readback parsial';decision='Ada blocker. Cek rules, path family, hasil write, atau dry-run payload.';}
+      return {checks,score,level,decision,result:res,total,exists,missing,mismatch,metaMissing,acceptedAt:stored.acceptedAt||''};
+    }
+    function renderActualWriteReadback(){
+      const panel=document.getElementById('actualWriteVerifyPanel');if(!panel)return;
+      const r=buildActualWriteReadbackSummary();
+      const pill=document.getElementById('actualWriteVerifyPill');if(pill)pill.textContent=`${r.score}% · ${r.level}`;
+      const grid=document.getElementById('actualWriteVerifyGrid');if(grid)grid.innerHTML=r.checks.map(c=>`<div class="real-sync-item ${c.ok?'ok':'warn'}"><strong>${c.ok?'✅':'⬜'} ${c.label}</strong><span>${c.detail}</span></div>`).join('');
+      const title=document.getElementById('actualWriteVerifyTitle');if(title)title.textContent=r.level;
+      const decision=document.getElementById('actualWriteVerifyDecision');if(decision)decision.textContent=r.decision;
+      const code=document.getElementById('actualWriteVerifyCode');if(code){
+        const res=r.result||{};
+        const preview={score:r.score,level:r.level,totalDocs:r.total,existsCount:r.exists,missingCount:r.missing,mismatchCount:r.mismatch,metaMissingCount:r.metaMissing,checkedAt:res.checkedAt||null,acceptedAt:r.acceptedAt||null,missing:(res.missing||[]).slice(0,8),mismatches:(res.mismatches||[]).slice(0,8),metaMissing:(res.metaMissing||[]).slice(0,8)};
+        code.textContent=JSON.stringify(preview,null,2);
+      }
+    }
+    async function runActualWriteReadbackVerification(){
+      try{
+        const plan=buildActualWritePilotPlan();
+        if(!plan.docs.length){alert('Dry Run Payload kosong. Generate Dry Run Payload dulu.');return;}
+        setFirestoreSeedStatus('Menjalankan readback verification...', 'info');
+        const {db,fsMod}=await initFirestoreRuntime();
+        const missing=[];const mismatches=[];const metaMissing=[];const found=[];
+        for(const d of plan.docs){
+          const ref=fsMod.doc(db,...d.path.split('/'));
+          const snap=await fsMod.getDoc(ref);
+          if(!snap.exists()){missing.push(d.path);continue;}
+          const actual=snap.data()||{};found.push(d.path);
+          const diffKeys=compareExpectedDoc(d.data,actual);
+          if(diffKeys.length)mismatches.push({path:d.path,fields:diffKeys.slice(0,12)});
+          if(!actual._syncMeta)metaMissing.push(d.path);
+        }
+        const result={checkedAt:new Date().toISOString(),totalDocs:plan.docs.length,existsCount:found.length,missing,mismatches,metaMissing,pathScope:`families/${firestoreFamilyId()}`,policy:'readback_only_no_write_no_restore_no_realtime'};
+        saveActualWriteVerify({lastCheckedAt:result.checkedAt,lastResult:result});
+        addSyncLog('actual_write_readback',`Readback verification: ${found.length}/${plan.docs.length} docs found, ${missing.length} missing, ${mismatches.length} mismatch.`,result);
+        renderActualWriteReadback();
+        setFirestoreSeedStatus(missing.length||mismatches.length?`Readback selesai dengan perhatian: ${missing.length} missing, ${mismatches.length} mismatch.`:`Readback berhasil: semua ${found.length} dokumen terbaca.`,missing.length||mismatches.length?'warn':'ok');
+      }catch(err){console.error(err);addSyncLog('error','Actual Write Readback gagal: '+(err?.message||err));setFirestoreSeedStatus('Actual Write Readback gagal: '+(err?.message||err),'error');alert('Readback gagal. Cek Firebase config, login, Firestore rules, dan path family. Detail: '+(err?.message||err));}
+    }
+    function actualWriteReadbackReportText(){
+      const r=buildActualWriteReadbackSummary();const res=r.result||{};
+      const lines=['KD-Bali Actual Write Readback Verification Report',`Tanggal: ${new Date().toLocaleString('id-ID')}`,`Phase: 2.6.9`,`Score: ${r.score}%`,`Level: ${r.level}`,`Decision: ${r.decision}`,`Doc plan: ${r.total}`,`Exists: ${r.exists}`,`Missing: ${r.missing}`,`Mismatch: ${r.mismatch}`,`Meta missing: ${r.metaMissing}`,'','Checks:'];
+      r.checks.forEach(c=>lines.push(`${c.ok?'[OK]':'[ ]'} ${c.label} - ${c.detail}`));
+      if((res.missing||[]).length){lines.push('','Missing docs:');(res.missing||[]).slice(0,50).forEach(p=>lines.push(`- ${p}`));}
+      if((res.mismatches||[]).length){lines.push('','Mismatches:');(res.mismatches||[]).slice(0,50).forEach(m=>lines.push(`- ${m.path}: ${(m.fields||[]).join(', ')}`));}
+      if((res.metaMissing||[]).length){lines.push('','Meta missing:');(res.metaMissing||[]).slice(0,50).forEach(p=>lines.push(`- ${p}`));}
+      lines.push('','Policy: readback only; no write; no restore; no realtime sync; no silent overwrite.');
+      return lines.join('\n');
+    }
+    function exportActualWriteReadbackReport(){downloadText(`kd-bali-actual-write-readback-${new Date().toLocaleDateString('sv-SE')}.txt`,actualWriteReadbackReportText(),'text/plain');setFirestoreSeedStatus('Readback Verification Report berhasil dibuat.','ok');}
+    function markActualWriteReadbackSafe(){const r=buildActualWriteReadbackSummary();if(r.score<90&&!confirm(`Readback score baru ${r.score}%. Tetap tandai aman?`))return;saveActualWriteVerify({acceptedAt:new Date().toISOString(),acceptedScore:r.score,acceptedLevel:r.level});addSyncLog('actual_write_readback_accept',`Actual Write Readback ditandai aman · ${r.score}%.`);renderActualWriteReadback();setFirestoreSeedStatus('Actual Write Readback ditandai aman. Phase berikutnya boleh masuk read/write guard, bukan auto-sync penuh langsung.','ok');}
 
 
     function setupFirestoreSeedPilot(){
@@ -1086,14 +1161,6 @@
       const copyDryRun=document.getElementById('copyDryRunWriterBtn');if(copyDryRun)copyDryRun.addEventListener('click',copyDryRunWriter);
       const exportDryRun=document.getElementById('exportDryRunWriterBtn');if(exportDryRun)exportDryRun.addEventListener('click',exportDryRunWriter);
       const exportDryRunReport=document.getElementById('exportDryRunReportBtn');if(exportDryRunReport)exportDryRunReport.addEventListener('click',exportDryRunReport);
-      const validateDryRun=document.getElementById('validateDryRunGateBtn');if(validateDryRun)validateDryRun.addEventListener('click',validateDryRunGate);
-      const markDryGate=document.getElementById('markDryRunGateSafeBtn');if(markDryGate)markDryGate.addEventListener('click',markDryRunGateSafe);
-      const exportDryGate=document.getElementById('exportDryRunGateReportBtn');if(exportDryGate)exportDryGate.addEventListener('click',exportDryRunGateReport);
-      const previewActual=document.getElementById('previewActualWritePlanBtn');if(previewActual)previewActual.addEventListener('click',previewActualWritePlan);
-      const executeActual=document.getElementById('executeActualWritePilotBtn');if(executeActual)executeActual.addEventListener('click',executeActualWritePilot);
-      const verifyActual=document.getElementById('verifyActualWritePilotBtn');if(verifyActual)verifyActual.addEventListener('click',verifyActualWritePilot);
-      const exportActual=document.getElementById('exportActualWriteReportBtn');if(exportActual)exportActual.addEventListener('click',exportActualWriteReport);
-      const copyActualRules=document.getElementById('copyActualWriteRulesBtn');if(copyActualRules)copyActualRules.addEventListener('click',copyActualWriteRules);
       const backupNow=document.getElementById('downloadBackupFromReminderBtn');if(backupNow)backupNow.addEventListener('click',exportBackup);
       const exportBackupDisc=document.getElementById('exportBackupDisciplineBtn');if(exportBackupDisc)exportBackupDisc.addEventListener('click',exportBackupDisciplineReport);
       const markBackupReview=document.getElementById('markBackupReminderReviewedBtn');if(markBackupReview)markBackupReview.addEventListener('click',markBackupReminderReviewed);
@@ -1102,6 +1169,14 @@
       const refreshRealGate=document.getElementById('refreshRealSyncGateBtn');if(refreshRealGate)refreshRealGate.addEventListener('click',renderRealSyncDecisionGate);
       const markRealGate=document.getElementById('markManualSeedStableBtn');if(markRealGate)markRealGate.addEventListener('click',markManualSeedStable);
       const exportRealGate=document.getElementById('exportRealSyncGateBtn');if(exportRealGate)exportRealGate.addEventListener('click',exportRealSyncGateReport);
+      const previewActual=document.getElementById('previewActualWritePlanBtn');if(previewActual)previewActual.addEventListener('click',previewActualWritePlan);
+      const executeActual=document.getElementById('executeActualWritePilotBtn');if(executeActual)executeActual.addEventListener('click',executeActualWritePilot);
+      const verifyActual=document.getElementById('verifyActualWritePilotBtn');if(verifyActual)verifyActual.addEventListener('click',verifyActualWritePilot);
+      const exportActual=document.getElementById('exportActualWriteReportBtn');if(exportActual)exportActual.addEventListener('click',exportActualWriteReport);
+      const copyActualRules=document.getElementById('copyActualWriteRulesBtn');if(copyActualRules)copyActualRules.addEventListener('click',copyActualWriteRules);
+      const runReadback=document.getElementById('runActualWriteReadbackBtn');if(runReadback)runReadback.addEventListener('click',runActualWriteReadbackVerification);
+      const exportReadback=document.getElementById('exportActualWriteReadbackBtn');if(exportReadback)exportReadback.addEventListener('click',exportActualWriteReadbackReport);
+      const markReadback=document.getElementById('markActualWriteReadbackSafeBtn');if(markReadback)markReadback.addEventListener('click',markActualWriteReadbackSafe);
       renderFirestoreSeedPilot();
       renderDeviceTransferTest();
       renderSyncConfidencePanel();
@@ -1110,14 +1185,14 @@
       renderCloudDryRunWriter();
       renderDryRunValidationGate();
       renderActualWritePilot();
+      renderActualWriteReadback();
     }
 
-    async function init(){document.getElementById('dowGrid').innerHTML=dows.map(d=>`<div class="dow">${d}</div>`).join('');setupMonthSelect();setupFamilyForm();setupAdatMemory();setupMainNav();setupSettingsNav();setupAdatSubNav();setupGuidanceToggle();setupFirebasePrep();setupFirebaseAuthPilot();setupFirestoreSeedPilot();const [events,family,coverage]=await Promise.all([getJson(DATA.events),getJson(DATA.family),getJson(DATA.coverage)]);state.events=events;state.sampleFamily=family;state.family=loadFamilyFromStorage(family);state.adatMemory=loadAdatMemory();state.eventChecklists=loadEventChecklists();state.ceremonyArchives=loadCeremonyArchives();state.syncProfile=loadCloudSyncProfile();state.firebaseConfig=loadFirebaseConfig();state.coverage=coverage;renderFirebaseAuthPilot();renderFirestoreSeedPilot();state.notifyPref=loadNotifyPref();const params=new URLSearchParams(location.search);if(params.get('feed')==='display'||params.get('feed')==='1'){renderFeedMode(state.selectedDate);return;}if(params.get('display')==='1'){state.displayMode=true;document.body.classList.add('display-mode');document.body.classList.add('tablet-mode');}const picker=document.getElementById('datePicker');setDateField(state.selectedDate);picker.addEventListener('change',()=>{const parsed=parseDMY(picker.value);if(!parsed||parsed.slice(0,4)!=='2026'){alert('Tanggal tampilan kalender harus format dd/mm/yyyy dan tahun 2026. Contoh: 11/07/2026');setDateField(state.selectedDate);return;}state.selectedDate=parsed;renderMonth(+state.selectedDate.slice(5,7));renderFamily();});renderFamily();renderAdatMemory();updateAdatSummary();renderWizardGuardrails();renderCloudReadinessGate();renderFirebaseConfig();renderFirestoreSeedPilot();renderSyncStatusSummary();renderRealSyncDecisionGate();renderCloudDryRunWriter();renderDryRunValidationGate();renderActualWritePilot();renderMonth(+state.selectedDate.slice(5,7));renderValidationConsole();updateDisplayFeedUrl();if(state.displayMode){setInterval(()=>{const t=localTodayIso();if(t.slice(0,4)==='2026'&&t!==state.selectedDate){state.selectedDate=t;setDateField(state.selectedDate);renderFamily();renderAdatMemory();renderMonth(+state.selectedDate.slice(5,7));}},900000);}if('serviceWorker' in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.warn);}
+    async function init(){document.getElementById('dowGrid').innerHTML=dows.map(d=>`<div class="dow">${d}</div>`).join('');setupMonthSelect();setupFamilyForm();setupAdatMemory();setupMainNav();setupSettingsNav();setupAdatSubNav();setupGuidanceToggle();setupFirebasePrep();setupFirebaseAuthPilot();setupFirestoreSeedPilot();const [events,family,coverage]=await Promise.all([getJson(DATA.events),getJson(DATA.family),getJson(DATA.coverage)]);state.events=events;state.sampleFamily=family;state.family=loadFamilyFromStorage(family);state.adatMemory=loadAdatMemory();state.eventChecklists=loadEventChecklists();state.ceremonyArchives=loadCeremonyArchives();state.syncProfile=loadCloudSyncProfile();state.firebaseConfig=loadFirebaseConfig();state.coverage=coverage;renderFirebaseAuthPilot();renderFirestoreSeedPilot();state.notifyPref=loadNotifyPref();const params=new URLSearchParams(location.search);if(params.get('feed')==='display'||params.get('feed')==='1'){renderFeedMode(state.selectedDate);return;}if(params.get('display')==='1'){state.displayMode=true;document.body.classList.add('display-mode');document.body.classList.add('tablet-mode');}const picker=document.getElementById('datePicker');setDateField(state.selectedDate);picker.addEventListener('change',()=>{const parsed=parseDMY(picker.value);if(!parsed||parsed.slice(0,4)!=='2026'){alert('Tanggal tampilan kalender harus format dd/mm/yyyy dan tahun 2026. Contoh: 11/07/2026');setDateField(state.selectedDate);return;}state.selectedDate=parsed;renderMonth(+state.selectedDate.slice(5,7));renderFamily();});renderFamily();renderAdatMemory();updateAdatSummary();renderWizardGuardrails();renderCloudReadinessGate();renderFirebaseConfig();renderFirestoreSeedPilot();renderSyncStatusSummary();renderRealSyncDecisionGate();renderCloudDryRunWriter();renderDryRunValidationGate();renderActualWritePilot();renderActualWriteReadback();renderMonth(+state.selectedDate.slice(5,7));renderValidationConsole();updateDisplayFeedUrl();if(state.displayMode){setInterval(()=>{const t=localTodayIso();if(t.slice(0,4)==='2026'&&t!==state.selectedDate){state.selectedDate=t;setDateField(state.selectedDate);renderFamily();renderAdatMemory();renderMonth(+state.selectedDate.slice(5,7));}},900000);}if('serviceWorker' in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.warn);}
     window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();state.deferredPrompt=e;const btn=document.getElementById('installBtn');btn.hidden=false;btn.textContent='Install App';});
-    document.getElementById('installBtn').addEventListener('click',async()=>{const btn=document.getElementById('installBtn');if(state.deferredPrompt){state.deferredPrompt.prompt();await state.deferredPrompt.userChoice;state.deferredPrompt=null;btn.textContent='Panduan Install';return;}alert('Jika tombol install sistem tidak muncul: buka Chrome menu titik tiga → Add to Home screen / Install app. Jika icon lama masih muncul, uninstall dulu app lama dari Settings Android → Apps, lalu install ulang dari link versi 2.6.8.');});
+    document.getElementById('installBtn').addEventListener('click',async()=>{const btn=document.getElementById('installBtn');if(state.deferredPrompt){state.deferredPrompt.prompt();await state.deferredPrompt.userChoice;state.deferredPrompt=null;btn.textContent='Panduan Install';return;}alert('Jika tombol install sistem tidak muncul: buka Chrome menu titik tiga → Add to Home screen / Install app. Jika icon lama masih muncul, uninstall dulu app lama dari Settings Android → Apps, lalu install ulang dari link versi 2.6.9.');});
     document.getElementById('todayBtn').addEventListener('click',()=>{const today=localTodayIso().slice(0,4)==='2026'?localTodayIso():'2026-07-10';state.selectedDate=today;setDateField(state.selectedDate);renderFamily();renderMonth(+state.selectedDate.slice(5,7));});
     document.getElementById('modeBtn').addEventListener('click',()=>{document.body.classList.toggle('tablet-mode');document.getElementById('modeBtn').textContent=document.body.classList.contains('tablet-mode')?'Mode E-paper':'Mode Tablet';});
     document.getElementById('displayBtn').addEventListener('click',()=>{state.displayMode=!state.displayMode;document.body.classList.toggle('display-mode',state.displayMode);renderInfo(state.selectedDate);});
-    document.getElementById('notifyBtn').addEventListener('click',async()=>{if(!('Notification'in window))return alert('Browser ini belum mendukung notifikasi.');const p=await Notification.requestPermission();if(p==='granted'){state.notifyPref={enabled:true,lastTestAt:new Date().toISOString()};saveNotifyPref();const next=buildUpcoming(state.selectedDate)[0];new Notification('Kalender Bali Digital',{body:next?`Reminder terdekat: ${next.title} · ${reminderLabel(next.daysLeft)}`:'Tes notifikasi berhasil. Pusat reminder aktif.',icon:'./assets/icon-192-v144.png?v=268'});renderInfo(state.selectedDate);}else{state.notifyPref.enabled=false;saveNotifyPref();renderInfo(state.selectedDate);}});
+    document.getElementById('notifyBtn').addEventListener('click',async()=>{if(!('Notification'in window))return alert('Browser ini belum mendukung notifikasi.');const p=await Notification.requestPermission();if(p==='granted'){state.notifyPref={enabled:true,lastTestAt:new Date().toISOString()};saveNotifyPref();const next=buildUpcoming(state.selectedDate)[0];new Notification('Kalender Bali Digital',{body:next?`Reminder terdekat: ${next.title} · ${reminderLabel(next.daysLeft)}`:'Tes notifikasi berhasil. Pusat reminder aktif.',icon:'./assets/icon-192-v144.png?v=269'});renderInfo(state.selectedDate);}else{state.notifyPref.enabled=false;saveNotifyPref();renderInfo(state.selectedDate);}});
     init().catch(err=>{console.error(err);alert('Data belum bisa dibaca. Jalankan via local server atau deploy ke Vercel.');});
-  
